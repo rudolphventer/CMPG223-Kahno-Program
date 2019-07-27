@@ -18,6 +18,7 @@
                     <asp:BoundField DataField="passwordHash" HeaderText="passwordHash" SortExpression="passwordHash" />
                 </Columns>
             </asp:GridView>
+            <asp:SqlDataSource ID="DBSource" runat="server"></asp:SqlDataSource>
             <asp:Image ID="Image1" runat="server" />
             <asp:SqlDataSource ID="MainDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:kahnoDatabaseAccessConnectionString %>" ProviderName="<%$ ConnectionStrings:kahnoDatabaseAccessConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [customers]" OnSelecting="MainDataSource_Selecting"></asp:SqlDataSource>
         </p>
