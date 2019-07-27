@@ -1,0 +1,7 @@
+﻿Security:
+	
+	Login page asks for a email and password, then does SQL query to fetch record with matching email, hashes password and checks if the hashes are the same,
+
+	If hashes match then we create a "LocalUser" object which has every DB field as a property and store it as a cookie/in session (whichever works better)
+
+	Then when doing anything else we can simply call the object, for example, if we want to get the user's address we say "UserAddress = Localuser.Address;"
