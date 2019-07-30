@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
 
 namespace Kahno_Main
 {
@@ -12,6 +13,12 @@ namespace Kahno_Main
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Register_Click(object sender, EventArgs e)
+        {
+            string securepass = FormsAuthentication.HashPasswordForStoringInConfigFile(TextBox5.Text, "MD5");
+            Label5.Text = securepass;
         }
     }
 }

@@ -108,7 +108,7 @@ var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="Register" runat="server" Text="Button" />
+                        <asp:Button ID="Register" runat="server" Text="Button" OnClick="Register_Click" />
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
