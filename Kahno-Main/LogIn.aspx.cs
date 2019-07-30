@@ -19,6 +19,7 @@ namespace Kahno_Main
         {
             string securepass = FormsAuthentication.HashPasswordForStoringInConfigFile(TextBox5.Text, "MD5");
             Label5.Text = securepass;
+            Response.Redirect("Register.aspx");
         }
     }
 }

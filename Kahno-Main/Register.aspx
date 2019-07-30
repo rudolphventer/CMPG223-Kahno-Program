@@ -15,13 +15,14 @@
                     <asp:BoundField DataField="customerName" HeaderText="customerName" SortExpression="customerName" />
                     <asp:BoundField DataField="phoneNum" HeaderText="phoneNum" SortExpression="phoneNum" />
                     <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
-                    <asp:BoundField DataField="physicalAddress" HeaderText="physicalAddress" SortExpression="physicalAddress" />
-                    <asp:BoundField DataField="areaName" HeaderText="areaName" SortExpression="areaName" />
-                    <asp:BoundField DataField="nameUsername" HeaderText="nameUsername" SortExpression="nameUsername" />
+                    <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
                     <asp:BoundField DataField="passwordHash" HeaderText="passwordHash" SortExpression="passwordHash" />
+                    <asp:BoundField DataField="Coordinates" HeaderText="Coordinates" SortExpression="Coordinates" />
+                    <asp:CheckBoxField DataField="IsRestaurantOwner" HeaderText="IsRestaurantOwner" SortExpression="IsRestaurantOwner" />
+                    <asp:BoundField DataField="RestaurantNumber" HeaderText="RestaurantNumber" SortExpression="RestaurantNumber" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="MainDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:MainConnectionString %>" ProviderName="<%$ ConnectionStrings:MainConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [customers]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="MainDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [USER]"></asp:SqlDataSource>
             <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
         </div>
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
