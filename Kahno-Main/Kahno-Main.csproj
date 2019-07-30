@@ -67,17 +67,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.aspx" />
+    <Content Include="LogIn.aspx" />
+    <Content Include="Register.aspx" />
     <Content Include="Project.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
