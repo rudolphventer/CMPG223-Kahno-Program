@@ -1,40 +1,121 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Kahno_Main.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Kahno_Main.Test" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <div>
+            <table style="width: 30%;">
+                <tr>
+                    <td colspan="1">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" colspan="1" rowspan="1">
+                        <asp:Label ID="Label1" runat="server" Text="First Name"></asp:Label>
+                    </td>
+                    <td class="auto-style2">
+                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style3"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label2" runat="server" Text="Last Name"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label3" runat="server" Text="Phone Number"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label7" runat="server" Text="Username"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label5" runat="server" Text="Password"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label6" runat="server" Text="Password Repeat"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label4" runat="server" Text="Coordinates"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
 
-<!DOCTYPE html>
+<asp:Button ID="Button1" OnClientClick="getLocation();return false;" runat="server" Text="Get Coordinates" OnClick="Button1_Click" Width="114px" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="userID" DataSourceID="MainDataSource">
-                <Columns>
-                    <asp:BoundField DataField="userID" HeaderText="userID" InsertVisible="False" ReadOnly="True" SortExpression="userID" />
-                    <asp:BoundField DataField="customerName" HeaderText="customerName" SortExpression="customerName" />
-                    <asp:BoundField DataField="phoneNum" HeaderText="phoneNum" SortExpression="phoneNum" />
-                    <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
-                    <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username" />
-                    <asp:BoundField DataField="passwordHash" HeaderText="passwordHash" SortExpression="passwordHash" />
-                    <asp:BoundField DataField="Coordinates" HeaderText="Coordinates" SortExpression="Coordinates" />
-                    <asp:CheckBoxField DataField="IsRestaurantOwner" HeaderText="IsRestaurantOwner" SortExpression="IsRestaurantOwner" />
-                    <asp:BoundField DataField="RestaurantNumber" HeaderText="RestaurantNumber" SortExpression="RestaurantNumber" />
-                </Columns>
-            </asp:GridView>
-            <asp:SqlDataSource ID="MainDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [USER]"></asp:SqlDataSource>
-            <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
+
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>
+                        <asp:Button ID="Register0" runat="server" Text="Register" OnClick="Register_Click" />
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+       <p id="demo"></p>
+       <script>
+           var x = document.getElementById("demo");
+
+           function getLocation() {
+               if (navigator.geolocation) {
+                   navigator.geolocation.getCurrentPosition(showPosition);
+               } else {
+                   x.innerHTML = "Geolocation is not supported by this browser.";
+               }
+           }
+
+           function showPosition(position) {
+               var pos = "Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude;
+               document.getElementById('ContentPlaceHolder1_TextBox7').value = position.coords.latitude + ", " + position.coords.longitude;
+           }
+
+  </script>
+
+
+
         </div>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-        <br />
-        Email<br />
-        <asp:TextBox ID="TextBox2" runat="server" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
-        <br />
-        Password<br />
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-        <br />
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Register" />
-        <br />
-    </form>
-</body>
-</html>
+</asp:Content>
