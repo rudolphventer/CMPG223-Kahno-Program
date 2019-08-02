@@ -79,48 +79,28 @@ namespace Kahno_Main
             }
         }
 
-        public static bool Login(string email, string passwordhash)
+        public static bool Login(string email, string passwordhash, ref KahnoUser authuser)
         {
-            //returns true if user is created successfully
             //checking if user exists
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
 
-            string sqlGetUser = ("SELECT * FROM [USER] WHERE email ='" + email + "'");
+            string sqlGetUser = ("SELECT * FROM [USER] WHERE email = @email AND passwordHash = @passwordhash");
             SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@email", email);
+            commquery.Parameters.AddWithValue("@passwordhash", passwordhash);
             SqlDataReader drquery = commquery.ExecuteReader();
             drquery.Read();
+            
 
             if (drquery.HasRows)
             {
-                return false;
+                authuser = new KahnoUser(drquery.GetInt32(0), drquery.GetValue(1).ToString(), drquery.GetValue(2).ToString(), drquery.GetValue(3).ToString(), drquery.GetValue(4).ToString(), drquery.GetInt32(0));
+                return true;
             }
             else
             {
-                try
-                {
-                    //creating new user in db
-                    string get_user = "SELECT * FROM [USER] WHERE email = ''";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter();
-                    SqlConnection con = new SqlConnection(connectString);
-                    SqlCommand comm = new SqlCommand(get_user, con);
-                    con.Open();
-                    comm.Parameters.AddWithValue("@email", email);
-                    SqlDataReader dataReader = comm.ExecuteReader();
-                    dataReader.Read();
-                    int coordsID = dataReader.GetInt32(0);
-                    dataReader.Close();
-
-                    comm.ExecuteNonQuery();
-                    con.Close();
-                    //closing as true
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
+                return true;
             }
         }
 

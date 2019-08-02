@@ -16,7 +16,17 @@ namespace Kahno_Main
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            KahnLib.Login(TextBox1.Text, KahnLib.HashPass(TextBox2.Text));
+            
+            KahnoUser currentUser = new KahnoUser();
+            if (KahnLib.Login(TextBox1.Text, KahnLib.HashPass(TextBox2.Text), ref currentUser))
+            {
+                //Response.Redirect("Register.aspx");
+                Label2.Text = currentUser.fname;
+            }
+            else
+            {
+                Label4.Visible = true;
+            }
         }
     }
 }
