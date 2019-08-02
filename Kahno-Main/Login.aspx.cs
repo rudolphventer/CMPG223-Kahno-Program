@@ -11,22 +11,27 @@ namespace Kahno_Main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             
-            KahnoUser currentUser = new KahnoUser();
-            if (KahnLib.Login(TextBox1.Text, KahnLib.HashPass(TextBox2.Text), ref currentUser))
+            KahnoUser authuser = new KahnoUser();
+            if (KahnLib.Login(TextBox1.Text, KahnLib.HashPass(TextBox2.Text), ref authuser))
             {
-                //Response.Redirect("Register.aspx");
-                Label2.Text = currentUser.fname;
+                Session["localuser"] = authuser;
+                if (authuser.isowner == "y")
+                    Response.Redirect("Admin.aspx");
+                //Label5.Text = authuser.ToString();
+
             }
             else
             {
                 Label4.Visible = true;
             }
+
+            
         }
     }
 }

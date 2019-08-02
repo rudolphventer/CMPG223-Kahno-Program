@@ -13,12 +13,10 @@ namespace Kahno_Main
         public string email { get; set; }
         public string phone { get; set; }
         public int coodinateid { get; set; }
-        //public double longitude { get; set; }
-        //public double latitude { get; set; }
-        public char isowner { get; set; }
+        public string isowner { get; set; }
         public int restaurantno { get; set; }
 
-        public KahnoUser(int id, string fname, string lname, string email, string phone, int coordID)
+        public KahnoUser(int id, string fname, string lname, string email, string phone, int coordID, string isowner, int restaurantno)
         {
             this.userid = id;
             this.fname = fname;
@@ -26,13 +24,18 @@ namespace Kahno_Main
             this.email = email;
             this.phone = phone;
             this.coodinateid = coordID;
-            this.isowner = 'N';
-            this.restaurantno = 0;
+            this.isowner = isowner;
+            this.restaurantno = restaurantno;
         }
 
         public KahnoUser()
         {
 
+        }
+
+        public override string ToString()
+        {
+            return this.userid + ", " + this.fname + ", " + this.lname + ", " + this.email + ", " + this.phone + ", " + this.coodinateid + ", " + this.isowner + ", " + this.restaurantno; ;
         }
     }
 }

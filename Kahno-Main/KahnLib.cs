@@ -20,10 +20,8 @@ namespace Kahno_Main
         public static bool NewUser(string fname, string lname, string email, string phone, string passwordhash, double latitude, double longitude)
         {
             //returns true if user is created successfully
-            //checking if user exists
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
-
             string sqlGetUser = ("SELECT * FROM [USER] WHERE email ='" + email + "'");
             SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
             SqlDataReader drquery = commquery.ExecuteReader();
@@ -95,12 +93,12 @@ namespace Kahno_Main
 
             if (drquery.HasRows)
             {
-                authuser = new KahnoUser(drquery.GetInt32(0), drquery.GetValue(1).ToString(), drquery.GetValue(2).ToString(), drquery.GetValue(3).ToString(), drquery.GetValue(4).ToString(), drquery.GetInt32(0));
+                authuser = new KahnoUser(drquery.GetInt32(0), drquery.GetValue(1).ToString(), drquery.GetValue(2).ToString(), drquery.GetValue(3).ToString(), drquery.GetValue(4).ToString(), drquery.GetInt32(6), drquery.GetValue(7).ToString(), drquery.GetInt32(8));
                 return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
