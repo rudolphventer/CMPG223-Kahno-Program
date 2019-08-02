@@ -17,10 +17,14 @@ namespace Kahno_Main
 
         protected void Register_Click(object sender, EventArgs e)
         {
-            string securepass = FormsAuthentication.HashPasswordForStoringInConfigFile(TextBox5.Text, "MD5");
-            Label5.Text = securepass;
-            //Response.Redirect("Register.aspx");
-            KahnLib.NewUser(TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, TextBox5.Text, TextBox7.Text, TextBox8.Text);
+            if (KahnLib.NewUser(TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, KahnLib.HashPass(TextBox5.Text), double.Parse(TextBox7.Text), double.Parse(TextBox8.Text)))
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                Label8.Visible = true;
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)

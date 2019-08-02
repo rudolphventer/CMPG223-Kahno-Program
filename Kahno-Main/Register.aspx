@@ -1,8 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Kahno_Main.Test" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 12px;
+        }
+        .auto-style2 {
+            height: 26px;
+        }
+        .auto-style3 {
+            width: 12px;
+            height: 26px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <div>
+    <div>
             <table style="width: 30%;">
                 <tr>
                     <td colspan="1">&nbsp;</td>
@@ -15,8 +27,9 @@
                     </td>
                     <td class="auto-style2">
                         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                     </td>
-                    <td class="auto-style3"></td>
+                    <td class="auto-style1"></td>
                 </tr>
                 <tr>
                     <td>
@@ -24,6 +37,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
@@ -33,6 +47,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox3" EnableTheming="True" ErrorMessage="Please enter a valid email address" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
@@ -42,6 +57,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox4" ErrorMessage="Enter a valid phone number!" ValidationExpression="^(?:\+?27[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"></asp:RegularExpressionValidator>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
@@ -51,6 +67,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox5" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
@@ -68,7 +85,7 @@
                     <td>
                         Latitude</td>
                     <td>
-                        <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox7" runat="server" ReadOnly="True"></asp:TextBox>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
@@ -76,16 +93,24 @@
                     <td>
                         Longitude</td>
                     <td>
-                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox8" runat="server" ReadOnly="True"></asp:TextBox>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
                 <tr>
+                    <td class="auto-style2">
+                        &nbsp;</td>
+                    <td class="auto-style2">
+                        <asp:Label ID="Label8" runat="server" Text="There was an error creating your account, an account with that email address may already exist" Visible="False"></asp:Label>
+                    </td>
+                    <td class="auto-style3"></td>
+                </tr>
+                <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Button ID="Register0" runat="server" Text="Register" OnClick="Register_Click" />
+                        <asp:Button ID="Register1" runat="server" Text="Register" OnClick="Register_Click" />
 
-<asp:Button ID="Button1" OnClientClick="getLocation();return false;" runat="server" Text="Get Coordinates" OnClick="Button1_Click" Width="114px" />
+<asp:Button ID="Button2" OnClientClick="getLocation();return false;" runat="server" Text="Get Coordinates" OnClick="Button1_Click" Width="114px" />
 
 
                     </td>
