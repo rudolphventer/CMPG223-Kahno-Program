@@ -20,11 +20,12 @@ namespace Kahno_Main
             string securepass = FormsAuthentication.HashPasswordForStoringInConfigFile(TextBox5.Text, "MD5");
             Label5.Text = securepass;
             //Response.Redirect("Register.aspx");
+            KahnLib.NewUser(TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, TextBox5.Text, TextBox7.Text, TextBox8.Text);
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

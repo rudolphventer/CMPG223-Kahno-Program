@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label3" runat="server" Text="Phone Number"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label7" runat="server" Text="Username"></asp:Label>
+                        <asp:Label ID="Label7" runat="server" Text="Phone Number"></asp:Label>
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
@@ -60,25 +60,23 @@
                     </td>
                     <td>
                         <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                        <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TextBox5" ControlToValidate="TextBox6" ErrorMessage="Passwords must match!"></asp:CompareValidator>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label4" runat="server" Text="Coordinates"></asp:Label>
-                    </td>
+                        Latitude</td>
                     <td>
                         <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
                     <td>
-
-<asp:Button ID="Button1" OnClientClick="getLocation();return false;" runat="server" Text="Get Coordinates" OnClick="Button1_Click" Width="114px" />
-
-
+                        Longitude</td>
+                    <td>
+                        <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
@@ -86,6 +84,10 @@
                     <td>&nbsp;</td>
                     <td>
                         <asp:Button ID="Register0" runat="server" Text="Register" OnClick="Register_Click" />
+
+<asp:Button ID="Button1" OnClientClick="getLocation();return false;" runat="server" Text="Get Coordinates" OnClick="Button1_Click" Width="114px" />
+
+
                     </td>
                     <td class="auto-style1">&nbsp;</td>
                 </tr>
@@ -110,7 +112,8 @@
 
            function showPosition(position) {
                var pos = "Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude;
-               document.getElementById('ContentPlaceHolder1_TextBox7').value = position.coords.latitude + ", " + position.coords.longitude;
+               document.getElementById('ContentPlaceHolder1_TextBox7').value = position.coords.latitude;
+               document.getElementById('ContentPlaceHolder1_TextBox8').value = position.coords.longitude;
            }
 
   </script>
