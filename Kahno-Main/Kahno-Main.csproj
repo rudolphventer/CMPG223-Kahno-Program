@@ -65,23 +65,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AboutUs.aspx" />
     <Content Include="AboutUsForm.aspx" />
     <Content Include="Admin.aspx" />
-    <Content Include="BurgerKing.aspx" />
-    <Content Include="Confirmation.aspx" />
     <Content Include="ConfirmationForm.aspx" />
     <Content Include="KahnoDB.mdf" />
     <Content Include="Login.aspx" />
     <Content Include="Project.txt" />
     <Content Include="Register.aspx" />
     <Content Include="RestaurantMenuPage.aspx" />
-    <Content Include="Restaurants.aspx" />
     <Content Include="RestaurantsForm.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="UserHome.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutUsForm.aspx.cs">
