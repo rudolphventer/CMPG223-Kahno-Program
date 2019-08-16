@@ -1,0 +1,589 @@
+﻿html {
+    background-color: oldlace;
+    background-size: cover;
+}
+
+body {
+    font-family: Arial;
+}
+
+/* Header/Blog Title */
+.header {
+    color: black;
+    text-align: center;
+}
+
+    .header h1 {
+        font-size: 50px;
+    }
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: black;
+    overflow: hidden;
+}
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: darkmagenta;
+            color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: purple;
+            color: white;
+        }
+
+.SpecialButton1 {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    background-image: url('kfc.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 15px;
+    top: 330px;
+    position: absolute;
+    width: 203px;
+    height: 199px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .SpecialButton1:after {
+        content: "";
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .SpecialButton1:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .SpecialButton1:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.SpecialButton2 {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    background-image: url('kfc.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 284px;
+    top: 330px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .SpecialButton2:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .SpecialButton2:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .SpecialButton2:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.SpecialButton3 {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    background-image: url('kfc.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 271px;
+    top: 395px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .SpecialButton3:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .SpecialButton3:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .SpecialButton3:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.SpecialButton4 {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    /*background-color: #4CAF50; /* Green */
+    background-image: url('kfc.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 271px;
+    top: 395px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .SpecialButton4:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .SpecialButton4:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .SpecialButton4:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.SpecialButton5 {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    /*background-color: #4CAF50; /* Green */
+    background-image: url('kfc.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 271px;
+    top: 395px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .SpecialButton5:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .SpecialButton5:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+    .SpecialButton5:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    /*padding: 20px;*/
+    margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
+}
+
+.BKButton {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    /*background-color: #4CAF50; /* Green */
+    background-image: url('bk.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 219px;
+    top: 184px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+
+    .BKButton:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .BKButton:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .BKButton:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.MDButton {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    /*background-color: #4CAF50; /* Green */
+    background-image: url('macdonalds.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 219px;
+    top: 184px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .MDButton:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .MDButton:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .MDButton:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.NandosButton {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    /*background-color: #4CAF50; /* Green */
+    background-image: url('nandos.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 219px;
+    top: 184px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .NandosButton:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .NandosButton:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .NandosButton:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.KFCButton {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    /*background-color: #4CAF50; /* Green */
+    background-image: url('kfc.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 17px;
+    top: 159px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .KFCButton:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .KFCButton:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .KFCButton:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
+
+.SpurButton {
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    /*background-color: #4CAF50; /* Green */
+    background-image: url('SpurLogo.jpg');
+    color: white;
+    padding: 100px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    z-index: 1;
+    left: 267px;
+    top: 165px;
+    position: absolute;
+    width: 192px;
+    height: 195px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .SpurButton:after {
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
+    }
+
+    .SpurButton:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
+    }
+
+    .SpurButton:hover {
+        background-color: purple;
+        color: purple;
+        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
+    }
