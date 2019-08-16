@@ -101,6 +101,14 @@ namespace Kahno_Main
                 return false;
             }
         }
+        //Addmenuitem
+        //removemenuitem
+        //modifymenuitem
+        //placeorder
+        //cancelorder
+        //addrestaurant
+        //imagetobytes
+        //
 
     }
     }
