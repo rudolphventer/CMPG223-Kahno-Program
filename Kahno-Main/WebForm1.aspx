@@ -8,12 +8,7 @@
 <link rel="stylesheet" type ="text/css" href="StyleSheet1.css"/>
 </head>
 <body>
-  <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#aboutus">About Us</a>
-      <a href="#contactus">Contact Us</a>
-      <a href="#faq">FAQ</a>
-  </div>
+
 <form id="form1" runat="server">
    <div>
       <div class="card">

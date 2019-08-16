@@ -9,12 +9,6 @@
     <link rel="stylesheet" type ="text/css" href="StyleSheet1.css"/>
 </head>
 <body>
-    <div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-</div>
     <form id="form1" runat="server">
         <div>
             
