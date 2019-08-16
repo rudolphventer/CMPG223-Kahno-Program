@@ -101,14 +101,14 @@ namespace Kahno_Main
                 return false;
             }
         }
-        //Addmenuitem
-        //removemenuitem
-        //modifymenuitem
-        //placeorder
-        //cancelorder
+        //Addmenuitem -- Kelvin
+        //removemenuitem -- Kelvin
+        //modifymenuitem -- Kelvin
+        //placeorder -- Rudolph
+        //cancelorder -- Rudolph
         //addrestaurant
-        //imagetobytes
-        //
+        //imagetobytes -- Harry
+        
 
     }
     }
