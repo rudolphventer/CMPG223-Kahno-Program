@@ -23,12 +23,14 @@ namespace Kahno_Main
                 Session["localuser"] = authuser;
                 if (authuser.isowner == "y")
                     Response.Redirect("Admin.aspx");
+                else
+                    Response.Redirect("UserHome.aspx");
                 //Label5.Text = authuser.ToString();
 
             }
             else
             {
-                Label4.Visible = true;
+                
             }
 
             
