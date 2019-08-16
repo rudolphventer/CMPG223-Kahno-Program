@@ -16,7 +16,32 @@ namespace Kahno_Main
 
         protected void btnOrder_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Restaurants.aspx");
+            Response.Redirect("RestaurantsForm.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("");
         }
     }
 }
