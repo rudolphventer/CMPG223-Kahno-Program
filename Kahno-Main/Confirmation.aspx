@@ -10,20 +10,17 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            
+         
             <div class="header">     
                 <h1>Confirmation</h1>       
             </div>
 
-            </div>
 
             <div class="card">
                 <p>
                     Please confirm your order for: 
                     </p>
             </div>
-        </div>
         <asp:RadioButton ID="RadioButton1" runat="server" />
         <asp:RadioButton ID="RadioButton2" runat="server" />
     </form>

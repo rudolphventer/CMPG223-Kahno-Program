@@ -66,26 +66,44 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AboutUs.aspx" />
+    <Content Include="AboutUsForm.aspx" />
     <Content Include="Admin.aspx" />
     <Content Include="BurgerKing.aspx" />
     <Content Include="Confirmation.aspx" />
+    <Content Include="ConfirmationForm.aspx" />
     <Content Include="KahnoDB.mdf" />
     <Content Include="Login.aspx" />
     <Content Include="Project.txt" />
     <Content Include="Register.aspx" />
+    <Content Include="RestaurantMenuPage.aspx" />
     <Content Include="Restaurants.aspx" />
+    <Content Include="RestaurantsForm.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="UserHome.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUsForm.aspx.cs">
+      <DependentUpon>AboutUsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutUsForm.aspx.designer.cs">
+      <DependentUpon>AboutUsForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmationForm.aspx.cs">
+      <DependentUpon>ConfirmationForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmationForm.aspx.designer.cs">
+      <DependentUpon>ConfirmationForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="KahnLib.cs" />
     <Compile Include="KahnoUser.cs" />
@@ -97,6 +115,20 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestaurantMenuPage.aspx.cs">
+      <DependentUpon>RestaurantMenuPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RestaurantMenuPage.aspx.designer.cs">
+      <DependentUpon>RestaurantMenuPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RestaurantsForm.aspx.cs">
+      <DependentUpon>RestaurantsForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RestaurantsForm.aspx.designer.cs">
+      <DependentUpon>RestaurantsForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
