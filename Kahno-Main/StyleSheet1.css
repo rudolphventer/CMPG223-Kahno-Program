@@ -45,6 +45,27 @@ body {
             color: white;
         }
 
+.topnav b {
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+        /* Change the color of links on hover */
+        .topnav b:hover {
+            background-color: darkmagenta;
+            color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav b.active {
+            background-color: purple;
+            color: white;
+        }
+
 .SpecialButton1 {
     border-style: none;
     border-color: inherit;
