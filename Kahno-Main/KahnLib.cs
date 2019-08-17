@@ -104,7 +104,6 @@ namespace Kahno_Main
 
         public static string UpdateUserDetails(string password)
         {
-
             return "OK";
         }
 
