@@ -101,27 +101,15 @@ namespace Kahno_Main
                 return false;
             }
         }
-
-        public void UpdateUserInfo(string fname, string lname, string email, string phone)
-        {
-            SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-            SqlCommand command;
-            SqlDataAdapter ad = new SqlDataAdapter();
-            string sql = "UPDATE USER SET fname='" + fname + "',lname='" + lname + "',email='" + email + "',phone='" + phone + "'";
-            command = new SqlCommand(sql, conn);
-            ad.UpdateCommand = new SqlCommand(sql, conn);
-            ad.UpdateCommand.ExecuteNonQuery();
-            command.Dispose();
-            conn.Close();
-        }
-        //Addmenuitem -- Kelvin
-        //removemenuitem -- Kelvin
-        //modifymenuitem -- Kelvin
-        //placeorder -- Rudolph
-        //cancelorder -- Rudolph
-        //addrestaurant
+        //Addmenuitem -- Kyle
+        //removemenuitem -- Kyle
+        //modifymenuitem -- Kyle
+        //placeorder -- Kelvin
+        //cancelorder -- Kelvin
+        //addrestaurant -- Rudolph
         //imagetobytes -- Harry
+        //updateUserDetails -- Marno
+        
         
 
     }

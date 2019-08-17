@@ -21,17 +21,6 @@
             </div>
          </div>
 
-         <div class="card">
-            <h3>&nbsp;</h3>
-            <h4 style="height: 109px">
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/WebForm1.aspx" style="z-index: 1; left: 13px; top: 665px; position: absolute; width: 100px">Home</asp:HyperLink>
-            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/AboutUs.aspx" style="z-index: 1; left: 13px; top: 690px; position: absolute" width="100px">About Us</asp:HyperLink>
-            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/ContactUsForm.aspx" style="z-index: 1; left: 13px; top: 717px; position: absolute" width="100px">Contact Us</asp:HyperLink>
-            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/FAQForm.aspx" style="z-index: 1; left: 13px; top: 739px; position: absolute" width="100px">FAQ</asp:HyperLink>
-            </h4>
-
-         </div>
-
       </div>
    </div>
 </asp:Content>

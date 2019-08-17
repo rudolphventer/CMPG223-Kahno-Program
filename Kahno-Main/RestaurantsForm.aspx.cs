@@ -14,6 +14,13 @@ namespace Kahno_Main
 
         }
 
+        protected void lnkSelect_Click(object sender, EventArgs e)
+        {
+
+
+
+
+        }
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("RestaurantMenuPage.aspx");
