@@ -125,7 +125,62 @@ namespace Kahno_Main
         //imagetobytes -- Harry
         //updateUserDetails -- Marno
 
+        public static bool NewRestaurant(string name, string phone, double latitude, double longitude)
+        {
+            //returns true if user is created successfully
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+            string sqlRestaurant = ("SELECT * FROM [RESTAURANT] WHERE phoneNumber ='" + phone + "' AND RestaurantName ='" + name + "'");
+            SqlCommand commquery = new SqlCommand(sqlRestaurant, conn);
+            SqlDataReader drquery = commquery.ExecuteReader();
+            drquery.Read();
 
+            if (drquery.HasRows)
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    //creating new user in db
+                    string insert_restaurant = "INSERT INTO [RESTAURANT] (phoneNumber, RestaurantName, CoordinateID) VALUES(@phoneNumber, @name, @CoordinateID)";
+                    string insert_coordinates = "INSERT INTO [COORDINATE] (longitude, latitude) VALUES(@longitude, @latitude)";
+                    string getlastcoordinateID = "SELECT TOP 1 * FROM COORDINATE ORDER BY CoordinateID DESC";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    SqlConnection con = new SqlConnection(connectString);
+                    SqlCommand comm = new SqlCommand(insert_restaurant, con);
+                    con.Open();
+                    //create new coodrinate
+                    comm.CommandText = insert_coordinates;
+                    comm.Parameters.Clear();
+                    comm.Parameters.AddWithValue("@longitude", longitude);
+                    comm.Parameters.AddWithValue("@latitude", latitude);
+                    comm.ExecuteNonQuery();
+                    //reading ID of new coordinate
+                    comm.CommandText = getlastcoordinateID;
+                    SqlDataReader dataReader = comm.ExecuteReader();
+                    dataReader.Read();
+                    int coordsID = dataReader.GetInt32(0);
+                    dataReader.Close();
+                    //creating new user
+                    comm.CommandText = insert_restaurant;
+                    comm.Parameters.Clear();
+                    comm.Parameters.AddWithValue("@name", RestaurantName);
+                    comm.Parameters.AddWithValue("@phoneNumber", phone);
+                    comm.Parameters.AddWithValue("@CoordinateID", coordsID);
+                    comm.ExecuteNonQuery();
+                    con.Close();
+                    //closing as true
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
     }
     }
