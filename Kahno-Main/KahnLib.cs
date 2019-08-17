@@ -102,10 +102,18 @@ namespace Kahno_Main
             }
         }
 
-        public static string UpdateUserDetails(string password)
+        public void UpdateUserDetails(string fname, string lname, string phone, string email)
         {
-
-            return "OK";
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+            SqlCommand command;
+            SqlDataAdapter ad = new SqlDataAdapter();
+            string sql = "UPDATE USER SET fname ='" + fname + "',lname='" + lname + "',phone='" + phone + "',email='" + email + "'";
+            command = new SqlCommand(sql, conn);
+            ad.UpdateCommand = new SqlCommand(sql, conn);
+            ad.UpdateCommand.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
         }
 
         //Addmenuitem -- Kyle
