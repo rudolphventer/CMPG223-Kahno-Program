@@ -102,7 +102,7 @@ namespace Kahno_Main
             }
         }
 
-        public void UpdateUserDetails(string fname, string lname, string phone, string email)
+        public static void UpdateUserDetails(string fname, string lname, string phone, string email)
         {
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
