@@ -40,9 +40,7 @@ namespace Kahno_Main
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            //HERE. Can not get the function. Also this is all just rough work for now. Will clean up later.
-            //KahnLib.
-            //KahnLib.UpdateUserDetails();
+            KahnLib.UpdateUserDetails(txtBoxFname.Text, txtBoxLname.Text, txtBoxPhoneNum.Text, txtBoxEmail.Text);
         }
     }
 }

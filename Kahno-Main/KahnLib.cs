@@ -102,13 +102,13 @@ namespace Kahno_Main
             }
         }
 
-        public static void UpdateUserDetails(string fname, string lname, string phone, string email)
+        public static void UpdateUserDetails(string firstname, string lastname, string phone, string email)
         {
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
             SqlCommand command;
             SqlDataAdapter ad = new SqlDataAdapter();
-            string sql = "UPDATE USER SET fname ='" + fname + "',lname='" + lname + "',phone='" + phone + "',email='" + email + "'";
+            string sql = "UPDATE [USER] SET firstname ='" + firstname + "',lastname='" + lastname + "',phone='" + phone + "',email='" + email + "'";
             command = new SqlCommand(sql, conn);
             ad.UpdateCommand = new SqlCommand(sql, conn);
             ad.UpdateCommand.ExecuteNonQuery();
