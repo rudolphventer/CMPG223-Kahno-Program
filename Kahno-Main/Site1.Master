@@ -16,6 +16,7 @@
      <a runat="server" id="aboutbutton" href="AboutUsForm.aspx">About</a>
      <a runat="server" id="loginbutton" style="float: right" href="Login.aspx">Login</a>
      <a runat="server" id="registerbutton" style="float: right" href="Register.aspx">Register</a>
+     <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">MyAccount</a>
   </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

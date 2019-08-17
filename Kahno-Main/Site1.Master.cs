@@ -11,26 +11,17 @@ namespace Kahno_Main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            KahnoUser currentuser = new KahnoUser();
-            try
-            {
-                currentuser = (KahnoUser)Session["localuser"];
-                if (currentuser.userid > 0)
-                {
-                    registerbutton.Visible = true;
-                    loginbutton.Visible = true;
-                }
-                else
-                {
-                    registerbutton.Visible = false;
-                    loginbutton.Visible = false;
-                }
-                    
-            }
-            finally
-            {
+            myaccountbutton.Visible = false;
 
+            if (Session["localuser"] != null)
+            {
+                registerbutton.Visible = false;
+                loginbutton.Visible = false;
+                myaccountbutton.Visible = true;
+                KahnoUser currentuser = new KahnoUser();
             }
+
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
