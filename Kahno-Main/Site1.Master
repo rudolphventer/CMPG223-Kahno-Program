@@ -12,18 +12,16 @@
 <body>
     <form id="form1" runat="server">
     <div class="topnav">
-     <a class="active" href="UserHome.aspx">Home</a>
-     <a href="AboutUsForm.aspx">About</a>
-     <a style="float: right" href="Login.aspx">Login</a>
-     <a style="float: right" href="Register.aspx">Register</a>
+     <a runat="server" id="homebutton" href="UserHome.aspx">Home</a>
+     <a runat="server" id="aboutbutton" href="AboutUsForm.aspx">About</a>
+     <a runat="server" id="loginbutton" style="float: right" href="Login.aspx">Login</a>
+     <a runat="server" id="registerbutton" style="float: right" href="Register.aspx">Register</a>
   </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
             
             <p>
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
-            </p>
-            <asp:Literal ID="Literal1" runat="server"><a>this is a hideable cell</a></asp:Literal>
+                &nbsp;</p>
     </form>
 </body>
 </html>

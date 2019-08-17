@@ -30,7 +30,7 @@ namespace Kahno_Main
 
         public KahnoUser()
         {
-
+            this.userid = 0;
         }
 
         public override string ToString()

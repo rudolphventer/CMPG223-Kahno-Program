@@ -167,7 +167,7 @@ namespace Kahno_Main
                     //creating new user
                     comm.CommandText = insert_restaurant;
                     comm.Parameters.Clear();
-                    comm.Parameters.AddWithValue("@name", RestaurantName);
+                    comm.Parameters.AddWithValue("@name", name);
                     comm.Parameters.AddWithValue("@phoneNumber", phone);
                     comm.Parameters.AddWithValue("@CoordinateID", coordsID);
                     comm.ExecuteNonQuery();
