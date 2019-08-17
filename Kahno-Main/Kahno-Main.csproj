@@ -68,6 +68,7 @@
     <Content Include="AboutUsForm.aspx" />
     <Content Include="Admin.aspx" />
     <Content Include="ConfirmationForm.aspx" />
+    <Content Include="EditUserInfoForm.aspx" />
     <Content Include="KahnoDB.mdf" />
     <Content Include="Login.aspx" />
     <Content Include="Project.txt" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="ConfirmationForm.aspx.designer.cs">
       <DependentUpon>ConfirmationForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditUserInfoForm.aspx.cs">
+      <DependentUpon>EditUserInfoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditUserInfoForm.aspx.designer.cs">
+      <DependentUpon>EditUserInfoForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="KahnLib.cs" />
     <Compile Include="KahnoUser.cs" />

@@ -37,6 +37,5 @@ namespace Kahno_Main
         {
             return this.userid + ", " + this.fname + ", " + this.lname + ", " + this.email + ", " + this.phone + ", " + this.coodinateid + ", " + this.isowner + ", " + this.restaurantno; ;
         }
-
     }
 }

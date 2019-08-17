@@ -14,13 +14,12 @@
      <a class="active" href="#home">Home</a>
      <a href="#news">News</a>
      <a href="#contact">Contact</a>
-     <a href="#about">About</a>
+     <a href="AboutUsForm.aspx">About</a>
      <a style="float: right" href="#login">Login</a>
      <a style="float: right" href="#register">Register</a>
   </div>
 
     <form id="form1" runat="server">
-    <asp:Label ID="Label1" runat="server" Font-Italic="True" Font-Size="100px" Text="Kahno"></asp:Label>
         <asp:Button ID="Button1" runat="server" CausesValidation="False" PostBackUrl="~/Login.aspx" Text="Login" OnClick="Button1_Click" />
         <asp:Button ID="Button2" runat="server" CausesValidation="False" PostBackUrl="~/Register.aspx" Text="Register" />
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
