@@ -10,18 +10,20 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <form id="form1" runat="server">
     <div class="topnav">
      <a class="active" href="UserHome.aspx">Home</a>
-     <a href="#news">News</a>
-     <a href="#contact">Contact</a>
      <a href="AboutUsForm.aspx">About</a>
      <a style="float: right" href="Login.aspx">Login</a>
      <a style="float: right" href="Register.aspx">Register</a>
   </div>
-    <form id="form1" runat="server">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
             
+            <p>
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Button" />
+            </p>
+            <asp:Literal ID="Literal1" runat="server"><a>this is a hideable cell</a></asp:Literal>
     </form>
 </body>
 </html>

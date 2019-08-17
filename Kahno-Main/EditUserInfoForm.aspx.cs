@@ -42,7 +42,7 @@ namespace Kahno_Main
         {
             //HERE. Can not get the function. Also this is all just rough work for now. Will clean up later.
             //KahnLib.
-            KahnLib.UpdateUserDetails();
+            //KahnLib.UpdateUserDetails();
         }
     }
 }
