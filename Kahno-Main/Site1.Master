@@ -12,17 +12,23 @@
 <body>
     <form id="form1" runat="server">
     <div class="topnav">
+        <img src="kahno_icon.ico" style="float:left" alt="Italian Trulli" width="50px">
      <a runat="server" id="homebutton" href="UserHome.aspx">Home</a>
+     <a runat="server" id="adminhome" href="Admin.aspx">Control Panel</a>
      <a runat="server" id="aboutbutton" href="AboutUsForm.aspx">About</a>
      <a runat="server" id="loginbutton" style="float: right" href="Login.aspx">Login</a>
      <a runat="server" id="registerbutton" style="float: right" href="Register.aspx">Register</a>
      <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">MyAccount</a>
   </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <p>
+                </p>
             </asp:ContentPlaceHolder>
             
             <p>
                 &nbsp;</p>
     </form>
+    <p>
+        &nbsp;</p>
 </body>
 </html>
