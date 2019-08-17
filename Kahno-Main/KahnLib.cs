@@ -101,6 +101,13 @@ namespace Kahno_Main
                 return false;
             }
         }
+
+        public static string UpdateUserDetails(string password)
+        {
+
+            return "OK";
+        }
+
         //Addmenuitem -- Kyle
         //removemenuitem -- Kyle
         //modifymenuitem -- Kyle
@@ -109,8 +116,8 @@ namespace Kahno_Main
         //addrestaurant -- Rudolph
         //imagetobytes -- Harry
         //updateUserDetails -- Marno
-        
-        
+
+
 
     }
     }
