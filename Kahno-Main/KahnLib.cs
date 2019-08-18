@@ -120,15 +120,27 @@ namespace Kahno_Main
         public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID)
         {
             SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-            SqlCommand command;
-            SqlDataAdapter ad = new SqlDataAdapter();
-            string sqlAddItem = "INSERT INTO MENUITEM";
-            command = new SqlCommand(sqlAddItem, conn);
-            ad.UpdateCommand = new SqlCommand(sqlAddItem, conn);
-            ad.UpdateCommand.ExecuteNonQuery();
-            command.Dispose();
-            conn.Close();
+            try
+            {
+
+                
+                conn.Open();
+                SqlCommand command;
+                SqlDataAdapter ad = new SqlDataAdapter();
+
+                string sqlAddItem = "INSERT INTO MENUITEM";
+
+                command = new SqlCommand(sqlAddItem, conn);
+                ad.UpdateCommand = new SqlCommand(sqlAddItem, conn);
+                ad.UpdateCommand.ExecuteNonQuery();
+                command.Dispose();
+                conn.Close();
+            }
+            catch(SqlException err)
+            {
+                string message = err.ToString();
+                conn.Close();
+            }
         }
         //removemenuitem -- Kyle
         public static void removeMenuItem()
