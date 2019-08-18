@@ -128,7 +128,7 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter ad = new SqlDataAdapter();
 
-                string sqlAddItem = "INSERT INTO MENUITEM";
+                string sqlAddItem = "INSERT INTO [MENUITEM] (description, price, imageURL, itemName, restaurantID) VALUES(@Description, @price, @itemImageURL, @itemName, @restaurantID)";
 
                 command = new SqlCommand(sqlAddItem, conn);
                 ad.UpdateCommand = new SqlCommand(sqlAddItem, conn);
