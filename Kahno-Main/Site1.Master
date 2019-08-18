@@ -17,6 +17,7 @@
      <a runat="server" id="adminhome" href="Admin.aspx">Control Panel</a>
      <a runat="server" id="aboutbutton" href="AboutUsForm.aspx">About</a>
      <a runat="server" id="loginbutton" style="float: right" href="Login.aspx">Login</a>
+     <a runat="server" id="logoutbutton" style="float: right" href="Login.aspx">Log Out</a>
      <a runat="server" id="registerbutton" style="float: right" href="Register.aspx">Register</a>
      <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">MyAccount</a>
   </div>

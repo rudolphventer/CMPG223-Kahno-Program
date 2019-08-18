@@ -11,7 +11,7 @@ namespace Kahno_Main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Session["localuser"] = null;
         }
 
         protected void Button1_Click(object sender, EventArgs e)

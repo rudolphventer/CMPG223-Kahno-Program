@@ -126,18 +126,27 @@ namespace Kahno_Main
             }
         }
 
-        public static void UpdateUserDetails(string firstname, string lastname, string phone, string email)
+        public static int UpdateUserDetails(int id, string firstname, string lastname, string phone, string email)
         {
+            int rowsAffected = -1;
             SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-            SqlCommand command;
-            SqlDataAdapter ad = new SqlDataAdapter();
-            string sql = "UPDATE [USER] SET firstname ='" + firstname + "',lastname='" + lastname + "',phone='" + phone + "',email='" + email + "'";
+            
+            string sql = "UPDATE [USER] SET firstname = @fname, lastname = @lname, phone = @phone, email = @email where UserID = @id";
+
+            SqlCommand command = new SqlCommand(sql, conn);
             command = new SqlCommand(sql, conn);
-            ad.UpdateCommand = new SqlCommand(sql, conn);
-            ad.UpdateCommand.ExecuteNonQuery();
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@fname", firstname);
+            command.Parameters.AddWithValue("@lname", lastname);
+            command.Parameters.AddWithValue("@email", email);
+            command.Parameters.AddWithValue("@phone", phone);
+
+            conn.Open();
+            rowsAffected = command.ExecuteNonQuery();
             command.Dispose();
             conn.Close();
+
+            return rowsAffected;
         }
 
         //Addmenuitem -- Kyle

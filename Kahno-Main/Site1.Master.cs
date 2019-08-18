@@ -17,6 +17,7 @@ namespace Kahno_Main
             loginbutton.Visible = true;
             homebutton.Visible = false;
             adminhome.Visible = false;
+            logoutbutton.Visible = false;
 
 
             if (Session["localuser"] != null)
@@ -29,6 +30,8 @@ namespace Kahno_Main
                     myaccountbutton.Visible = true;
                     homebutton.Visible = false;
                     adminhome.Visible = true;
+                    logoutbutton.Visible = true;
+
                 }
                 else
                 {
@@ -37,6 +40,7 @@ namespace Kahno_Main
                     myaccountbutton.Visible = true;
                     homebutton.Visible = true;
                     adminhome.Visible = false;
+                    logoutbutton.Visible = true;
                 }
                 
 
