@@ -117,8 +117,35 @@ namespace Kahno_Main
         }
 
         //Addmenuitem -- Kyle
+        public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+            SqlCommand command;
+            SqlDataAdapter ad = new SqlDataAdapter();
+            string sqlAddItem = "INSERT INTO MENUITEM";
+            command = new SqlCommand(sqlAddItem, conn);
+            ad.UpdateCommand = new SqlCommand(sqlAddItem, conn);
+            ad.UpdateCommand.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
+        }
         //removemenuitem -- Kyle
+        public static void removeMenuItem()
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+            SqlCommand command;
+            SqlDataAdapter ad = new SqlDataAdapter();
+        }
         //modifymenuitem -- Kyle
+        public static void modifyMenuItem()
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+            SqlCommand command;
+            SqlDataAdapter ad = new SqlDataAdapter();
+        }
         //placeorder -- Kelvin
         //cancelorder -- Kelvin
         //addrestaurant -- Rudolph
