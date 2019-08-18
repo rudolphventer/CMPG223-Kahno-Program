@@ -20,7 +20,12 @@ namespace Kahno_Main
             KahnoRestaurant currentRestaurant = new KahnoRestaurant();
             KahnLib.getRestaurant(restaurantID, ref currentRestaurant);
             Session["currentRestaurant"] = currentRestaurant;
+
+            Session["restaurantID"] = currentRestaurant.restaurantID;
             Response.Redirect("RestaurantMenuPage.aspx");
+  
+            
+            
         }
         protected void Button2_Click(object sender, EventArgs e)
         {

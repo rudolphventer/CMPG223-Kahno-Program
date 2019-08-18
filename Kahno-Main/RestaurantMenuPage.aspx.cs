@@ -13,11 +13,25 @@ namespace Kahno_Main
         {
             KahnoRestaurant currentRestaurant = (KahnoRestaurant)Session["currentRestaurant"];
             Heading.InnerText = currentRestaurant.restaurantname;
+
+            
+
         }
 
         protected void btnOrder_Click(object sender, EventArgs e)
         {
             Response.Redirect("ConfirmationForm.aspx");
+        }
+        protected void addToOrder(object sender, EventArgs e)
+        {
+            //this is the function triggered by the "add to cart" button, ItemID is the id of the selected item, do with it what you will
+            int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
+        }
+        
+        protected void RemoveFromOrder(object sender, EventArgs e)
+        {
+            //this is the function triggered by the "add to cart" button, ItemID is the id of the selected item, do with it what you will
+            int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
         }
     }
 }
