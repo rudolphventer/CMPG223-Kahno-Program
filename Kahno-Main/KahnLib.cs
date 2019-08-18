@@ -102,6 +102,30 @@ namespace Kahno_Main
             }
         }
 
+        public static bool getRestaurant(int id, ref KahnoRestaurant restaurantOBJ)
+        {
+            //checking if user exists
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sqlGetUser = ("SELECT * FROM [RESTAURANT] WHERE RestaurantID = @id");
+            SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@id", id);
+            SqlDataReader drquery = commquery.ExecuteReader();
+            drquery.Read();
+
+
+            if (drquery.HasRows)
+            {
+                restaurantOBJ = new KahnoRestaurant(drquery.GetInt32(0), drquery.GetValue(1).ToString(), drquery.GetValue(2).ToString(), drquery.GetInt32(3));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static void UpdateUserDetails(string firstname, string lastname, string phone, string email)
         {
             SqlConnection conn = new SqlConnection(connectString);

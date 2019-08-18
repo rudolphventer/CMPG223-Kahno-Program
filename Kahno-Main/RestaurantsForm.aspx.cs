@@ -16,10 +16,11 @@ namespace Kahno_Main
 
         protected void lnkSelect_Click(object sender, EventArgs e)
         {
-
-
-
-
+            int restaurantID = Convert.ToInt32((sender as Button).CommandArgument);
+            KahnoRestaurant currentRestaurant = new KahnoRestaurant();
+            KahnLib.getRestaurant(restaurantID, ref currentRestaurant);
+            Session["currentRestaurant"] = currentRestaurant;
+            Response.Redirect("RestaurantMenuPage.aspx");
         }
         protected void Button2_Click(object sender, EventArgs e)
         {

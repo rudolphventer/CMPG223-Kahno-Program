@@ -125,22 +125,23 @@
    <h1>Restaurants</h1>       
 </div>
 
-    <asp:GridView ID="RESTAURANT" runat="server" AutoGenerateColumns="False" Width="1058px" DataSourceID="KahnoDBSource">
-            <Columns>
-                <asp:BoundField DataField="RestaurantName" HeaderText ="RestaurantName" SortExpression="RestaurantName" />
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:LinkButton class="addbutton" ID="lnkSelect" Text="Select Restaurant" runat="server" CommandArgument='<%# Eval("RestaurantName") %>' OnClick="lnkSelect_Click"/>
-                    </ItemTemplate>
-                        
-                </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-
-    <asp:SqlDataSource ID="KahnoDBSource" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RestaurantName] FROM [RESTAURANT]"></asp:SqlDataSource>
 
 <div class="card">             
-   <p>Please select a restaurant.</p>
+   <p>
+       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList">
+           <Columns>
+               <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" />
+               <asp:BoundField DataField="RestaurantName" HeaderText="RestaurantName" SortExpression="RestaurantName" />
+               <asp:TemplateField ShowHeader="False">
+                   <ItemTemplate>
+                        <asp:Button class="addbutton" ID="lnkSelect" Text="Select Restaurant" runat="server" CommandArgument='<%# Eval("RestaurantID") %>' OnClick="lnkSelect_Click"/>
+                    </ItemTemplate>
+               </asp:TemplateField>
+           </Columns>
+       </asp:GridView>
+       <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RestaurantID], [RestaurantName] FROM [RESTAURANT]"></asp:SqlDataSource>
+    </p>
+    <p>Please select a restaurant.</p>
    
    <div class="fakeimg" style="height:200px;">&nbsp;
       <asp:Button CssClass = "auto-style2" ID ="Button2" runat="server" Text="" height="199px" OnClick="Button2_Click" width="203px" />

@@ -11,7 +11,8 @@ namespace Kahno_Main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            KahnoRestaurant currentRestaurant = (KahnoRestaurant)Session["currentRestaurant"];
+            Heading.InnerText = currentRestaurant.restaurantname;
         }
 
         protected void btnOrder_Click(object sender, EventArgs e)

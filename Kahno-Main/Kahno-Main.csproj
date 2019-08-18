@@ -109,6 +109,7 @@
       <DependentUpon>EditUserInfoForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="KahnLib.cs" />
+    <Compile Include="KahnoRestaurant.cs" />
     <Compile Include="KahnoUser.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
