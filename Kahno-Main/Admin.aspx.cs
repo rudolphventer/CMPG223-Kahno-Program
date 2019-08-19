@@ -28,5 +28,11 @@ namespace Kahno_Main
 
             Label2.Text = currentuser.ToString();
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            KahnLib.NewRestaurant("Testaurant2", "0832224444", 25.4444, -24.3423);
+               
+        }
     }
 }

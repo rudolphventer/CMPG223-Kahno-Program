@@ -260,7 +260,7 @@ namespace Kahno_Main
 
         public static bool NewRestaurant(string name, string phone, double latitude, double longitude)
         {
-            //returns true if user is created successfully
+            //returns true if restaurant is created successfully
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
             string sqlRestaurant = ("SELECT * FROM [RESTAURANT] WHERE phoneNumber ='" + phone + "' AND RestaurantName ='" + name + "'");
@@ -276,8 +276,8 @@ namespace Kahno_Main
             {
                 try
                 {
-                    //creating new user in db
-                    string insert_restaurant = "INSERT INTO [RESTAURANT] (phoneNumber, RestaurantName, CoordinateID) VALUES(@phoneNumber, @name, @CoordinateID)";
+                    //creating new restaurant in db
+                    string insert_restaurant = "INSERT INTO [RESTAURANT] (phoneNumber, RestaurantName, CoordinatesID) VALUES(@phoneNumber, @name, @CoordinateID)";
                     string insert_coordinates = "INSERT INTO [COORDINATE] (longitude, latitude) VALUES(@longitude, @latitude)";
                     string getlastcoordinateID = "SELECT TOP 1 * FROM COORDINATE ORDER BY CoordinateID DESC";
 
@@ -297,7 +297,7 @@ namespace Kahno_Main
                     dataReader.Read();
                     int coordsID = dataReader.GetInt32(0);
                     dataReader.Close();
-                    //creating new user
+                    //creating new restaurant
                     comm.CommandText = insert_restaurant;
                     comm.Parameters.Clear();
                     comm.Parameters.AddWithValue("@name", name);
@@ -308,7 +308,7 @@ namespace Kahno_Main
                     //closing as true
                     return true;
                 }
-                catch
+                catch(SqlException m)
                 {
                     return false;
                 }

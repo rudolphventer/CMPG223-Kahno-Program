@@ -121,7 +121,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<div class="header">     
+    <div class="header">     
    <h1>Restaurants</h1>       
 </div>
 
@@ -141,15 +141,6 @@
        </asp:GridView>
        <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RestaurantID], [RestaurantName] FROM [RESTAURANT]"></asp:SqlDataSource>
     </p>
-    <p>Please select a restaurant.</p>
-   
-   <div class="fakeimg" style="height:200px;">&nbsp;
-      <asp:Button CssClass = "auto-style2" ID ="Button2" runat="server" Text="" height="199px" OnClick="Button2_Click" width="203px" />
-      <asp:Button CssClass = "auto-style3" ID="Button3" runat="server" Text="" height="199px" width="203px" OnClick="Button3_Click" />
-      <asp:Button CssClass = "auto-style4" ID="Button4" runat="server" Text="" height="199px" width="203px" OnClick="Button4_Click" />
-      <asp:Button CssClass = "auto-style5" ID="Button5" runat="server" Text="" height="199px" width="203px" OnClick="Button5_Click" />
-      <asp:Button CssClass ="auto-style1" ID="Button1" runat="server" Text="" OnClick="Button1_Click" />
-   </div>
 </div>
 
 </asp:Content>

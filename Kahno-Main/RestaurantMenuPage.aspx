@@ -10,10 +10,10 @@
 
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ItemID" DataSourceID="SqlDataSource1">
         <Columns>
-            <asp:BoundField DataField="ItemID" HeaderText="ItemID" InsertVisible="False" ReadOnly="True" SortExpression="ItemID" />
+            <asp:BoundField DataField="ItemID" HeaderText="ItemID" InsertVisible="False" ReadOnly="True" SortExpression="ItemID" Visible="False" />
+            <asp:BoundField DataField="itemName" HeaderText="itemName" SortExpression="itemName" />
             <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
             <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
-            <asp:BoundField DataField="itemName" HeaderText="itemName" SortExpression="itemName" />
             <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
                         <asp:Button class="addbutton" ID="addtoorder" Text="Add to Order" runat="server" CommandArgument='<%# Eval("ItemID") %>' OnClick="addToOrder"/>
