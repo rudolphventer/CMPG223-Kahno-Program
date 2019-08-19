@@ -161,6 +161,7 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
+                //I think the itemID for each menu item should generate itself as it would be a primary key. 
                 string sqlAddItem = "INSERT INTO [MENUITEM] (description, price, imageURL, itemName, restaurantID) VALUES(@Description, @price, @itemImageURL, @itemName, @restaurantID)";
 
                 command = new SqlCommand(sqlAddItem, conn);
@@ -223,11 +224,11 @@ namespace Kahno_Main
                 conn.Open();
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
-
+                //not sure if this is correct
                 string sqlAddItem = "UPDATE [MENUITEM] SET Description = @description, price = @price, itemImageURL = @itemURL, itemName = @itemName WHERER itemID = " + itemID;
 
                 command = new SqlCommand(sqlAddItem, conn);
-
+                //should we be able to change the restaurantID? A restaurant may sell their IP to another restaurant?
                 command.Parameters.AddWithValue("@Description", description);
                 command.Parameters.AddWithValue("@price", price);
                 command.Parameters.AddWithValue("@itemImageURL", imageURL);
@@ -235,7 +236,7 @@ namespace Kahno_Main
                 
 
                 dataAdapter.UpdateCommand = new SqlCommand(sqlAddItem, conn);
-                //Does there need to be extra error handling over here?
+                //Does there need to be extra error handling over here? 
                 dataAdapter.UpdateCommand.ExecuteNonQuery();
 
                 command.Dispose();
