@@ -185,7 +185,7 @@ namespace Kahno_Main
             }
         }
         //removemenuitem -- Kyle
-        public static void removeMenuItem()
+        public static void removeMenuItem(int id)
         {
             SqlConnection conn = new SqlConnection(connectString);
             try
@@ -196,11 +196,12 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-                string sqlAddItem = "";
+                string sqlAddItem = "DELETE FROM MENUITEM WEHRE ItemID = " + id;
 
                 command = new SqlCommand(sqlAddItem, conn);
 
-               
+                dataAdapter.DeleteCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.DeleteCommand.ExecuteNonQuery();
 
                 command.Dispose();
                 conn.Close();
@@ -212,7 +213,7 @@ namespace Kahno_Main
             }
         }
         //modifymenuitem -- Kyle
-        public static void modifyMenuItem(int itemID, string description, double price, string imageURL, string itemName, int restaurantID)
+        public static void modifyMenuItem(int itemID, string description, double price, string imageURL, string itemName)
         {
             SqlConnection conn = new SqlConnection(connectString);
             try
@@ -223,7 +224,7 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-                string sqlAddItem = "UPDATE [MENUITEM] SET description, price, imageURL, itemName, restaurantID) VALUES(@Description, @price, @itemImageURL, @itemName, @restaurantID)";
+                string sqlAddItem = "UPDATE [MENUITEM] SET Description = @description, price = @price, itemImageURL = @itemURL, itemName = @itemName WHERER itemID = " + itemID;
 
                 command = new SqlCommand(sqlAddItem, conn);
 
@@ -231,11 +232,11 @@ namespace Kahno_Main
                 command.Parameters.AddWithValue("@price", price);
                 command.Parameters.AddWithValue("@itemImageURL", imageURL);
                 command.Parameters.AddWithValue("@itemName", itemName);
-                command.Parameters.AddWithValue("@restaurantID", restaurantID);
+                
 
-                dataAdapter.InsertCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.UpdateCommand = new SqlCommand(sqlAddItem, conn);
                 //Does there need to be extra error handling over here?
-                dataAdapter.InsertCommand.ExecuteNonQuery();
+                dataAdapter.UpdateCommand.ExecuteNonQuery();
 
                 command.Dispose();
                 conn.Close();
@@ -246,10 +247,14 @@ namespace Kahno_Main
                 conn.Close();
             }
         }
+
         //placeorder -- Kelvin
         //cancelorder -- Kelvin
+
         //addrestaurant -- Rudolph
+
         //imagetobytes -- Harry
+        
         //updateUserDetails -- Marno
 
         public static bool NewRestaurant(string name, string phone, double latitude, double longitude)
