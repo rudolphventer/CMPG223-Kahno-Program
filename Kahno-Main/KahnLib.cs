@@ -159,13 +159,22 @@ namespace Kahno_Main
                 
                 conn.Open();
                 SqlCommand command;
-                SqlDataAdapter ad = new SqlDataAdapter();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
                 string sqlAddItem = "INSERT INTO [MENUITEM] (description, price, imageURL, itemName, restaurantID) VALUES(@Description, @price, @itemImageURL, @itemName, @restaurantID)";
 
                 command = new SqlCommand(sqlAddItem, conn);
-                ad.UpdateCommand = new SqlCommand(sqlAddItem, conn);
-                ad.UpdateCommand.ExecuteNonQuery();
+                
+                command.Parameters.AddWithValue("@Description", description);
+                command.Parameters.AddWithValue("@price", price);
+                command.Parameters.AddWithValue("@itemImageURL", imageURL);
+                command.Parameters.AddWithValue("@itemName", itemName);
+                command.Parameters.AddWithValue("@restaurantID", restaurantID);
+
+                dataAdapter.InsertCommand = new SqlCommand(sqlAddItem, conn);
+                //Does there need to be extra error handling over here?
+                dataAdapter.InsertCommand.ExecuteNonQuery();
+
                 command.Dispose();
                 conn.Close();
             }
@@ -179,17 +188,63 @@ namespace Kahno_Main
         public static void removeMenuItem()
         {
             SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-            SqlCommand command;
-            SqlDataAdapter ad = new SqlDataAdapter();
+            try
+            {
+
+
+                conn.Open();
+                SqlCommand command;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+                string sqlAddItem = "";
+
+                command = new SqlCommand(sqlAddItem, conn);
+
+               
+
+                command.Dispose();
+                conn.Close();
+            }
+            catch (SqlException err)
+            {
+                string message = err.ToString();
+                conn.Close();
+            }
         }
         //modifymenuitem -- Kyle
-        public static void modifyMenuItem()
+        public static void modifyMenuItem(int itemID, string description, double price, string imageURL, string itemName, int restaurantID)
         {
             SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-            SqlCommand command;
-            SqlDataAdapter ad = new SqlDataAdapter();
+            try
+            {
+
+
+                conn.Open();
+                SqlCommand command;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+                string sqlAddItem = "UPDATE [MENUITEM] SET description, price, imageURL, itemName, restaurantID) VALUES(@Description, @price, @itemImageURL, @itemName, @restaurantID)";
+
+                command = new SqlCommand(sqlAddItem, conn);
+
+                command.Parameters.AddWithValue("@Description", description);
+                command.Parameters.AddWithValue("@price", price);
+                command.Parameters.AddWithValue("@itemImageURL", imageURL);
+                command.Parameters.AddWithValue("@itemName", itemName);
+                command.Parameters.AddWithValue("@restaurantID", restaurantID);
+
+                dataAdapter.InsertCommand = new SqlCommand(sqlAddItem, conn);
+                //Does there need to be extra error handling over here?
+                dataAdapter.InsertCommand.ExecuteNonQuery();
+
+                command.Dispose();
+                conn.Close();
+            }
+            catch (SqlException err)
+            {
+                string message = err.ToString();
+                conn.Close();
+            }
         }
         //placeorder -- Kelvin
         //cancelorder -- Kelvin
