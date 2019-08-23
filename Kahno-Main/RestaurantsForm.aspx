@@ -128,10 +128,12 @@
 
 <div class="card">             
    <p>
-       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList">
+       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None">
            <Columns>
-               <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" />
-               <asp:BoundField DataField="RestaurantName" HeaderText="RestaurantName" SortExpression="RestaurantName" />
+               <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" Visible="False" />
+               <asp:BoundField DataField="RestaurantName" SortExpression="RestaurantName" >
+               <HeaderStyle Width="10%" />
+               </asp:BoundField>
                <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
                         <asp:Button class="addbutton" ID="lnkSelect" Text="Select Restaurant" runat="server" CommandArgument='<%# Eval("RestaurantID") %>' OnClick="lnkSelect_Click"/>
