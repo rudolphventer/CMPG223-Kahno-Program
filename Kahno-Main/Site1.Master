@@ -39,7 +39,7 @@
      <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">MyAccount</a>
   </div>
             
-            <div class="container">
+            <div class="container" style="padding-top: 50px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 <p>
                 </p>
