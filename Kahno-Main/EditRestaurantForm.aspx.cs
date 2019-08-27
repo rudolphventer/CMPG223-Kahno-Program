@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Kahno_Main
+{
+    public partial class EditRestaurantForm : System.Web.UI.Page
+    {
+        KahnoRestaurant currentRestaurant = new KahnoRestaurant();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (currentRestaurant.restaurantID == 0)
+                    Response.Redirect("Login.aspx");
+            }
+            catch
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+            if (!this.IsPostBack)
+            {
+                TextBox1.Text = currentRestaurant.restaurantname;
+                TextBox2.Text = currentRestaurant.phone;
+            }
+        }
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+            {
+                Session["temprname"] = TextBox1.Text;
+
+                if (KahnLib.UpdateRestaurantDetails(currentRestaurant.restaurantID, Session["temprname"].ToString(), TextBox2.Text) > 0)
+                    Label5.Text = "Successfully Updated!";
+                else
+                    Label5.Text = "Update not successful!";
+                Label5.Visible = true;
+            }
+        }
+}
