@@ -101,6 +101,11 @@
     <Compile Include="ConfirmationForm.aspx.designer.cs">
       <DependentUpon>ConfirmationForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataView.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataView.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EditUserInfoForm.aspx.cs">
       <DependentUpon>EditUserInfoForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,6 +162,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site1.Master" />
+    <Content Include="DataView.xsc">
+      <DependentUpon>DataView.xsd</DependentUpon>
+    </Content>
+    <None Include="DataView.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataView.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataView.xss">
+      <DependentUpon>DataView.xsd</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

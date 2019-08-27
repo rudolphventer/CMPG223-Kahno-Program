@@ -1,6 +1,9 @@
-﻿html {
-    background-color: white;
+﻿@Colormain = #4d0f92;
+@Colorlight = #dbbbfb;
+@Colormedium = #8b48d0;
 
+html {
+    background-color: white;
 }
 
 body {
