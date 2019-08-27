@@ -20,7 +20,10 @@
      <a runat="server" id="loginbutton" style="float: right" href="Login.aspx">Login</a>
      <a runat="server" id="logoutbutton" style="float: right" href="Login.aspx">Log Out</a>
      <a runat="server" id="registerbutton" style="float: right" href="Register.aspx">Register</a>
-     <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">MyAccount</a></div>
+     <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">My Account</a>
+     <a runat="server" id="editrestaurant" style="float: right" href="EditRestaurantForm.aspx">Restaurant Details</a>
+
+    </div>
             
             <div class="container" style="padding-top: 50px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

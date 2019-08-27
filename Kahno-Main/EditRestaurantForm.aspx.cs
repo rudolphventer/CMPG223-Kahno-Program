@@ -10,12 +10,22 @@ namespace Kahno_Main
     public partial class EditRestaurantForm : System.Web.UI.Page
     {
         KahnoRestaurant currentRestaurant = new KahnoRestaurant();
+        KahnoUser currentuser = new KahnoUser();
         protected void Page_Load(object sender, EventArgs e)
         {
+
             try
             {
-                if (currentRestaurant.restaurantID == 0)
+                //populating user object
+                currentuser = (KahnoUser)Session["localuser"];
+                if (currentuser.userid == 0)
                     Response.Redirect("Login.aspx");
+                //populating restaurant object
+                KahnLib.getRestaurant(currentuser.restaurantno, ref currentRestaurant);
+                Session["currentRestaurant"] = currentRestaurant;
+                //passing user to the new restaurant screen if they do not have one
+                if (currentRestaurant.restaurantID == 0)
+                    Response.Redirect("CreateRestaurantForm.aspx");
             }
             catch
             {

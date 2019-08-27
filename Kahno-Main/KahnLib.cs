@@ -148,6 +148,26 @@ namespace Kahno_Main
             return rowsAffected;
         }
 
+        public static int AssignRestaurant(int restID, int uID)
+        {
+            int rowsAffected = -1;
+            SqlConnection conn = new SqlConnection(connectString);
+
+            string sql = "UPDATE [USER] SET RestaurantNumber = @restid where UserID = @uid";
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@restid", restID);
+            command.Parameters.AddWithValue("@uid", uID);
+
+            conn.Open();
+            rowsAffected = command.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
+
+            return rowsAffected;
+        }
+
         //Addmenuitem -- Kyle
         public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID)
         {
@@ -255,19 +275,22 @@ namespace Kahno_Main
 
         //imagetobytes -- Harry
 
-        public static bool NewRestaurant(string name, string phone, double latitude, double longitude)
+        public static int NewRestaurant(string name, string phone, double latitude, double longitude)
         {
             //returns true if restaurant is created successfully
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
-            string sqlRestaurant = ("SELECT * FROM [RESTAURANT] WHERE phoneNumber ='" + phone + "' AND RestaurantName ='" + name + "'");
+            int restID = 0;
+            string sqlRestaurant = ("SELECT * FROM [RESTAURANT] WHERE phoneNumber =@phone AND RestaurantName =@name");
             SqlCommand commquery = new SqlCommand(sqlRestaurant, conn);
+            commquery.Parameters.AddWithValue("@name", name);
+            commquery.Parameters.AddWithValue("@phone", phone);
             SqlDataReader drquery = commquery.ExecuteReader();
             drquery.Read();
 
             if (drquery.HasRows)
             {
-                return false;
+                return 0;
             }
             else
             {
@@ -277,6 +300,7 @@ namespace Kahno_Main
                     string insert_restaurant = "INSERT INTO [RESTAURANT] (phoneNumber, RestaurantName, CoordinatesID) VALUES(@phoneNumber, @name, @CoordinateID)";
                     string insert_coordinates = "INSERT INTO [COORDINATE] (longitude, latitude) VALUES(@longitude, @latitude)";
                     string getlastcoordinateID = "SELECT TOP 1 * FROM COORDINATE ORDER BY CoordinateID DESC";
+                    string getlastrestaurantID = "SELECT TOP 1 * FROM [RESTAURANT] ORDER BY RestaurantID DESC";
 
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     SqlConnection con = new SqlConnection(connectString);
@@ -293,6 +317,11 @@ namespace Kahno_Main
                     SqlDataReader dataReader = comm.ExecuteReader();
                     dataReader.Read();
                     int coordsID = dataReader.GetInt32(0);
+                    comm.CommandText = getlastrestaurantID;
+                    dataReader.Close();
+                    dataReader = comm.ExecuteReader();
+                    dataReader.Read();
+                    restID = dataReader.GetInt32(0);
                     dataReader.Close();
                     //creating new restaurant
                     comm.CommandText = insert_restaurant;
@@ -303,11 +332,11 @@ namespace Kahno_Main
                     comm.ExecuteNonQuery();
                     con.Close();
                     //closing as true
-                    return true;
+                    return restID;
                 }
                 catch(SqlException m)
                 {
-                    return false;
+                    return restID;
                 }
             }
         }
@@ -317,7 +346,7 @@ namespace Kahno_Main
             int rowsAffected = -1;
             SqlConnection conn = new SqlConnection(connectString);
 
-            string sql = "UPDATE [RESTAURANT] SET restaurantname = @rname, phone = @phone";
+            string sql = "UPDATE [RESTAURANT] SET RestaurantName = @rname, phoneNumber = @phone where RestaurantID=@id";
 
             SqlCommand command = new SqlCommand(sql, conn);
             command = new SqlCommand(sql, conn);

@@ -31,5 +31,10 @@ namespace Kahno_Main
         {
             
         }
+
+        protected void TextBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

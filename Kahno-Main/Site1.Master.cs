@@ -18,6 +18,7 @@ namespace Kahno_Main
             homebutton.Visible = false;
             adminhome.Visible = false;
             logoutbutton.Visible = false;
+            editrestaurant.Visible = false;
 
 
             if (Session["localuser"] != null)
@@ -31,6 +32,7 @@ namespace Kahno_Main
                     homebutton.Visible = false;
                     adminhome.Visible = true;
                     logoutbutton.Visible = true;
+                    editrestaurant.Visible = true;
 
                 }
                 else
