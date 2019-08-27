@@ -254,8 +254,6 @@ namespace Kahno_Main
         //addrestaurant -- Rudolph
 
         //imagetobytes -- Harry
-        
-        //updateUserDetails -- Marno
 
         public static bool NewRestaurant(string name, string phone, double latitude, double longitude)
         {
