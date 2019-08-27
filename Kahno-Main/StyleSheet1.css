@@ -2,17 +2,15 @@
 @Colorlight = #dbbbfb;
 @Colormedium = #8b48d0;
 
-html {
-    background-color: white;
-}
-
 body {
-    font-family: Arial;
+    font-family: Calibri;
+    margin: 0;
 }
 
 input[type="button"], input[type="submit"] {
     border: 2px solid #dedede;
     border-radius: 4px;
+    height: 40px;
 }
     input[type="submit"]:hover, input[type="button"]:hover {
         color: #ffffff !important;
@@ -24,25 +22,17 @@ input[type="button"], input[type="submit"] {
 input[type="text"] {
     border: 2px solid #dedede;
     border-radius: 4px;
+    height: 20px;
 }
     input[type="text"]:focus {
         border: 2px solid #5900ff;
         transition: all 0.4s ease 0s;
     }
-/* Header/Blog Title */
-.header {
-    color: black;
-    text-align: center;
-}
 
-    .header h1 {
-        font-size: 50px;
-    }
 
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: black;
-    overflow: hidden;
     position: fixed;
     width:100%;
     margin-bottom:10px;
