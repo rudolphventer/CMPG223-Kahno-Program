@@ -14,7 +14,6 @@ namespace Kahno_Main
 
         public static string HashPass(string password)
         {
-
             return FormsAuthentication.HashPasswordForStoringInConfigFile(password, "MD5");
         }
         public static bool NewUser(string fname, string lname, string email, string phone, string passwordhash, double latitude, double longitude)
@@ -313,6 +312,27 @@ namespace Kahno_Main
                     return false;
                 }
             }
+        }
+
+        public static int UpdateRestaurantDetails(int id, string restaurantname, string phone)
+        {
+            int rowsAffected = -1;
+            SqlConnection conn = new SqlConnection(connectString);
+
+            string sql = "UPDATE [RESTAURANT] SET restaurantname = @rname, phone = @phone";
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@rname", restaurantname);
+            command.Parameters.AddWithValue("@phone", phone);
+
+            conn.Open();
+            rowsAffected = command.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
+
+            return rowsAffected;
         }
 
     }
