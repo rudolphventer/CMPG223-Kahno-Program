@@ -104,7 +104,7 @@ namespace Kahno_Main
 
         public static bool getRestaurant(int id, ref KahnoRestaurant restaurantOBJ)
         {
-            //checking if user exists
+            //checking if restaurant exists
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
 
