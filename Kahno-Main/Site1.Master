@@ -5,30 +5,14 @@
 <html>
 <head runat="server">
     <link rel="stylesheet" type ="text/css" href="StyleSheet1.css"/>
-
-     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        .auto-style1 {
-            float: left;
-        }
-    </style>
-</head>
+    </head>
 <body>
     <form id="form1" runat="server">
     <div class="topnav">
-    
-     
-        &nbsp;
+
      <img src="kahnologo.png" alt="Italian Trulli" width="50px" height="50px" style="float:left">
      <a runat="server" id="homebutton" href="UserHome.aspx">Home</a>
      <a runat="server" id="adminhome" href="Admin.aspx">Control Panel</a>
@@ -36,8 +20,10 @@
      <a runat="server" id="loginbutton" style="float: right" href="Login.aspx">Login</a>
      <a runat="server" id="logoutbutton" style="float: right" href="Login.aspx">Log Out</a>
      <a runat="server" id="registerbutton" style="float: right" href="Register.aspx">Register</a>
-     <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">MyAccount</a>
-  </div>
+     <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">My Account</a>
+     <a runat="server" id="editrestaurant" style="float: right" href="EditRestaurantForm.aspx">Restaurant Details</a>
+
+    </div>
             
             <div class="container" style="padding-top: 50px;">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -45,10 +31,6 @@
                 </p>
             </asp:ContentPlaceHolder>
             </div>
-            <p>
-                &nbsp;</p>
     </form>
-    <p>
-        &nbsp;</p>
 </body>
 </html>
