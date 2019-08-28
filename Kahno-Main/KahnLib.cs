@@ -216,7 +216,7 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-                string sqlAddItem = "DELETE FROM MENUITEM WHERE ItemID = " + id;
+                string sqlAddItem = "DELETE FROM [MENUITEM] WHERE ItemID = " + id;
 
                 command = new SqlCommand(sqlAddItem, conn);
 
@@ -244,7 +244,7 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-                string sqlAddItem = "DELETE FROM USER WHERE UserID = " + id;
+                string sqlAddItem = "DELETE FROM [USER] WHERE UserID = " + id;
 
                 command = new SqlCommand(sqlAddItem, conn);
 
@@ -296,8 +296,19 @@ namespace Kahno_Main
             }
         }
 
-        //placeorder -- Kelvin
-        //cancelorder -- Kelvin
+        //placeorder -- Kelvin(actually Kyle)
+        public static void placeOrder(int userID, int restaurantID, int quantity, double price, int itemID)
+        {
+            string createOrder = "INSERT INTO [ORDER] (userID, OrderDate, restaurantID, OrderDetailID) VALUES(@userid, @restaurantid, @detailid, )";
+            string fetchOrderID = "SELECT OrderNumber FROM [ORDER] WHERE OrderDetailID =@detailid";
+
+
+        }
+        //cancelorder -- Kelvin(actually Kyle)
+        public static void cancelOrder(int orderID)
+        {
+
+        }
 
         //addrestaurant -- Rudolph
 
