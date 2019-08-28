@@ -55,5 +55,10 @@ namespace Kahno_Main
                 Label5.Text = "Update not successful!";
             Label5.Visible = true;
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            KahnLib.removeUser(currentuser.userid);
+        }
     }
 }

@@ -216,7 +216,35 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-                string sqlAddItem = "DELETE FROM MENUITEM WEHRE ItemID = " + id;
+                string sqlAddItem = "DELETE FROM MENUITEM WHERE ItemID = " + id;
+
+                command = new SqlCommand(sqlAddItem, conn);
+
+                dataAdapter.DeleteCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.DeleteCommand.ExecuteNonQuery();
+
+                command.Dispose();
+                conn.Close();
+            }
+            catch (SqlException err)
+            {
+                string message = err.ToString();
+                conn.Close();
+            }
+        }
+
+        public static void removeUser(int id)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            try
+            {
+
+
+                conn.Open();
+                SqlCommand command;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+                string sqlAddItem = "DELETE FROM USER WHERE UserID = " + id;
 
                 command = new SqlCommand(sqlAddItem, conn);
 
