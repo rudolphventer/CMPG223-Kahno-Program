@@ -68,8 +68,6 @@
     <Content Include="AboutUsForm.aspx" />
     <Content Include="Admin.aspx" />
     <Content Include="ConfirmationForm.aspx" />
-    <Content Include="CreateRestaurantForm.aspx" />
-    <Content Include="EditRestaurantForm.aspx" />
     <Content Include="EditUserInfoForm.aspx" />
     <Content Include="KahnoDB.mdf" />
     <Content Include="Login.aspx" />
@@ -102,25 +100,6 @@
     </Compile>
     <Compile Include="ConfirmationForm.aspx.designer.cs">
       <DependentUpon>ConfirmationForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CreateRestaurantForm.aspx.cs">
-      <DependentUpon>CreateRestaurantForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CreateRestaurantForm.aspx.designer.cs">
-      <DependentUpon>CreateRestaurantForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DataView.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataView.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="EditRestaurantForm.aspx.cs">
-      <DependentUpon>EditRestaurantForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="EditRestaurantForm.aspx.designer.cs">
-      <DependentUpon>EditRestaurantForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditUserInfoForm.aspx.cs">
       <DependentUpon>EditUserInfoForm.aspx</DependentUpon>
@@ -178,17 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Site1.Master" />
-    <Content Include="DataView.xsc">
-      <DependentUpon>DataView.xsd</DependentUpon>
-    </Content>
-    <None Include="DataView.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataView.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="DataView.xss">
-      <DependentUpon>DataView.xsd</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

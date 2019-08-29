@@ -30,8 +30,7 @@ namespace Kahno_Main
             }
             else
             {
-                Label4.Visible = true;
-                
+                Label4.Visible = true;  
             }
 
 

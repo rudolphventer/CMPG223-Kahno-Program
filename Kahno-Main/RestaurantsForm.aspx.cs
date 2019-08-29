@@ -23,7 +23,7 @@ namespace Kahno_Main
             Session["restaurantID"] = currentRestaurant.restaurantID;
             Response.Redirect("RestaurantMenuPage.aspx");
   
-       
+            
             
         }
         protected void Button2_Click(object sender, EventArgs e)
@@ -49,11 +49,6 @@ namespace Kahno_Main
         protected void Button5_Click(object sender, EventArgs e)
         {
             Response.Redirect("RestaurantMenuPage.aspx");
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

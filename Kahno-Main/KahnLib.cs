@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 
 namespace Kahno_Main
 {
@@ -14,6 +15,7 @@ namespace Kahno_Main
 
         public static string HashPass(string password)
         {
+
             return FormsAuthentication.HashPasswordForStoringInConfigFile(password, "MD5");
         }
         public static bool NewUser(string fname, string lname, string email, string phone, string passwordhash, double latitude, double longitude)
@@ -103,7 +105,7 @@ namespace Kahno_Main
 
         public static bool getRestaurant(int id, ref KahnoRestaurant restaurantOBJ)
         {
-            //checking if restaurant exists
+            //checking if user exists
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
 
@@ -139,26 +141,6 @@ namespace Kahno_Main
             command.Parameters.AddWithValue("@lname", lastname);
             command.Parameters.AddWithValue("@email", email);
             command.Parameters.AddWithValue("@phone", phone);
-
-            conn.Open();
-            rowsAffected = command.ExecuteNonQuery();
-            command.Dispose();
-            conn.Close();
-
-            return rowsAffected;
-        }
-
-        public static int AssignRestaurant(int restID, int uID)
-        {
-            int rowsAffected = -1;
-            SqlConnection conn = new SqlConnection(connectString);
-
-            string sql = "UPDATE [USER] SET RestaurantNumber = @restid where UserID = @uid";
-
-            SqlCommand command = new SqlCommand(sql, conn);
-            command = new SqlCommand(sql, conn);
-            command.Parameters.AddWithValue("@restid", restID);
-            command.Parameters.AddWithValue("@uid", uID);
 
             conn.Open();
             rowsAffected = command.ExecuteNonQuery();
@@ -216,35 +198,7 @@ namespace Kahno_Main
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
-                string sqlAddItem = "DELETE FROM [MENUITEM] WHERE ItemID = " + id;
-
-                command = new SqlCommand(sqlAddItem, conn);
-
-                dataAdapter.DeleteCommand = new SqlCommand(sqlAddItem, conn);
-                dataAdapter.DeleteCommand.ExecuteNonQuery();
-
-                command.Dispose();
-                conn.Close();
-            }
-            catch (SqlException err)
-            {
-                string message = err.ToString();
-                conn.Close();
-            }
-        }
-
-        public static void removeUser(int id)
-        {
-            SqlConnection conn = new SqlConnection(connectString);
-            try
-            {
-
-
-                conn.Open();
-                SqlCommand command;
-                SqlDataAdapter dataAdapter = new SqlDataAdapter();
-
-                string sqlAddItem = "DELETE FROM [USER] WHERE UserID = " + id;
+                string sqlAddItem = "DELETE FROM MENUITEM WEHRE ItemID = " + id;
 
                 command = new SqlCommand(sqlAddItem, conn);
 
@@ -296,40 +250,28 @@ namespace Kahno_Main
             }
         }
 
-        //placeorder -- Kelvin(actually Kyle)
-        public static void placeOrder(int userID, int restaurantID, int quantity, double price, int itemID)
-        {
-            string createOrder = "INSERT INTO [ORDER] (userID, OrderDate, restaurantID, OrderDetailID) VALUES(@userid, @restaurantid, @detailid, )";
-            string fetchOrderID = "SELECT OrderNumber FROM [ORDER] WHERE OrderDetailID =@detailid";
-
-
-        }
-        //cancelorder -- Kelvin(actually Kyle)
-        public static void cancelOrder(int orderID)
-        {
-
-        }
+        //placeorder -- Kelvin
+        //cancelorder -- Kelvin
 
         //addrestaurant -- Rudolph
 
         //imagetobytes -- Harry
+        
+        //updateUserDetails -- Marno
 
-        public static int NewRestaurant(string name, string phone, double latitude, double longitude)
+        public static bool NewRestaurant(string name, string phone, double latitude, double longitude)
         {
             //returns true if restaurant is created successfully
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
-            int restID = 0;
-            string sqlRestaurant = ("SELECT * FROM [RESTAURANT] WHERE phoneNumber =@phone AND RestaurantName =@name");
+            string sqlRestaurant = ("SELECT * FROM [RESTAURANT] WHERE phoneNumber ='" + phone + "' AND RestaurantName ='" + name + "'");
             SqlCommand commquery = new SqlCommand(sqlRestaurant, conn);
-            commquery.Parameters.AddWithValue("@name", name);
-            commquery.Parameters.AddWithValue("@phone", phone);
             SqlDataReader drquery = commquery.ExecuteReader();
             drquery.Read();
 
             if (drquery.HasRows)
             {
-                return 0;
+                return false;
             }
             else
             {
@@ -339,7 +281,6 @@ namespace Kahno_Main
                     string insert_restaurant = "INSERT INTO [RESTAURANT] (phoneNumber, RestaurantName, CoordinatesID) VALUES(@phoneNumber, @name, @CoordinateID)";
                     string insert_coordinates = "INSERT INTO [COORDINATE] (longitude, latitude) VALUES(@longitude, @latitude)";
                     string getlastcoordinateID = "SELECT TOP 1 * FROM COORDINATE ORDER BY CoordinateID DESC";
-                    string getlastrestaurantID = "SELECT TOP 1 * FROM [RESTAURANT] ORDER BY RestaurantID DESC";
 
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     SqlConnection con = new SqlConnection(connectString);
@@ -356,11 +297,6 @@ namespace Kahno_Main
                     SqlDataReader dataReader = comm.ExecuteReader();
                     dataReader.Read();
                     int coordsID = dataReader.GetInt32(0);
-                    comm.CommandText = getlastrestaurantID;
-                    dataReader.Close();
-                    dataReader = comm.ExecuteReader();
-                    dataReader.Read();
-                    restID = dataReader.GetInt32(0);
                     dataReader.Close();
                     //creating new restaurant
                     comm.CommandText = insert_restaurant;
@@ -371,34 +307,18 @@ namespace Kahno_Main
                     comm.ExecuteNonQuery();
                     con.Close();
                     //closing as true
-                    return restID;
+                    return true;
                 }
                 catch(SqlException m)
                 {
-                    return restID;
+                    return false;
                 }
             }
         }
 
-        public static int UpdateRestaurantDetails(int id, string restaurantname, string phone)
+        public static string getConn()
         {
-            int rowsAffected = -1;
-            SqlConnection conn = new SqlConnection(connectString);
-
-            string sql = "UPDATE [RESTAURANT] SET RestaurantName = @rname, phoneNumber = @phone where RestaurantID=@id";
-
-            SqlCommand command = new SqlCommand(sql, conn);
-            command = new SqlCommand(sql, conn);
-            command.Parameters.AddWithValue("@id", id);
-            command.Parameters.AddWithValue("@rname", restaurantname);
-            command.Parameters.AddWithValue("@phone", phone);
-
-            conn.Open();
-            rowsAffected = command.ExecuteNonQuery();
-            command.Dispose();
-            conn.Close();
-
-            return rowsAffected;
+            return connectString;
         }
 
     }

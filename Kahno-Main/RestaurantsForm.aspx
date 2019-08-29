@@ -128,7 +128,7 @@
 
 <div class="card">             
    <p>
-       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None">
            <Columns>
                <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" Visible="False" />
                <asp:BoundField DataField="RestaurantName" SortExpression="RestaurantName" >

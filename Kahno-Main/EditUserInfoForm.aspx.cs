@@ -47,18 +47,10 @@ namespace Kahno_Main
             Session["tempfname"] = TextBox1.Text;
 
             if (KahnLib.UpdateUserDetails(currentuser.userid, Session["tempfname"].ToString(), TextBox2.Text, TextBox3.Text, TextBox4.Text) > 0)
-            {
                 Label5.Text = "Successfully Updated!";
-                Response.Redirect("Login.aspx");
-            }
             else
                 Label5.Text = "Update not successful!";
             Label5.Visible = true;
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            KahnLib.removeUser(currentuser.userid);
         }
     }
 }

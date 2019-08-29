@@ -16,12 +16,16 @@
             </tr>
             <tr>
                 <td>
-                    &nbsp;</td>
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:FileUpload ID="imgUpload" runat="server" />
+                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Upload" />
+                </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>

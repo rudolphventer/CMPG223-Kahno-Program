@@ -19,7 +19,6 @@ namespace Kahno_Main
                 currentuser = (KahnoUser)Session["localuser"];
                 if (currentuser.userid == 0)
                     Response.Redirect("Login.aspx");
-                Session["UserID"] = currentuser.userid;
             }
             catch
             {
@@ -63,11 +62,6 @@ namespace Kahno_Main
         protected void Button1_Click1(object sender, EventArgs e)
         {
             Response.Redirect("RestaurantsForm.aspx");
-        }
-
-        protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
