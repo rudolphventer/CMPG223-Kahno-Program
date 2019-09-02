@@ -1,10 +1,17 @@
-﻿@Colormain = #4d0f92;
-@Colorlight = #dbbbfb;
-@Colormedium = #8b48d0;
+﻿:root {
+    --main-color: #421782;
+    --light-color: #5900ff;
+    --dark-color: #894CCD;
+}
 
 body {
     font-family: Calibri;
     margin: 0;
+}
+.deletebutton {
+    background-color: red;
+    border-color: red;
+    color: white
 }
 
 input[type="button"], input[type="submit"] {
@@ -15,19 +22,19 @@ input[type="button"], input[type="submit"] {
 }
     input[type="submit"]:hover, input[type="button"]:hover {
         color: #ffffff !important;
-        background: #5900ff;
-        border-color: #5900ff !important;
+        background: var(--main-color);
+        border-color: var(--main-color) !important;
         transition: all 0.4s ease 0s;
     }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
     border: 2px solid #dedede;
     border-radius: 4px;
     height: 20px;
     transition: all 0.4s ease 0s;
 }
-    input[type="text"]:focus {
-        border: 2px solid #5900ff;
+    input[type="text"]:focus, input[type="password"]:focus {
+        border: 2px solid var(--main-color);
         transition: all 0.4s ease 0s;
     }
 
@@ -46,33 +53,36 @@ input[type="text"] {
 
     .logindiv:hover {
         border-radius: 10px;
-        border-color: #5900ff;
+        border-color: var(--main-color);
         transition: all 0.6s ease-in 0s;
     }
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: black;
+    background-color: white;
     position: fixed;
-    width:100%;
-    margin-bottom:10px;
-    
+    width: 100%;
+    margin-bottom: 10px;
+    -moz-box-shadow: 3px 0px 5px 5px #ccc;
+    -webkit-box-shadow: 3px 0px 5px 5px #ccc;
+    box-shadow: 3px 0px 5px 5px #ccc;
 }
 
     /* Style the links inside the navigation bar */
     .topnav a {
         float: left;
-        color: white;
+        color: black;
         text-align: center;
-        padding: 14px 16px;
+        padding: 10px 16px;
         text-decoration: none;
         font-size: 17px;
+        transition: all 0.3s ease 0s;
     }
 
         /* Change the color of links on hover */
         .topnav a:hover {
-            background-color: #5900ff;
-            color: black;
+            background-color: var(--main-color);
+            color: white;
         }
 
         /* Add a color to the active/current link */

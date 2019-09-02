@@ -8,12 +8,19 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            float: left;
+            width: auto;
+            height: 40px;
+        }
+    </style>
     </head>
 <body>
     <form id="form1" runat="server">
     <div class="topnav">
 
-     <img src="kahnologo.png" alt="Italian Trulli" width="50px" height="50px" style="float:left">
+     <img src="kahnobahnschriftsemibold.png" alt="Italian Trulli" class="auto-style1">
      <a runat="server" id="homebutton" href="UserHome.aspx">Home</a>
      <a runat="server" id="adminhome" href="Admin.aspx">Control Panel</a>
      <a runat="server" id="aboutbutton" href="AboutUsForm.aspx">About</a>

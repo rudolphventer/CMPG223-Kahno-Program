@@ -78,7 +78,7 @@
                      <tr>
                          <td class="auto-style4">&nbsp;</td>
                          <td class="auto-style1">
-                             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Delete My Account" />
+                             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Delete My Account" CssClass="deletebutton"/>
                          </td>
                          <td class="auto-style1">&nbsp;</td>
                      </tr>

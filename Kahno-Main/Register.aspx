@@ -64,6 +64,7 @@
                     <br />
                         <asp:Button ID="Register1" runat="server" Text="Register" OnClick="Register_Click" />
                         <br />
+                <p></p>
                 </div>
 
     <p></p>
