@@ -42,7 +42,28 @@
                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Start Your Order" Height="79px" Width="236px" Style="display: block; margin: auto;"/>
                        </td>
                        <td class="auto-style6" style="vertical-align:top;">
-                           &nbsp;</td>
+                           
+                           <div class="ratingdiv">
+                               Please rate your last order on:<br />
+                               <asp:Label ID="Label2" runat="server"></asp:Label>
+                               &nbsp;<input type="range" id="fromPrice" value="50" min="0" max="10" 
+                                    oninput="document.getElementById('ContentPlaceHolder1_TextBox1').value = this.value;
+                                            document.getElementById('fPrice').innerHTML = this.value" class="slider" />
+                                <label id="fPrice"></label><br />
+                               <br />
+                               <asp:TextBox ID="TextBox1" runat="server" CssClass="invisiblebox"></asp:TextBox>
+                               <br />
+
+                               <script>
+                                   function ti() {
+                                       var fP = document.getElementById('fPrice').innerHTML;
+                                       document.getElementById('TextBox1').value = fp;
+                                   }
+                                </script>
+                               <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Submit" />
+&nbsp;</div>
+
+                       </td>
                        <td class="auto-style2">
                            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" GridLines="None" Width="500px" Style="display: block; margin:auto;" CaptionAlign="Left">
                                <Columns>
