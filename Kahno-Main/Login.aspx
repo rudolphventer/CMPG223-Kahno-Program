@@ -17,7 +17,7 @@
         <br />
             <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
             <br />
-            <asp:TextBox ID="TextBox2" runat="server" Width="50%"></asp:TextBox>
+            <asp:TextBox ID="TextBox2" runat="server" Width="50%" TextMode="Password"></asp:TextBox>
         <br />
             <asp:Label ID="Label4" runat="server" Text="No user with those credentials!" Visible="False"></asp:Label>
         <br />
