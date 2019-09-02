@@ -412,7 +412,7 @@ namespace Kahno_Main
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
 
-            string sqlGetUser = ("SELECT * FROM [ORDER] WHERE userID = @id");
+            string sqlGetUser = ("SELECT TOP 1 (OrderDate) FROM [ORDER] WHERE userID = @id ORDER BY OrderDate DESC");
             SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
             commquery.Parameters.AddWithValue("@id", id);
             SqlDataReader drquery = commquery.ExecuteReader();
@@ -421,7 +421,7 @@ namespace Kahno_Main
 
             if (drquery.HasRows)
             {
-                return drquery.GetValue(2).ToString();
+                return drquery.GetValue(0).ToString();
             }
             else
             {
@@ -429,13 +429,35 @@ namespace Kahno_Main
             }
         }
 
+        public static int getLastOrderID(int id)
+        {
+            //checking if restaurant exists
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sqlGetUser = ("SELECT TOP 1 (OrderNumber) FROM [ORDER] WHERE userID = @id ORDER BY OrderDate DESC");
+            SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@id", id);
+            SqlDataReader drquery = commquery.ExecuteReader();
+            drquery.Read();
+
+
+            if (drquery.HasRows)
+            {
+                return drquery.GetInt32(0);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
         public static bool createNewRating(int userID, int score, int OrderNumber)
         {
             SqlConnection conn = new SqlConnection(connectString);
             try
             {
-
-
                 conn.Open();
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -449,7 +471,7 @@ namespace Kahno_Main
                 command.Parameters.AddWithValue("@2", score);
                 command.Parameters.AddWithValue("@3", userID);
 
-                dataAdapter.InsertCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.InsertCommand = command;
                 dataAdapter.InsertCommand.ExecuteNonQuery();
 
                 command.Dispose();
@@ -458,9 +480,9 @@ namespace Kahno_Main
             }
             catch (SqlException err)
             {
+                conn.Close();
                 err.ToString();
                 return false;
-                conn.Close();
             }
         }
     }

@@ -9,11 +9,12 @@ namespace Kahno_Main
 {
     public partial class UserHome : System.Web.UI.Page
     {
+        private KahnoUser currentuser = new KahnoUser();
         protected void Page_Load(object sender, EventArgs e)
         {
             ////////checking if user is logged in, copy paste on every page, will redirect to login if not logged in and create the user object
             ///Don't use this one yet, we need a better version
-            KahnoUser currentuser = new KahnoUser();
+            
             try
             {
                 currentuser = (KahnoUser)Session["localuser"];
@@ -74,7 +75,7 @@ namespace Kahno_Main
 
         protected void Button2_Click1(object sender, EventArgs e)
         {
-             
+            KahnLib.createNewRating(currentuser.userid, int.Parse(TextBox1.Text), KahnLib.getLastOrderID(currentuser.userid)); 
         }
     }
 }
