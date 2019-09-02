@@ -59,6 +59,10 @@ namespace Kahno_Main
         protected void Button2_Click(object sender, EventArgs e)
         {
             KahnLib.removeUser(currentuser.userid);
+            currentuser = null;
+            Session["localuser"] = null;
+            Response.Redirect("Login.aspx");
+
         }
     }
 }
