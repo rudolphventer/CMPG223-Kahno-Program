@@ -13,8 +13,12 @@ namespace Kahno_Main
         {
             KahnoRestaurant currentRestaurant = (KahnoRestaurant)Session["currentRestaurant"];
             Heading.InnerText = currentRestaurant.restaurantname;
+            if (IsPostBack == false)
+            {
+                Session["orderCount"] = 0;
+                Session["counter"] = 0;
+            }
 
-            
 
         }
 
@@ -26,12 +30,18 @@ namespace Kahno_Main
         {
             //this is the function triggered by the "add to cart" button, ItemID is the id of the selected item, do with it what you will
             int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
+            Session["itemId"] = ItemID;
+            Session["orderCount" + Session["itemId"]] = (Convert.ToInt32(Session["orderCount" + Session["itemId"]]) + 1).ToString();
+
         }
-        
+
         protected void RemoveFromOrder(object sender, EventArgs e)
         {
             //this is the function triggered by the "add to cart" button, ItemID is the id of the selected item, do with it what you will
             int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
+            Session["itemId"] = ItemID;
+            Session["orderCount" + Session["itemId"]] = (Convert.ToInt32(Session["orderCount" + Session["itemId"]]) - 1).ToString();
+
         }
     }
 }
