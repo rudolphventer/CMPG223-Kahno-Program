@@ -27,7 +27,9 @@ namespace Kahno_Main
             }
             ////////////////////////////////////////////////////////////////
             ///
-            Label1.Text = "Welcome " + currentuser.fname + " " + currentuser.lname; 
+            Label1.Text = "Welcome " + currentuser.fname + " " + currentuser.lname;
+
+            Label2.Text = KahnLib.getLastOrderDate(currentuser.userid);
         }
 
         protected void btnOrder_Click(object sender, EventArgs e)
@@ -68,6 +70,11 @@ namespace Kahno_Main
         protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void Button2_Click1(object sender, EventArgs e)
+        {
+             
         }
     }
 }

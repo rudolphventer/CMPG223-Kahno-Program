@@ -401,5 +401,61 @@ namespace Kahno_Main
             return rowsAffected;
         }
 
+        public static string getLastOrderDate(int id)
+        {
+            //checking if restaurant exists
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sqlGetUser = ("SELECT * FROM [ORDER] WHERE userID = @id");
+            SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@id", id);
+            SqlDataReader drquery = commquery.ExecuteReader();
+            drquery.Read();
+
+
+            if (drquery.HasRows)
+            {
+                return drquery.GetValue(2).ToString();
+            }
+            else
+            {
+                return "Never! You have not made an order yet!";
+            }
+        }
+
+        public static bool createNewRating(int userID, int score, int OrderNumber)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            try
+            {
+
+
+                conn.Open();
+                SqlCommand command;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+                //I think the itemID for each menu item should generate itself as it would be a primary key. 
+                string sqlAddItem = "INSERT INTO [CUSTOMERFEEDBACK] (OrderID, UserFeedbackScore, UserNumber) VALUES(@1,@2,@3)";
+
+                command = new SqlCommand(sqlAddItem, conn);
+
+                command.Parameters.AddWithValue("@1", OrderNumber);
+                command.Parameters.AddWithValue("@2", score);
+                command.Parameters.AddWithValue("@3", userID);
+
+                dataAdapter.InsertCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.InsertCommand.ExecuteNonQuery();
+
+                command.Dispose();
+                conn.Close();
+                return true;
+            }
+            catch (SqlException err)
+            {
+                return false;
+                conn.Close();
+            }
+        }
     }
     }
