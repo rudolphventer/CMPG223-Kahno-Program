@@ -69,7 +69,7 @@
         <tr>
             <td class="auto-style5">&nbsp;</td>
             <td class="auto-style6">
-                <asp:Button ID="btnResetCoordinates" runat="server" Text="Reset Co-ordinates" />
+                <asp:Button ID="btnResetCoordinates" OnClientClick="getLocation();return false;" runat="server" Text="Reset Co-ordinates" />
             </td>
             <td class="auto-style6">&nbsp;</td>
         </tr>
@@ -81,4 +81,22 @@
             <td class="auto-style1"></td>
         </tr>
     </table>
+    <script>
+           var x = document.getElementById("demo");
+
+           function getLocation() {
+               if (navigator.geolocation) {
+                   navigator.geolocation.getCurrentPosition(showPosition);
+               } else {
+                   x.innerHTML = "Geolocation is not supported by this browser.";
+               }
+           }
+
+           function showPosition(position) {
+               var pos = "Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude;
+               document.getElementById('ContentPlaceHolder1_TextBox3').value = position.coords.latitude;
+               document.getElementById('ContentPlaceHolder1_TextBox4').value = position.coords.longitude;
+           }
+
+  </script>
 </asp:Content>

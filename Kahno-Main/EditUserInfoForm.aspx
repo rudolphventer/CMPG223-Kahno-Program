@@ -68,10 +68,27 @@
                          <td>&nbsp;</td>
                      </tr>
                      <tr>
+                         <td class="auto-style3">
+                             Latitude:</td>
+                         <td>
+                             <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
+                         </td>
+                         <td>&nbsp;</td>
+                     </tr>
+                     <tr>
+                         <td class="auto-style3">
+                             Longitude:</td>
+                         <td>
+                             <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
+                         </td>
+                         <td>&nbsp;</td>
+                     </tr>
+                     <tr>
                          <td class="auto-style4">&nbsp;</td>
                          <td class="auto-style1">
                              <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update" />
                          &nbsp;
+                             <asp:Button ID="btnCoordinate" OnClientClick="getLocation();return false;" runat="server" Text="Refresh Coordinates" />
                          </td>
                          <td class="auto-style1"></td>
                      </tr>
@@ -87,4 +104,22 @@
          </div>
       </div>
    </div>
+    <script>
+           var x = document.getElementById("demo");
+
+           function getLocation() {
+               if (navigator.geolocation) {
+                   navigator.geolocation.getCurrentPosition(showPosition);
+               } else {
+                   x.innerHTML = "Geolocation is not supported by this browser.";
+               }
+           }
+
+           function showPosition(position) {
+               var pos = "Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude;
+               document.getElementById('ContentPlaceHolder1_txtLatitude').value = position.coords.latitude;
+               document.getElementById('ContentPlaceHolder1_txtLongitude').value = position.coords.longitude;
+           }
+
+  </script>
 </asp:Content>
