@@ -172,10 +172,10 @@ namespace Kahno_Main
         public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID)
         {
             SqlConnection conn = new SqlConnection(connectString);
-            /*
+            
             try
             {
-            */
+            
             
                 conn.Open();
                 SqlCommand command;
@@ -186,7 +186,7 @@ namespace Kahno_Main
 
                 command = new SqlCommand(sqlAddItem, conn);
                 
-                command.Parameters.AddWithValue("@1", "Gib wing");
+                command.Parameters.AddWithValue("@1", description);
                 command.Parameters.AddWithValue("@2", price);
                 command.Parameters.AddWithValue("@3", "");
                 command.Parameters.AddWithValue("@4", itemName);
@@ -198,14 +198,14 @@ namespace Kahno_Main
 
                 command.Dispose();
                 conn.Close();
-            /*
+            
             }
             catch(SqlException err)
             {
                 string message = err.ToString();
                 conn.Close();
             }
-            */
+            
         }
         //removemenuitem -- Kyle
         public static void removeMenuItem(int id)
@@ -278,14 +278,14 @@ namespace Kahno_Main
                 string sqlAddItem = "UPDATE [MENUITEM] SET Description = @description, price = @price, itemImageURL = @itemURL, itemName = @itemName WHERER itemID = " + itemID;
 
                 command = new SqlCommand(sqlAddItem, conn);
-                //should we be able to change the restaurantID? A restaurant may sell their IP to another restaurant?
+               
                 command.Parameters.AddWithValue("@Description", description);
                 command.Parameters.AddWithValue("@price", price);
                 command.Parameters.AddWithValue("@itemImageURL", imageURL);
                 command.Parameters.AddWithValue("@itemName", itemName);
                 
 
-                dataAdapter.UpdateCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.UpdateCommand = command;
                 //Does there need to be extra error handling over here? 
                 dataAdapter.UpdateCommand.ExecuteNonQuery();
 
