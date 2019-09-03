@@ -453,6 +453,30 @@ namespace Kahno_Main
             }
         }
 
+        public static bool ratingUpToDate(int id)
+        {
+            //checking if restaurant exists
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sqlGetUser = ("SELECT TOP 1 (OrderID) FROM [CUSTOMERFEEDBACK] WHERE OrderID = @id");
+            SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@id", getLastOrderID(id));
+            SqlDataReader drquery = commquery.ExecuteReader();
+            drquery.Read();
+
+
+            if (drquery.HasRows)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
 
         public static bool createNewRating(int userID, int score, int OrderNumber)
         {

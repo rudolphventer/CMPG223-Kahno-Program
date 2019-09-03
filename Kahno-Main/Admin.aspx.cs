@@ -14,23 +14,30 @@ namespace Kahno_Main
             ////////checking if user is logged in, copy paste on every page, will redirect to login if not logged in and create the user object
             ///Don't use this one yet, we need a better version
             KahnoUser currentuser = new KahnoUser();
-            //try
-            //{
+            try
+            {
                 currentuser = (KahnoUser)Session["localuser"];
             if (currentuser.userid == 0)
                     Response.Redirect("Login.aspx");
 
                 if (currentuser.restaurantno == 0)
                     Response.Redirect("CreateRestaurantForm.aspx");
-            //}
-            //catch
-            //{
-                //Response.Redirect("Login.aspx");
-            //}
+            }
+            catch
+            {
+            Response.Redirect("Login.aspx");
+            }
             ////////////////////////////////////////////////////////////////
 
+            /////////////creatign restaurant object
+            ///
+            KahnoRestaurant currentRestaurant = new KahnoRestaurant();
+            KahnLib.getRestaurant(currentuser.restaurantno, ref currentRestaurant);
+            Session["currentRestaurant"] = currentRestaurant;
+            //////////////
             Label2.Text = currentuser.ToString();
             Session["RID"] = currentuser.restaurantno;
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)

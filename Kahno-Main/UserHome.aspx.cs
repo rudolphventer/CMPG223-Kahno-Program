@@ -31,6 +31,11 @@ namespace Kahno_Main
             Label1.Text = "Welcome " + currentuser.fname + " " + currentuser.lname;
 
             Label2.Text = KahnLib.getLastOrderDate(currentuser.userid);
+
+            if(KahnLib.ratingUpToDate(currentuser.userid))
+            {
+                ratingdiv.Visible = false;
+            }
         }
 
         protected void btnOrder_Click(object sender, EventArgs e)
@@ -75,7 +80,8 @@ namespace Kahno_Main
 
         protected void Button2_Click1(object sender, EventArgs e)
         {
-            KahnLib.createNewRating(currentuser.userid, int.Parse(TextBox1.Text), KahnLib.getLastOrderID(currentuser.userid)); 
+            KahnLib.createNewRating(currentuser.userid, int.Parse(TextBox1.Text), KahnLib.getLastOrderID(currentuser.userid));
+            Response.Redirect("UserHome.aspx");
         }
     }
 }

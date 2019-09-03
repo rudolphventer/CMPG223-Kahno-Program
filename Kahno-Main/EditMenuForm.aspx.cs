@@ -10,25 +10,36 @@ namespace Kahno_Main
     public partial class EditMenuForm : System.Web.UI.Page
     {
         private KahnoUser currentuser = new KahnoUser();
+        KahnoRestaurant currentRestaurant = new KahnoRestaurant();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             ////////checking if user is logged in, copy paste on every page, will redirect to login if not logged in and create the user object
             ///Don't use this one yet, we need a better version
-            
+            KahnoUser currentuser = new KahnoUser();
             try
             {
                 currentuser = (KahnoUser)Session["localuser"];
                 if (currentuser.userid == 0)
                     Response.Redirect("Login.aspx");
-                Session["UserID"] = currentuser.userid;
+
+                if (currentuser.isowner == "n")
+                    Response.Redirect("Login.aspx");
             }
             catch
             {
                 Response.Redirect("Login.aspx");
             }
             ////////////////////////////////////////////////////////////////
-            ///
+            try
+            {
+                currentRestaurant = (KahnoRestaurant)Session["currentRestaurant"];
+            }
+            catch
+            {
+                Response.Redirect("Admin.aspx");
+            }
+            Label1.Text = "Menu for " + currentRestaurant.restaurantname;
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -55,9 +66,7 @@ namespace Kahno_Main
         }
         protected void editMenuItem_Click(object sender, EventArgs e)
         {
-            
             Session["itemID"] = Convert.ToInt32((sender as Button).CommandArgument);
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Warning", "showAddForm()", true);
 
         }
 

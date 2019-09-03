@@ -17,22 +17,25 @@
             width: 473px;
         }
         .auto-style6 {
-            height: 57px;
-            width: 473px;
+            
         }
+        body{
+        background: url('Assets/15.jpg') no-repeat center center fixed; 
+    }
         </style>
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="floatingdiv" style="width: 80%; left: 10%">
                <table style="width:100%; text-align:center;">
                    <tr>
-                       <td class="auto-style3">
+                       <td class="LeftTable">
                            <h3>
                        <asp:Label ID="Label1" runat="server" Text="Welcome" CssClass="h3"></asp:Label>
                            </h3></td>
-                       <td class="auto-style5">
+                       <td class="CenterTable">
                            &nbsp;
                        </td>
-                       <td>
+                       <td class="RightTable">
                            <h3>My Order History</h3>
                            </td>
                    </tr>
@@ -41,12 +44,13 @@
                            <br />
                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Start Your Order" Height="79px" Width="236px" Style="display: block; margin: auto;"/>
                        </td>
-                       <td class="auto-style6" style="vertical-align:top;">
+                       <td class="CenterTable" style="vertical-align: top; align-items:center">
                            
-                           <div class="ratingdiv">
+                           <div id="ratingdiv" runat="server" class="ratingdiv">
                                Please rate your last order on:<br />
                                <asp:Label ID="Label2" runat="server"></asp:Label>
-                               &nbsp;<input type="range" id="fromPrice" value="5" min="0" max="10" 
+                               <br />
+                               <input type="range" id="fromPrice" value="5" min="0" max="10" 
                                     oninput="document.getElementById('ContentPlaceHolder1_TextBox1').value = this.value" class="slider" />
                                 <label id="fPrice"></label>
                                <asp:TextBox ID="TextBox1" runat="server" CssClass="invisiblebox" BorderStyle="None" style="text-align: center" Height="16px">5</asp:TextBox>
@@ -58,8 +62,11 @@
                                        document.getElementById('TextBox1').value = fp;
                                    }
                                 </script>
-                               <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Submit" />
+                               <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Submit" CausesValidation="False" />
 &nbsp;</div>
+                           <div class="ratingdiv">
+                               <h3>You have rated your latest meal</h3>
+                           </div>
 
                        </td>
                        <td class="auto-style2">
@@ -89,4 +96,6 @@
                            &nbsp;</td>
                    </tr>
              </table>
+        </div>
+
          </asp:Content>

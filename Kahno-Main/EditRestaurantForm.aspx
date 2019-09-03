@@ -1,27 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="EditRestaurantForm.aspx.cs" Inherits="Kahno_Main.EditRestaurantForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
-
-    .auto-style2 {
-        width: 100%;
-    }
-    .auto-style3 {
-        width: 117px;
-    }
-    .auto-style4 {
-        height: 20px;
-        width: 117px;
-    }
-        .auto-style5 {
+        .auto-style3
+        {
             width: 117px;
-            height: 33px;
+        text-align: right;
+        vertical-align: top;
         }
-        .auto-style6 {
-            height: 33px;
-        }
+        body{
+        background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('Assets/5.jpg');
+    }
+
+
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="floatingdiv">
+        <h3>Edit your restaurant's details</h3>
     <table class="auto-style2">
         <tr>
             <td class="auto-style3">
@@ -29,19 +25,19 @@
             </td>
             <td>
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                <br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Required!"></asp:RequiredFieldValidator>
             </td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style4">
+            <td class="auto-style3">
                 <asp:Label ID="Label2" runat="server" Text="Phone Number:"></asp:Label>
             </td>
-            <td class="auto-style1">
+            <td>
                 <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                <br />
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox2" ErrorMessage="Enter a valid phone number!" ValidationExpression="^(?:\+?27[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"></asp:RegularExpressionValidator>
             </td>
-            <td class="auto-style1"></td>
         </tr>
         <tr>
             <td class="auto-style3">
@@ -49,9 +45,9 @@
             </td>
             <td>
                 <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                <br />
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox3" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
             </td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td class="auto-style3">
@@ -59,32 +55,30 @@
             </td>
             <td>
                 <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                <br />
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox4" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
             </td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style5"></td>
-            <td class="auto-style6">
+            <td class="auto-style6"></td>
+            <td>
                 <asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
             </td>
-            <td class="auto-style6"></td>
         </tr>
         <tr>
-            <td class="auto-style5">&nbsp;</td>
-            <td class="auto-style6">
+            <td class="auto-style6">&nbsp;</td>
+            <td>
                 <asp:Button ID="btnResetCoordinates" OnClientClick="getLocation();return false;" runat="server" Text="Reset Co-ordinates" />
             </td>
-            <td class="auto-style6">&nbsp;</td>
         </tr>
         <tr>
-            <td class="auto-style4">&nbsp;</td>
-            <td class="auto-style1">
+            <td class="auto-style7">&nbsp;</td>
+            <td>
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update" />
             </td>
-            <td class="auto-style1"></td>
         </tr>
     </table>
+        </div>
     <script>
            var x = document.getElementById("demo");
 
@@ -103,4 +97,5 @@
            }
 
   </script>
+        
 </asp:Content>
