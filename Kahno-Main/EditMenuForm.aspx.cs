@@ -52,5 +52,11 @@ namespace Kahno_Main
 
 
         }
+        protected void editMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            Session["itemID"] = Convert.ToInt32((sender as Button).CommandArgument);
+
+        }
     }
 }

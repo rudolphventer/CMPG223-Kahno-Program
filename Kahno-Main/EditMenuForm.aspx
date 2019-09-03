@@ -22,17 +22,26 @@
             
             <asp:GridView ID="EditMenuGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ItemID" DataSourceID="MenuID" Height="176px" Width="739px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <Columns>
+
                     <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
                     <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
                     <asp:BoundField DataField="itemImageUrl" HeaderText="itemImageUrl" SortExpression="itemImageUrl" />
                     <asp:BoundField DataField="itemName" HeaderText="itemName" SortExpression="itemName" />
                     <asp:BoundField DataField="restaurantID" HeaderText="restaurantID" SortExpression="restaurantID" />
                     <asp:BoundField DataField="ItemID" HeaderText="ItemID" InsertVisible="False" ReadOnly="True" SortExpression="ItemID" />
+                    
                     <asp:TemplateField ShowHeader="false">
                         <ItemTemplate>
                             <asp:Button class="addbutton" ID="deleteMenuItem" Text="Remove" runat="server" CommandArgument='<%# Eval("ItemID") %>' OnClick="deleteMenuItem_Click"/>
                         </ItemTemplate>
-                    </asp:TemplateField >
+                    </asp:TemplateField>
+
+                    <asp:TemplateField ShowHeader="false">
+                        <ItemTemplate>
+                            <asp:Button class="addbutton" ID="EditMenuItem" Text="Edit" runat="server" CommandArgument='<%# Eval("ItemID") %>' OnClick="editMenuItem_Click"/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                
                 </Columns>
             </asp:GridView>
             <asp:SqlDataSource ID="MenuID" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT Description, price, itemImageUrl, itemName, restaurantID, ItemID FROM MENUITEM WHERE (restaurantID = @RID)">
