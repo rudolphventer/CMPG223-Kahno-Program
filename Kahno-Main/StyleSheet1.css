@@ -86,10 +86,28 @@ input[type="text"], input[type="password"] {
         background: var(--main-color); /* Green background */
     }
 
-.ratingdiv {
+.ratingdivoriginal {
     width: 100%;
     text-align: center;
     height: auto;
+    padding:5px;
+}
+.ratingdiv {
+    padding: 5px;
+    width: 20%;
+    height: auto;
+    text-align: center;
+    height: auto;
+    z-index: 50;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    border-color: black;
+    border: solid;
+}
+.ratingbackground{
+    background-color:white;
+    opacity: 0.4;
 }
 
 /* Add a black background color to the top navigation */
@@ -101,6 +119,7 @@ input[type="text"], input[type="password"] {
     -moz-box-shadow: 3px 0px 5px 5px #ccc;
     -webkit-box-shadow: 3px 0px 5px 5px #ccc;
     box-shadow: 3px 0px 5px 5px #ccc;
+    z-index:100;
 }
 
     /* Style the links inside the navigation bar */
