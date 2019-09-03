@@ -29,6 +29,7 @@
                          </td>
                          <td>
                              <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                          </td>
                          <td>&nbsp;</td>
                      </tr>
@@ -38,6 +39,7 @@
                          </td>
                          <td class="auto-style1">
                              <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                          </td>
                          <td class="auto-style1"></td>
                      </tr>
@@ -47,6 +49,7 @@
                          </td>
                          <td>
                              <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox3" ErrorMessage="Please enter valid phone number!" ValidationExpression="^(?:\+?27[-.●]?)?\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"></asp:RegularExpressionValidator>
                          </td>
                          <td>&nbsp;</td>
                      </tr>
@@ -56,6 +59,7 @@
                          </td>
                          <td>
                              <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox4" ErrorMessage="Please enter a valid email address!" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                          </td>
                          <td>&nbsp;</td>
                      </tr>
@@ -72,6 +76,7 @@
                              Latitude:</td>
                          <td>
                              <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtLatitude" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
                          </td>
                          <td>&nbsp;</td>
                      </tr>
@@ -80,6 +85,7 @@
                              Longitude:</td>
                          <td>
                              <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtLongitude" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
                          </td>
                          <td>&nbsp;</td>
                      </tr>
@@ -88,7 +94,7 @@
                          <td class="auto-style1">
                              <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update" />
                          &nbsp;
-                             <asp:Button ID="btnCoordinate" OnClientClick="getLocation();return false;" runat="server" Text="Refresh Coordinates" />
+                             <asp:Button ID="btnCoordinate" OnClientClick="getLocation();return false;" runat="server" Text="Refresh Coordinates" OnClick="btnCoordinate_Click" />
                          </td>
                          <td class="auto-style1"></td>
                      </tr>

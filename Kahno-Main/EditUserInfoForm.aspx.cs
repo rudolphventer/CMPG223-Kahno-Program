@@ -64,5 +64,10 @@ namespace Kahno_Main
             Response.Redirect("Login.aspx");
 
         }
+
+        protected void btnCoordinate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
