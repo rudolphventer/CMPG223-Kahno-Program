@@ -42,7 +42,26 @@
                            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click1" Text="Start Your Order" Height="79px" Width="236px" Style="display: block; margin: auto;"/>
                        </td>
                        <td class="auto-style6" style="vertical-align:top;">
-                           &nbsp;</td>
+                           
+                           <div class="ratingdiv">
+                               Please rate your last order on:<br />
+                               <asp:Label ID="Label2" runat="server"></asp:Label>
+                               &nbsp;<input type="range" id="fromPrice" value="5" min="0" max="10" 
+                                    oninput="document.getElementById('ContentPlaceHolder1_TextBox1').value = this.value" class="slider" />
+                                <label id="fPrice"></label>
+                               <asp:TextBox ID="TextBox1" runat="server" CssClass="invisiblebox" BorderStyle="None" style="text-align: center" Height="16px">5</asp:TextBox>
+                               <p>Out of 10</p>
+
+                               <script>
+                                   function ti() {
+                                       var fP = document.getElementById('fPrice').innerHTML;
+                                       document.getElementById('TextBox1').value = fp;
+                                   }
+                                </script>
+                               <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Submit" />
+&nbsp;</div>
+
+                       </td>
                        <td class="auto-style2">
                            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" GridLines="None" Width="500px" Style="display: block; margin:auto;" CaptionAlign="Left">
                                <Columns>
@@ -59,14 +78,15 @@
                    </tr>
                    <tr>
                        <td class="auto-style3">&nbsp;</td>
-                       <td class="auto-style5">&nbsp;</td>
-                       <td>
+                       <td class="auto-style5">
                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT [ORDER].OrderDate, RESTAURANT.RestaurantName AS Restaurant, MENUITEM.itemName AS Item, ORDERDETAIL.PricePaidPerItem AS [Price Paid], ORDERDETAIL.Quantity FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderDetailID = ORDERDETAIL.OrderDetailID INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE ([ORDER].userID = @userID)">
                                <SelectParameters>
                                    <asp:SessionParameter Name="userID" SessionField="UserID" Type="Int32" />
                                </SelectParameters>
                            </asp:SqlDataSource>
                            </td>
+                       <td>
+                           &nbsp;</td>
                    </tr>
              </table>
          </asp:Content>

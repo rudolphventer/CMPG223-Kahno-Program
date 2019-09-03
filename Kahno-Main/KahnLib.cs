@@ -172,37 +172,40 @@ namespace Kahno_Main
         public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID)
         {
             SqlConnection conn = new SqlConnection(connectString);
+            
             try
             {
-
-                
+            
+            
                 conn.Open();
                 SqlCommand command;
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
                 //I think the itemID for each menu item should generate itself as it would be a primary key. 
-                string sqlAddItem = "INSERT INTO [MENUITEM] (description, price, imageURL, itemName, restaurantID) VALUES(@Description, @price, @itemImageURL, @itemName, @restaurantID)";
+                string sqlAddItem = "INSERT INTO [MENUITEM] (Description, price, itemImageUrl, itemName, restaurantID) VALUES(@1, @2, @3, @4, @5)";
 
                 command = new SqlCommand(sqlAddItem, conn);
                 
-                command.Parameters.AddWithValue("@Description", description);
-                command.Parameters.AddWithValue("@price", price);
-                command.Parameters.AddWithValue("@itemImageURL", imageURL);
-                command.Parameters.AddWithValue("@itemName", itemName);
-                command.Parameters.AddWithValue("@restaurantID", restaurantID);
+                command.Parameters.AddWithValue("@1", description);
+                command.Parameters.AddWithValue("@2", price);
+                command.Parameters.AddWithValue("@3", "");
+                command.Parameters.AddWithValue("@4", itemName);
+                command.Parameters.AddWithValue("@5", restaurantID);
 
-                dataAdapter.InsertCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.InsertCommand = command;
                 //Does there need to be extra error handling over here?
                 dataAdapter.InsertCommand.ExecuteNonQuery();
 
                 command.Dispose();
                 conn.Close();
+            
             }
             catch(SqlException err)
             {
                 string message = err.ToString();
                 conn.Close();
             }
+            
         }
         //removemenuitem -- Kyle
         public static void removeMenuItem(int id)
@@ -275,14 +278,14 @@ namespace Kahno_Main
                 string sqlAddItem = "UPDATE [MENUITEM] SET Description = @description, price = @price, itemImageURL = @itemURL, itemName = @itemName WHERER itemID = " + itemID;
 
                 command = new SqlCommand(sqlAddItem, conn);
-                //should we be able to change the restaurantID? A restaurant may sell their IP to another restaurant?
+               
                 command.Parameters.AddWithValue("@Description", description);
                 command.Parameters.AddWithValue("@price", price);
                 command.Parameters.AddWithValue("@itemImageURL", imageURL);
                 command.Parameters.AddWithValue("@itemName", itemName);
                 
 
-                dataAdapter.UpdateCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.UpdateCommand = command;
                 //Does there need to be extra error handling over here? 
                 dataAdapter.UpdateCommand.ExecuteNonQuery();
 
@@ -310,10 +313,11 @@ namespace Kahno_Main
 
         }
 
-        //addrestaurant -- Rudolph
+
 
         //imagetobytes -- Harry
 
+        //addrestaurant -- Rudolph
         public static int NewRestaurant(string name, string phone, double latitude, double longitude)
         {
             //returns true if restaurant is created successfully
@@ -375,6 +379,7 @@ namespace Kahno_Main
                 }
                 catch(SqlException m)
                 {
+                    m.ToString();
                     return restID;
                 }
             }
@@ -401,5 +406,84 @@ namespace Kahno_Main
             return rowsAffected;
         }
 
+        public static string getLastOrderDate(int id)
+        {
+            //checking if restaurant exists
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sqlGetUser = ("SELECT TOP 1 (OrderDate) FROM [ORDER] WHERE userID = @id ORDER BY OrderDate DESC");
+            SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@id", id);
+            SqlDataReader drquery = commquery.ExecuteReader();
+            drquery.Read();
+
+
+            if (drquery.HasRows)
+            {
+                return drquery.GetValue(0).ToString();
+            }
+            else
+            {
+                return "Never! You have not made an order yet!";
+            }
+        }
+
+        public static int getLastOrderID(int id)
+        {
+            //checking if restaurant exists
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sqlGetUser = ("SELECT TOP 1 (OrderNumber) FROM [ORDER] WHERE userID = @id ORDER BY OrderDate DESC");
+            SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@id", id);
+            SqlDataReader drquery = commquery.ExecuteReader();
+            drquery.Read();
+
+
+            if (drquery.HasRows)
+            {
+                return drquery.GetInt32(0);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
+        public static bool createNewRating(int userID, int score, int OrderNumber)
+        {
+            SqlConnection conn = new SqlConnection(connectString);
+            try
+            {
+                conn.Open();
+                SqlCommand command;
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+                //I think the itemID for each menu item should generate itself as it would be a primary key. 
+                string sqlAddItem = "INSERT INTO [CUSTOMERFEEDBACK] (OrderID, UserFeedbackScore, UserNumber) VALUES(@1,@2,@3)";
+
+                command = new SqlCommand(sqlAddItem, conn);
+
+                command.Parameters.AddWithValue("@1", OrderNumber);
+                command.Parameters.AddWithValue("@2", score);
+                command.Parameters.AddWithValue("@3", userID);
+
+                dataAdapter.InsertCommand = command;
+                dataAdapter.InsertCommand.ExecuteNonQuery();
+
+                command.Dispose();
+                conn.Close();
+                return true;
+            }
+            catch (SqlException err)
+            {
+                conn.Close();
+                err.ToString();
+                return false;
+            }
+        }
     }
     }

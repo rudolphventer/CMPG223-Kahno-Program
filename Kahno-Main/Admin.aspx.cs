@@ -17,7 +17,7 @@ namespace Kahno_Main
             //try
             //{
                 currentuser = (KahnoUser)Session["localuser"];
-                if (currentuser.userid == 0)
+            if (currentuser.userid == 0)
                     Response.Redirect("Login.aspx");
 
                 if (currentuser.restaurantno == 0)
@@ -30,6 +30,7 @@ namespace Kahno_Main
             ////////////////////////////////////////////////////////////////
 
             Label2.Text = currentuser.ToString();
+            Session["RID"] = currentuser.restaurantno;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
