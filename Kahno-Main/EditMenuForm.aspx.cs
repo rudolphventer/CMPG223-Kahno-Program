@@ -37,5 +37,20 @@ namespace Kahno_Main
             double.TryParse(txtPrice.Text, out price);
             KahnLib.addMenuItem(txtDescription.Text, price, null, txtItemName.Text, currentuser.restaurantno);
         }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void deleteMenuItem_Click(object sender, EventArgs e)
+        {
+            int menuitemid = Convert.ToInt32((sender as Button).CommandArgument);
+            
+            KahnLib.removeMenuItem(menuitemid);
+
+            Response.Redirect("EditMenuForm.aspx");
+
+
+        }
     }
 }

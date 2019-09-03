@@ -217,13 +217,14 @@ namespace Kahno_Main
 
                 conn.Open();
                 SqlCommand command;
+
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
                 string sqlAddItem = "DELETE FROM [MENUITEM] WHERE ItemID = " + id;
 
                 command = new SqlCommand(sqlAddItem, conn);
 
-                dataAdapter.DeleteCommand = new SqlCommand(sqlAddItem, conn);
+                dataAdapter.DeleteCommand = command;
                 dataAdapter.DeleteCommand.ExecuteNonQuery();
 
                 command.Dispose();

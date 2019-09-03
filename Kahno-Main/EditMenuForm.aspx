@@ -18,7 +18,9 @@
     <tr>
         <td class="auto-style3"></td>
         <td class="auto-style4">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ItemID" DataSourceID="MenuID" Height="176px" Width="739px">
+            
+            
+            <asp:GridView ID="EditMenuGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="ItemID" DataSourceID="MenuID" Height="176px" Width="739px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
                     <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
@@ -26,8 +28,11 @@
                     <asp:BoundField DataField="itemName" HeaderText="itemName" SortExpression="itemName" />
                     <asp:BoundField DataField="restaurantID" HeaderText="restaurantID" SortExpression="restaurantID" />
                     <asp:BoundField DataField="ItemID" HeaderText="ItemID" InsertVisible="False" ReadOnly="True" SortExpression="ItemID" />
-                    <asp:ButtonField Text="Edit" />
-                    <asp:ButtonField Text="Delete" />
+                    <asp:TemplateField ShowHeader="false">
+                        <ItemTemplate>
+                            <asp:Button class="addbutton" ID="deleteMenuItem" Text="Remove" runat="server" CommandArgument='<%# Eval("ItemID") %>' OnClick="deleteMenuItem_Click"/>
+                        </ItemTemplate>
+                    </asp:TemplateField >
                 </Columns>
             </asp:GridView>
             <asp:SqlDataSource ID="MenuID" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT Description, price, itemImageUrl, itemName, restaurantID, ItemID FROM MENUITEM WHERE (restaurantID = @RID)">
@@ -36,7 +41,7 @@
                 </SelectParameters>
             </asp:SqlDataSource>
         </td>
-        <td class="auto-style3"></td>
+        <td class="auto-style3">&nbsp;</td>
         <td class="auto-style3"></td>
     </tr>
     <tr>
