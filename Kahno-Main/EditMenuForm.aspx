@@ -11,12 +11,19 @@
         width: 752px;
         height: 232px;
     }
-</style>
+        .auto-style5 {
+            height: 232px;
+            width: 382px;
+        }
+        .auto-style6 {
+            width: 382px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <table style="width: 100%; height: 519px;">
     <tr>
-        <td class="auto-style3"></td>
+        <td class="auto-style5"></td>
         <td class="auto-style4">
             
             
@@ -38,7 +45,7 @@
 
                     <asp:TemplateField ShowHeader="false">
                         <ItemTemplate>
-                            <asp:Button class="addbutton" ID="EditMenuItem" Text="Edit" runat="server" CommandArgument='<%# Eval("ItemID") %>' OnClick="editMenuItem_Click"/>
+                            <asp:Button class="addbutton" ID="EditMenuItem" Text="Edit" runat="server" CommandArgument='<%# Eval("ItemID") %>' OnClick="editMenuItem_Click" UseSubmitBehavior="false"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 
@@ -50,45 +57,49 @@
                 </SelectParameters>
             </asp:SqlDataSource>
         </td>
-        <td class="auto-style3">&nbsp;</td>
-        <td class="auto-style3"></td>
+        <td class="auto-style3">
+            &nbsp;</td>
     </tr>
     <tr>
-        <td>&nbsp;</td>
-        <td class="auto-style2">Description:<asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
-        </td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td class="auto-style2">Price:
-            <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
-        </td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td class="auto-style2">Name:
-            <asp:TextBox ID="txtItemName" runat="server"></asp:TextBox>
-        </td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
+        <td class="auto-style6">&nbsp;</td>
         <td class="auto-style2">
-            <asp:Button ID="Button1" runat="server" Height="40px" OnClick="Button1_Click" Text="Add new item" Width="189px" />
+            <script type="text/javascript">
+                function openAddForm() {
+                    document.getElementById("newmenuitempopup").style.display = "block";
+                }
+
+                function closeAddForm() {
+                    document.getElementById("newmenuitempopup").style.display = "none";
+                }
+    </script>
+            <button ID="Button2" class="fancyButton" type="button" onclick="openAddForm()" causesvalidation="False">Add new item</button>
+            
+            <br />
+            
         </td>
-        <td>&nbsp;</td>
         <td>&nbsp;</td>
     </tr>
     <tr>
-        <td>&nbsp;</td>
-        <td class="auto-style2">&nbsp;</td>
-        <td>&nbsp;</td>
+        <td class="auto-style6">&nbsp;</td>
+        <td class="auto-style2">
+            &nbsp;</td>
         <td>&nbsp;</td>
     </tr>
 </table>
+
+    <div class="floatingdiv" id="newmenuitempopup">
+        Name:<br />
+            <asp:TextBox ID="txtItemName" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Price:<br />
+            <asp:TextBox ID="txtPrice" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Desciption:<br />
+            <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="Button1" runat="server" Height="40px" OnClick="Button1_Click" Text="Add new item" Width="188px" />
+            <br />
+    </div>
 </asp:Content>

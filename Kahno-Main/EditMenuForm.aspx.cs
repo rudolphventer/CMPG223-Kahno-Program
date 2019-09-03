@@ -36,6 +36,7 @@ namespace Kahno_Main
             double price;
             double.TryParse(txtPrice.Text, out price);
             KahnLib.addMenuItem(txtDescription.Text, price, null, txtItemName.Text, currentuser.restaurantno);
+            Response.Redirect("EditMenuForm.aspx");
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,7 +57,12 @@ namespace Kahno_Main
         {
             
             Session["itemID"] = Convert.ToInt32((sender as Button).CommandArgument);
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "Warning", "showAddForm()", true);
 
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
         }
     }
 }

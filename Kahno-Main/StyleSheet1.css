@@ -15,12 +15,12 @@ body {
     color: white
 }
 
-input[type="button"], input[type="submit"] {
+input[type="button"], input[type="submit"], .fancyButton {
     border: 2px solid #dedede;
     border-radius: 4px;
     transition: all 0.4s ease 0s;
 }
-    input[type="submit"]:hover, input[type="button"]:hover {
+    input[type="submit"]:hover, input[type="button"]:hover, .fancyButton:hover {
         color: #ffffff !important;
         background: var(--main-color);
         border-color: var(--main-color) !important;
@@ -86,13 +86,14 @@ input[type="text"], input[type="password"] {
         background: var(--main-color); /* Green background */
     }
 
-.ratingdivoriginal {
+.ratingdiv {
     width: 100%;
     text-align: center;
     height: auto;
     padding:5px;
 }
-.ratingdiv {
+.floatingdiv {
+    display: none;
     padding: 5px;
     width: 20%;
     height: auto;
@@ -102,12 +103,13 @@ input[type="text"], input[type="password"] {
     position: absolute;
     top: 20%;
     left: 40%;
-    border-color: black;
     border: solid;
-}
-.ratingbackground{
+    border-radius: 20px;
+    border-width: 3px;
+    height: auto;
+    border-color: #dedede;
+    transition: all 0.3s ease-in 0s;
     background-color:white;
-    opacity: 0.4;
 }
 
 /* Add a black background color to the top navigation */

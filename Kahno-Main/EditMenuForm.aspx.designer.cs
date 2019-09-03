@@ -31,13 +31,13 @@ namespace Kahno_Main {
         protected global::System.Web.UI.WebControls.SqlDataSource MenuID;
         
         /// <summary>
-        /// txtDescription control.
+        /// txtItemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtItemName;
         
         /// <summary>
         /// txtPrice control.
@@ -49,13 +49,13 @@ namespace Kahno_Main {
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
         
         /// <summary>
-        /// txtItemName control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtItemName;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
         /// Button1 control.
