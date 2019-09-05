@@ -26,16 +26,6 @@ body {
 .RightTable {
     width: 25%;
 }
-.coverscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 5;
-    width: 100%;
-    height: 100%;
-    display: none;
-}
 
 input[type="button"], input[type="submit"], .fancyButton {
     border: 2px solid #dedede;
@@ -152,42 +142,45 @@ input[type="text"], input[type="password"] {
         box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
     }
 
-    .floatingdivhidden {
-        display: none;
-        padding: 5px;
-        width: 20%;
-        height: auto;
-        text-align: center;
-        height: auto;
-        z-index: 55;
-        position: absolute;
-        top: 20%;
-        left: 40%;
-        border: solid;
-        border-radius: 20px;
-        border-width: 3px;
-        height: auto;
-        border-color: #dedede;
-        transition: all 0.3s ease-in 0s;
-        background-color: white;
-    }
+.floatingdivhidden {
+    display: none;
+    padding: 5px;
+    width: 20%;
+    height: auto;
+    text-align: center;
+    height: auto;
+    z-index: 52;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    height: auto;
+    background-color: white;
+    -webkit-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+}
 
-        .floatingdivhidden:hover {
-            border-radius: 10px;
-            border-color: var(--main-color);
-            transition: all 0.6s ease-in 0s;
-        }
+.coverscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 51;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
 
-    .topnav {
-        background-color: white;
-        position: fixed;
-        width: 100%;
-        margin-bottom: 10px;
-        -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
-        -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
-        box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
-        z-index: 2;
-    }
+.topnav {
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+    z-index: 2;
+}
 
         .topnav a {
             float: left;
