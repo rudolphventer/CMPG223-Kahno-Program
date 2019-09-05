@@ -1,9 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Kahno_Main.Test" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        body{
+        background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('Assets/9.jpg');
+    }   
+    </style>
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <p>&nbsp;</p>
-            <div class="logindiv">
+<div class="logindiv">
+                <br />
+                <h3>Register</h3>
                         <asp:Label ID="Label1" runat="server" Text="First Name"></asp:Label>
                         <br />
                         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
@@ -64,7 +71,7 @@
                     <br />
                         <asp:Button ID="Register1" runat="server" Text="Register" OnClick="Register_Click" />
                         <br />
-                <p></p>
+                <br />
                 </div>
 
     <p></p>

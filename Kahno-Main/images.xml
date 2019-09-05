@@ -1,0 +1,14 @@
+<Advertisements>
+   <Ad>
+      <ImageUrl>Assets/1.jpg</ImageUrl>
+      <AlternateText>
+         Kahno
+      </AlternateText>
+   </Ad>
+   <Ad>
+      <ImageUrl>Assets/2.jpg</ImageUrl>
+      <AlternateText>
+         Kahno
+      </AlternateText>
+   </Ad>
+</Advertisements>

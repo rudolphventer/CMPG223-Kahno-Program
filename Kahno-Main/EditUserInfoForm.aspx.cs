@@ -49,6 +49,7 @@ namespace Kahno_Main
             if (KahnLib.UpdateUserDetails(currentuser.userid, Session["tempfname"].ToString(), TextBox2.Text, TextBox3.Text, TextBox4.Text) > 0)
             {
                 Label5.Text = "Successfully Updated!";
+
                 Response.Redirect("Login.aspx");
             }
             else
@@ -63,6 +64,16 @@ namespace Kahno_Main
             Session["localuser"] = null;
             Response.Redirect("Login.aspx");
 
+        }
+
+        protected void btnCoordinate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
         }
     }
 }

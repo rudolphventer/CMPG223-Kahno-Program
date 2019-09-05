@@ -7,21 +7,35 @@
 body {
     font-family: Bahnschrift;
     margin: 0;
-
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
 }
 .deletebutton {
     background-color: red;
-    border-color: red;
+    border-color: red !important;
     color: white
 }
-
-input[type="button"], input[type="submit"] {
-    border: 2px solid #dedede;
-    border-radius: 4px;
-    height: 40px;
-    transition: all 0.4s ease 0s;
+.CenterTable{
+    width:50%;
 }
-    input[type="submit"]:hover, input[type="button"]:hover {
+.LeftTable{
+    width:25%;
+}
+.RightTable {
+    width: 25%;
+}
+
+input[type="button"], input[type="submit"], .fancyButton {
+    border: 2px solid #dedede;
+    transition: all 0.4s ease 0s;
+    width: 100px;
+    height: 40px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+    input[type="submit"]:hover, input[type="button"]:hover, .fancyButton:hover {
         color: #ffffff !important;
         background: var(--main-color);
         border-color: var(--main-color) !important;
@@ -30,7 +44,6 @@ input[type="button"], input[type="submit"] {
 
 input[type="text"], input[type="password"] {
     border: 2px solid #dedede;
-    border-radius: 4px;
     height: 20px;
     transition: all 0.4s ease 0s;
 }
@@ -44,210 +57,148 @@ input[type="text"], input[type="password"] {
     margin-left: 40%;
     margin-right: 40%;
     text-align: center;
-    border: solid;
-    border-radius: 20px;
-    border-width: 3px;
     height: auto;
-    border-color: #dedede;
-    transition: all 0.3s ease-in 0s;
+    background-color: white;
+    -webkit-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
 }
 
-    .logindiv:hover {
-        border-radius: 10px;
-        border-color: var(--main-color);
-        transition: all 0.6s ease-in 0s;
+/* The slider itself */
+.slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 80%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background: var(--main-color); /* Green background */
     }
 
-/* Add a black background color to the top navigation */
+    .slider::-moz-range-thumb {
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        background: var(--main-color); /* Green background */
+    }
+
+.ratingdiv {
+    width: 100%;
+    text-align: center;
+    height: auto;
+    margin: 5px 5px 5px 5px;
+}
+
+.container{
+    padding-left: 5%;
+    padding-right: 5%
+}
+
+.floatingdiv3 {
+    padding: 5px;
+    width: 30%;
+    height: auto;
+    text-align: center;
+    height: auto;
+    z-index: 50;
+    display: normal;
+    float: left;
+    margin-top: 10%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+    height: auto;
+    background-color: white;
+    -webkit-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+}
+
+
+    .floatingdiv {
+        padding: 5px;
+        width: 20%;
+        height: auto;
+        text-align: center;
+        height: auto;
+        z-index: 50;
+        position: absolute;
+        top: 20%;
+        left: 40%;
+        height: auto;
+        background-color: white;
+        -webkit-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+        -moz-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+        box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    }
+
+.floatingdivhidden {
+    display: none;
+    padding: 5px;
+    width: 20%;
+    height: auto;
+    text-align: center;
+    height: auto;
+    z-index: 52;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    height: auto;
+    background-color: white;
+    -webkit-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+}
+
+.coverscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 51;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
 .topnav {
     background-color: white;
     position: fixed;
     width: 100%;
     margin-bottom: 10px;
-    -moz-box-shadow: 3px 0px 5px 5px #ccc;
-    -webkit-box-shadow: 3px 0px 5px 5px #ccc;
-    box-shadow: 3px 0px 5px 5px #ccc;
+    -webkit-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.3);
+    z-index: 2;
 }
 
-    /* Style the links inside the navigation bar */
-    .topnav a {
-        float: left;
-        color: dimgrey;
-        text-align: center;
-        padding: 10px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        transition: all 0.3s ease 0s;
-    }
-
-        /* Change the color of links on hover */
-        .topnav a:hover {
-            background-color: var(--main-color);
-            color: white;
+        .topnav a {
+            float: left;
+            color: dimgrey;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: all 0.3s ease 0s;
         }
 
-        /* Add a color to the active/current link */
-        .topnav a.active {
-            background-color: #5900ff;
-            color: white;
-        }
+            .topnav a:hover {
+                background-color: var(--main-color);
+                color: white;
+            }
 
-.topnav b {
-    float: right;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-        /* Change the color of links on hover */
-    .topnav b:hover {
-        background-color: #5900ff;
-        color: black;
-    }
-
-        /* Add a color to the active/current link */
-    .topnav b.active {
-        background-color: #5900ff;
-        color: white;
-    }
-
-.SpecialButton1 {
-    border-style: none;
-    border-color: inherit;
-    border-width: medium;
-    background-image: url('kfc.jpg');
-    color: white;
-    padding: 100px 100px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    z-index: 1;
-    left: 15px;
-    top: 330px;
-    position: absolute;
-    width: 203px;
-    height: 199px;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-    .SpecialButton1:after {
-        content: "";
-        display: block;
-        position: absolute;
-        padding-top: 300%;
-        padding-left: 350%;
-        margin-left: -20px !important;
-        margin-top: -120%;
-        opacity: 0;
-        transition: all 0.8s
-    }
-
-    .SpecialButton1:active:after {
-        padding: 0;
-        margin: 0;
-        opacity: 1;
-        transition: 0s
-    }
-
-    .SpecialButton1:hover {
-        background-color: purple;
-        color: purple;
-        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
-    }
-
-
-/* Add a card effect for articles */
-.card {
-    background-color: white;
-    /*padding: 20px;*/
-    margin-top: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Footer */
-.footer {
-    padding: 20px;
-    text-align: center;
-    background: #ddd;
-    margin-top: 20px;
-}
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-    .leftcolumn, .rightcolumn {
-        width: 100%;
-        padding: 0;
-    }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-    .topnav a {
-        float: none;
-        width: 100%;
-    }
-}
-
-.BKButton {
-    border-style: none;
-    border-color: inherit;
-    border-width: medium;
-    /*background-color: #4CAF50; /* Green */
-    background-image: url('bk.jpg');
-    color: white;
-    padding: 100px 100px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    z-index: 1;
-    left: 219px;
-    top: 184px;
-    position: absolute;
-    width: 192px;
-    height: 195px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-
-    .BKButton:after {
-        content: "";
-        background: #f1f1f1;
-        display: block;
-        position: absolute;
-        padding-top: 300%;
-        padding-left: 350%;
-        margin-left: -20px !important;
-        margin-top: -120%;
-        opacity: 0;
-        transition: all 0.8s
-    }
-
-    .BKButton:active:after {
-        padding: 0;
-        margin: 0;
-        opacity: 1;
-        transition: 0s
-    }
-
-    .BKButton:hover {
-        background-color: purple;
-        color: purple;
-        box-shadow: 0 12px 16px 0 purple, 0 17px 50px 0 purple;
-    }
+            /* Add a color to the active/current link */
+            .topnav a.active {
+                background-color: #5900ff;
+                color: white;
+            }

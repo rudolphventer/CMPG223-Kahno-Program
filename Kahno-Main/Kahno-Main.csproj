@@ -53,6 +53,7 @@
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -75,6 +76,7 @@
     <Content Include="Admin.aspx" />
     <Content Include="ConfirmationForm.aspx" />
     <Content Include="CreateRestaurantForm.aspx" />
+    <Content Include="EditMenuForm.aspx" />
     <Content Include="EditRestaurantForm.aspx" />
     <Content Include="EditUserInfoForm.aspx" />
     <Content Include="KahnoDB.mdf" />
@@ -120,6 +122,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataView.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EditMenuForm.aspx.cs">
+      <DependentUpon>EditMenuForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditMenuForm.aspx.designer.cs">
+      <DependentUpon>EditMenuForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditRestaurantForm.aspx.cs">
       <DependentUpon>EditRestaurantForm.aspx</DependentUpon>
