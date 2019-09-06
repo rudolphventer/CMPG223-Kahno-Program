@@ -36,7 +36,12 @@
                     <ItemStyle Width="200px" />
                     </asp:BoundField>
                     <asp:BoundField DataField="price" HeaderText="Price" SortExpression="price" DataFormatString="{0:C}" />
-                    <asp:BoundField DataField="itemImageUrl" HeaderText="itemImageUrl" SortExpression="itemImageUrl" />
+                    <asp:BoundField DataField="itemImageUrl" HeaderText="itemImageUrl" SortExpression="itemImageUrl" Visible="False" />
+                    <asp:TemplateField>
+            <ItemTemplate>
+                <img src='data:image/jpg;base64,<%# Eval("imgByte") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("imgByte")) : string.Empty %>' alt="image" height="100" width="200"/>
+            </ItemTemplate>
+        </asp:TemplateField>
                     <asp:BoundField DataField="restaurantID" HeaderText="restaurantID" SortExpression="restaurantID" Visible="False" />
                     <asp:CommandField ButtonType="Button" ShowDeleteButton="True" CausesValidation="False" />
                 
@@ -45,7 +50,7 @@
             </asp:GridView>
             <br />
             <button ID="Button2" class="fancyButton" type="button" onclick="openAddForm()" causesvalidation="False">Add new item</button>
-            <asp:SqlDataSource ID="MenuID" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT Description, price, itemImageUrl, itemName, restaurantID, ItemID FROM MENUITEM WHERE (restaurantID = @RID);" DeleteCommand="DELETE FROM MENUITEM WHERE (ItemID = @ItemID);" UpdateCommand="UPDATE MENUITEM SET Description = @Description, itemImageUrl = @itemImageUrl, itemName = @itemName, price = @price WHERE (ItemID = @ItemID)">
+            <asp:SqlDataSource ID="MenuID" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT Description, price, itemName, restaurantID, ItemID, imgByte FROM MENUITEM WHERE (restaurantID = @RID)" DeleteCommand="DELETE FROM MENUITEM WHERE (ItemID = @ItemID);" UpdateCommand="UPDATE MENUITEM SET Description = @Description, itemImageUrl = @itemImageUrl, itemName = @itemName, price = @price WHERE (ItemID = @ItemID)">
                 <DeleteParameters>
                     <asp:Parameter Name="ItemID" />
                 </DeleteParameters>
@@ -62,7 +67,7 @@
             </asp:SqlDataSource>
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            <asp:FileUpload ID="imgUpload" runat="server" />
+            
             </div>
 
     <div class="floatingdivhidden" id="newmenuitempopup">
@@ -85,10 +90,13 @@
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDescription" ErrorMessage="Required!"></asp:RequiredFieldValidator>
             
             <br />
+            <asp:FileUpload ID="imgUpload" runat="server" />
+        <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add new item" />
             <button ID="Buttonback" class="fancyButton" type="button" onclick="closeAddForm()" causesvalidation="False">Cancel</button>
             <br />
             <br />
+
     </div>
     <div id="coverscreen" class="coverscreen"></div>
 </asp:Content>

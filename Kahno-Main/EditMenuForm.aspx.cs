@@ -56,7 +56,7 @@ namespace Kahno_Main
                 imgByte = new Byte[File.ContentLength];
                 //force the control to load data in array
                 File.InputStream.Read(imgByte, 0, File.ContentLength);*/
-                KahnLib.addMenuItem(txtDescription.Text, price, null, txtItemName.Text, currentuser.restaurantno, File);
+                KahnLib.addMenuItem(txtDescription.Text, price, null, txtItemName.Text, currentRestaurant.restaurantID, File);
                 Response.Redirect("EditMenuForm.aspx");
 
             } 
