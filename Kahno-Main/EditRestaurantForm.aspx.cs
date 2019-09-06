@@ -43,9 +43,22 @@ namespace Kahno_Main
     protected void Button1_Click(object sender, EventArgs e)
             {
                 Session["temprname"] = TextBox1.Text;
-
-                if (KahnLib.UpdateRestaurantDetails(currentRestaurant.restaurantID, Session["temprname"].ToString(), TextBox2.Text) > 0)
+            FileUpload img = (FileUpload)imgUpload;
+            //Byte[] imgByte = null;
+            if (img.HasFile && img.PostedFile != null)
+            {
+                //To create a PostedFile
+                HttpPostedFile File = imgUpload.PostedFile;
+                /*//Create byte Array with file len
+                imgByte = new Byte[File.ContentLength];
+                //force the control to load data in array
+                File.InputStream.Read(imgByte, 0, File.ContentLength);*/
+                if (KahnLib.UpdateRestaurantDetails(currentRestaurant.restaurantID, Session["temprname"].ToString(), TextBox2.Text, File) > 0)
                     Label5.Text = "Successfully Updated!";
+                else
+                    Label5.Text = "Update not successful!";
+                Label5.Visible = true;
+            }
                 else
                     Label5.Text = "Update not successful!";
                 Label5.Visible = true;

@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Web.Security;
+using System.Web.UI.WebControls;
+
 
 namespace Kahno_Main
 {
@@ -169,10 +171,16 @@ namespace Kahno_Main
         }
 
         //Addmenuitem -- Kyle
-        public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID)
+        public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID, HttpPostedFile File)
         {
             SqlConnection conn = new SqlConnection(connectString);
-            
+            //harry
+            //Create byte Array with file len
+            Byte[] imgByte = null;
+
+            imgByte = new Byte[File.ContentLength];
+            //force the control to load data in array
+            File.InputStream.Read(imgByte, 0, File.ContentLength);
             try
             {
             
@@ -182,7 +190,7 @@ namespace Kahno_Main
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
                 //I think the itemID for each menu item should generate itself as it would be a primary key. 
-                string sqlAddItem = "INSERT INTO [MENUITEM] (Description, price, itemImageUrl, itemName, restaurantID) VALUES(@1, @2, @3, @4, @5)";
+                string sqlAddItem = "INSERT INTO [MENUITEM] (Description, price, itemImageUrl, itemName, restaurantID, imgByte) VALUES(@1, @2, @3, @4, @5, @imgByte)";
 
                 command = new SqlCommand(sqlAddItem, conn);
                 
@@ -191,6 +199,7 @@ namespace Kahno_Main
                 command.Parameters.AddWithValue("@3", "");
                 command.Parameters.AddWithValue("@4", itemName);
                 command.Parameters.AddWithValue("@5", restaurantID);
+                command.Parameters.AddWithValue("@imgByte", imgByte);
 
                 dataAdapter.InsertCommand = command;
                 //Does there need to be extra error handling over here?
@@ -386,18 +395,28 @@ namespace Kahno_Main
             }
         }
 
-        public static int UpdateRestaurantDetails(int id, string restaurantname, string phone)
+        public static int UpdateRestaurantDetails(int id, string restaurantname, string phone, HttpPostedFile File)
         {
+            //harry
+            //Create byte Array with file len
+            Byte[] imgByte = null;
+
+            imgByte = new Byte[File.ContentLength];
+            //force the control to load data in array
+            File.InputStream.Read(imgByte, 0, File.ContentLength);
+
+            //
             int rowsAffected = -1;
             SqlConnection conn = new SqlConnection(connectString);
 
-            string sql = "UPDATE [RESTAURANT] SET RestaurantName = @rname, phoneNumber = @phone where RestaurantID=@id";
+            string sql = "UPDATE [RESTAURANT] SET RestaurantName = @rname, phoneNumber = @phone, byteImg = @img where RestaurantID=@id";
 
             SqlCommand command = new SqlCommand(sql, conn);
             command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@rname", restaurantname);
             command.Parameters.AddWithValue("@phone", phone);
+            command.Parameters.AddWithValue("@img", imgByte);
 
             conn.Open();
             rowsAffected = command.ExecuteNonQuery();
@@ -510,5 +529,7 @@ namespace Kahno_Main
                 return false;
             }
         }
+
+        //public static 
     }
     }

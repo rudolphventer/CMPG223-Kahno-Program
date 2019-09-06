@@ -130,6 +130,15 @@ namespace Kahno_Main {
         protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
+        /// imgUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload imgUpload;
+        
+        /// <summary>
         /// btnResetCoordinates control.
         /// </summary>
         /// <remarks>

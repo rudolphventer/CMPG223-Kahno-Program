@@ -62,6 +62,7 @@
             </asp:SqlDataSource>
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
+            <asp:FileUpload ID="imgUpload" runat="server" />
             </div>
 
     <div class="floatingdivhidden" id="newmenuitempopup">
