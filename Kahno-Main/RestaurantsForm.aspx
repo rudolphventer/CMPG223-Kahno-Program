@@ -13,10 +13,10 @@
 </div>
 
 
-<div class="floatingdiv">    
+<div class="floatingdiv" style="width: 90%">    
     <h1>Restaurants</h1> 
     
-       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="310px">
+       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="379px">
            <Columns>
                <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" Visible="False" />
                <asp:BoundField DataField="RestaurantName" SortExpression="RestaurantName" >
@@ -26,11 +26,13 @@
                <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
                         <asp:Button class="addbutton" ID="lnkSelect" Text="Select Restaurant" runat="server" CommandArgument='<%# Eval("RestaurantID") %>' OnClick="lnkSelect_Click"/>
-                    </ItemTemplate>
+                   </ItemTemplate>
                </asp:TemplateField>
+               <asp:ImageField ReadOnly="True" HeaderText="Image">
+               </asp:ImageField>
            </Columns>
        </asp:GridView>
-       <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RestaurantID], [RestaurantName] FROM [RESTAURANT]"></asp:SqlDataSource>
+       <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RestaurantID], [RestaurantName], [byteImg] FROM [RESTAURANT]"></asp:SqlDataSource>
     </p>
 </div>
 

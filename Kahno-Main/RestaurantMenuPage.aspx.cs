@@ -33,6 +33,11 @@ namespace Kahno_Main
             Session["itemId"] = ItemID;
             Session["orderCount" + Session["itemId"]] = (Convert.ToInt32(Session["orderCount" + Session["itemId"]]) + 1).ToString();
 
+            //testing gridview insert
+            //GridView1
+
+            //use itemId to request information from DB to get back the whole item 
+            Label1.Text = (ItemID).ToString();
         }
 
         protected void RemoveFromOrder(object sender, EventArgs e)
@@ -42,6 +47,16 @@ namespace Kahno_Main
             Session["itemId"] = ItemID;
             Session["orderCount" + Session["itemId"]] = (Convert.ToInt32(Session["orderCount" + Session["itemId"]]) - 1).ToString();
 
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ConfirmationForm.aspx");
         }
     }
 }

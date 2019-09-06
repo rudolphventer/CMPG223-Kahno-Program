@@ -45,9 +45,21 @@ namespace Kahno_Main
         protected void Button1_Click(object sender, EventArgs e)
         {
             double price;
-            double.TryParse(txtPrice.Text, out price);
-            KahnLib.addMenuItem(txtDescription.Text, price, null, txtItemName.Text, currentuser.restaurantno);
-            Response.Redirect("EditMenuForm.aspx");
+            double.TryParse(txtPrice.Text, out price);        
+            FileUpload img = (FileUpload)imgUpload;
+            //Byte[] imgByte = null;
+            if (img.HasFile && img.PostedFile != null)
+            {
+                //To create a PostedFile
+                HttpPostedFile File = imgUpload.PostedFile;
+                /*//Create byte Array with file len
+                imgByte = new Byte[File.ContentLength];
+                //force the control to load data in array
+                File.InputStream.Read(imgByte, 0, File.ContentLength);*/
+                KahnLib.addMenuItem(txtDescription.Text, price, null, txtItemName.Text, currentuser.restaurantno, File);
+                Response.Redirect("EditMenuForm.aspx");
+
+            } 
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

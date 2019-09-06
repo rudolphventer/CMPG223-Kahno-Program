@@ -66,7 +66,9 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style6">
+                <asp:FileUpload ID="imgUpload" runat="server" />
+            </td>
             <td>
                 <asp:Button ID="btnResetCoordinates" OnClientClick="getLocation();return false;" runat="server" Text="Reset Co-ordinates" />
             </td>
