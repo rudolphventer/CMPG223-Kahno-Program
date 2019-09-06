@@ -8,31 +8,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="floatingdiv" style="width: 80%; left: 10%; display:none;">
-
-        
-        <table style="width: 100%;">
-            <tr>
-                <td>
-        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-                </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-
-        </div>
     <div class="floatingdiv3">
         <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         </div>
@@ -43,10 +18,10 @@
                 <asp:BoundField DataField="Expr1" HeaderText="Expr1" ReadOnly="True" SortExpression="Expr1" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT AVG(CUSTOMERFEEDBACK.UserFeedbackScore) AS Expr1 FROM CUSTOMERFEEDBACK INNER JOIN [ORDER] ON CUSTOMERFEEDBACK.OrderID = [ORDER].OrderNumber WHERE ([ORDER].restaurantID = @RID)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT AVG(CUSTOMERFEEDBACK.UserFeedbackScore) AS Expr1 FROM CUSTOMERFEEDBACK INNER JOIN [ORDER] ON CUSTOMERFEEDBACK.OrderID = [ORDER].OrderNumber WHERE ([ORDER].restaurantID = @RestaurantID)">
             <SelectParameters>
-                <asp:Parameter Name="RID" />
+                <asp:SessionParameter DefaultValue="0" Name="RestaurantID" SessionField="RID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-        </div>
+        testtest</div>
 </asp:Content>

@@ -35,8 +35,9 @@ namespace Kahno_Main
             KahnLib.getRestaurant(currentuser.restaurantno, ref currentRestaurant);
             Session["currentRestaurant"] = currentRestaurant;
             //////////////
-            Label3.Text = "Welcome " + currentuser.fname + " Your restaurant is " + currentRestaurant.restaurantname;
-            Session["RID"] = currentuser.restaurantno;
+            //Label3.Text = "Welcome " + currentuser.fname + " Your restaurant is " + currentRestaurant.restaurantname + currentuser.restaurantno + (Int32)Session["RID"];
+            
+            Label3.Text = "Welcome " + currentuser.fname + " Your restaurant is " + currentRestaurant.restaurantname + currentuser.restaurantno + (Int32)Session["RID"];
 
         }
 

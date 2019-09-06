@@ -8,7 +8,7 @@
     </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
             <p>&nbsp;</p>
-<div class="logindiv">
+<div class="floatingdiv">
                 <br />
                 <h3>Register</h3>
                         <asp:Label ID="Label1" runat="server" Text="First Name"></asp:Label>

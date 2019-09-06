@@ -22,7 +22,11 @@ namespace Kahno_Main
             {
                 Session["localuser"] = authuser;
                 if (authuser.isowner == "y")
+                {
+                    Session["RID"] = authuser.restaurantno;
                     Response.Redirect("Admin.aspx");
+                }
+                    
                 else
                     Response.Redirect("UserHome.aspx");
                 //Label5.Text = authuser.ToString();
@@ -34,7 +38,7 @@ namespace Kahno_Main
                 
             }
 
-
+            
         }
 
         protected void TextBox1_TextChanged(object sender, EventArgs e)
