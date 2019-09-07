@@ -12,56 +12,43 @@
         <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         <br />
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" GridLines="None" width="100%">
-            <Columns>
-                <asp:TemplateField>
-            <ItemTemplate>
-                <img src='data:image/jpg;base64,<%# Eval("byteImg") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("byteImg")) : string.Empty %>' alt="image" height="100" width="200"/>
-            </ItemTemplate>
-        </asp:TemplateField>
-                <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" Visible="False" />
-            </Columns>
 
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT [RestaurantID], [byteImg] FROM [RESTAURANT] WHERE ([RestaurantID] = @RestaurantID)">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT byteImg FROM RESTAURANT WHERE (RestaurantID = @RestaurantID)">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="0" Name="RestaurantID" SessionField="RID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
         </div>
     <div class="floatingdiv3">
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT [ORDER].OrderDate, RESTAURANT.RestaurantName AS Restaurant, MENUITEM.itemName AS Item, ORDERDETAIL.PricePaidPerItem AS [Price Paid], ORDERDETAIL.Quantity, RESTAURANT.RestaurantID FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderDetailID = ORDERDETAIL.OrderDetailID INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE (RESTAURANT.RestaurantID = @RID)">
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT MENUITEM.itemName, ORDERDETAIL.Quantity, ORDERDETAIL.PricePaidPerItem FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE (RESTAURANT.RestaurantID = @RID)">
                                <SelectParameters>
                                    <asp:SessionParameter DefaultValue="0" Name="RID" SessionField="RID" />
                                </SelectParameters>
                            </asp:SqlDataSource>
 
         <br />
-  <h3>Recent Orders</h3><asp:GridView ID="GridView3" runat="server" AllowPaging="True" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" GridLines="None" Width="100%" Style="display: block; margin:auto;" CaptionAlign="Left" DataKeyNames="RestaurantID">
+  <h3>Recent Orders</h3><asp:GridView ID="GridView3" runat="server" AllowPaging="True" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" GridLines="None" Width="100%" Style="display: block; margin:auto;" CaptionAlign="Left">
                                <Columns>
-                                   <asp:BoundField DataField="OrderDate" HeaderText="Date" SortExpression="OrderDate" >
-                                   <ItemStyle Width="25%" />
+                                   <asp:BoundField DataField="itemName" HeaderText="itemName" SortExpression="itemName" >
                                    </asp:BoundField>
-                                   <asp:BoundField DataField="Restaurant" HeaderText="Restaurant" SortExpression="Restaurant" Visible="False" />
-                                   <asp:BoundField DataField="Item" HeaderText="Item" SortExpression="Item" />
-                                   <asp:BoundField DataField="Price Paid" HeaderText="Price Paid" SortExpression="Price Paid" />
                                    <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
-                                   <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" Visible="False" />
+                                   <asp:BoundField DataField="PricePaidPerItem" HeaderText="PricePaidPerItem" SortExpression="PricePaidPerItem" />
                                </Columns>
                                <RowStyle BorderStyle="None" />
                            </asp:GridView>
                            </div>
     <div class="floatingdiv3" style="align-items: center; text-align:center;">
   <h3>Reports</h3>
-        <asp:GridView ID="GridView1" runat="server" style="width: 100%" ShowHeaderWhenEmpty="true" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" GridLines="None">
+        <asp:GridView ID="GridView1" runat="server" style="width: 100%" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" GridLines="None">
             <Columns>
-                <asp:BoundField DataField="Expr1" HeaderText="Average Rating" ReadOnly="True" SortExpression="Expr1" />
+                <asp:BoundField DataField="Expr1" HeaderText="Average Customer Rating" ReadOnly="True" SortExpression="Expr1" />
             </Columns>
             <EmptyDataTemplate>0</EmptyDataTemplate>
         </asp:GridView>
         <asp:GridView ID="GridView5" runat="server" style="width: 100%" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource5" GridLines="None" OnSelectedIndexChanged="GridView4_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="Expr1" HeaderText="Orders Today" NullDisplayText="0" ReadOnly="True" SortExpression="Expr1" DataFormatString="{0:d}" />
-                <asp:BoundField DataField="restaurantID" HeaderText="restaurantID" SortExpression="restaurantID" Visible="False" />
+                <asp:BoundField DataField="Expr1" HeaderText="Orders Today" ReadOnly="True" SortExpression="Expr1" />
             </Columns>
             <EmptyDataTemplate>0</EmptyDataTemplate>
         </asp:GridView>
@@ -77,7 +64,7 @@
             </Columns>
             <EmptyDataTemplate>0</EmptyDataTemplate>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT ORDERDETAIL.PricePaidPerItem AS Expr1 FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderDetailID = ORDERDETAIL.OrderDetailID WHERE ([ORDER].restaurantID = @RID) AND ([ORDER].OrderDate &gt; DATEADD(day, - 7, GETDATE()))">
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT ORDERDETAIL.PricePaidPerItem AS Expr1 FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber WHERE ([ORDER].restaurantID = @RID) AND ([ORDER].OrderDate &gt; DATEADD(day, - 7, GETDATE()))">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="0" Name="RID" SessionField="RID" />
             </SelectParameters>
