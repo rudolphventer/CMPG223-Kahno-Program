@@ -12,6 +12,13 @@
         <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         <br />
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" GridLines="None" width="100%">
+            <Columns>
+                <asp:TemplateField>
+            <ItemTemplate>
+                <img src='data:image/jpg;base64,<%# Eval("byteImg") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("byteImg")) : string.Empty %>' alt="image" height="100" width="200"/>
+            </ItemTemplate>
+        </asp:TemplateField>
+            </Columns>
 
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT byteImg FROM RESTAURANT WHERE (RestaurantID = @RestaurantID)">
@@ -21,22 +28,21 @@
         </asp:SqlDataSource>
         </div>
     <div class="floatingdiv3">
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT MENUITEM.itemName, ORDERDETAIL.Quantity, ORDERDETAIL.PricePaidPerItem FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE (RESTAURANT.RestaurantID = @RID)">
+  <h3>Recent Orders</h3><asp:GridView ID="GridView3" runat="server" AllowPaging="True" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" GridLines="None" Width="100%" CaptionAlign="Left">
+                               <Columns>
+                                   <asp:BoundField DataField="Item" HeaderText="Item" SortExpression="Item" >
+                                   </asp:BoundField>
+                                   <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
+                                   <asp:BoundField DataField="Price Paid Per Item" HeaderText="Price Paid Per Item" SortExpression="Price Paid Per Item" />
+                               </Columns>
+                               <RowStyle BorderStyle="None" />
+                           </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT MENUITEM.itemName AS Item, ORDERDETAIL.Quantity, ORDERDETAIL.PricePaidPerItem AS [Price Paid Per Item] FROM [ORDER] LEFT OUTER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE (RESTAURANT.RestaurantID = @RID)">
                                <SelectParameters>
                                    <asp:SessionParameter DefaultValue="0" Name="RID" SessionField="RID" />
                                </SelectParameters>
                            </asp:SqlDataSource>
 
-        <br />
-  <h3>Recent Orders</h3><asp:GridView ID="GridView3" runat="server" AllowPaging="True" DataSourceID="SqlDataSource3" AutoGenerateColumns="False" GridLines="None" Width="100%" Style="display: block; margin:auto;" CaptionAlign="Left">
-                               <Columns>
-                                   <asp:BoundField DataField="itemName" HeaderText="itemName" SortExpression="itemName" >
-                                   </asp:BoundField>
-                                   <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
-                                   <asp:BoundField DataField="PricePaidPerItem" HeaderText="PricePaidPerItem" SortExpression="PricePaidPerItem" />
-                               </Columns>
-                               <RowStyle BorderStyle="None" />
-                           </asp:GridView>
                            </div>
     <div class="floatingdiv3" style="align-items: center; text-align:center;">
   <h3>Reports</h3>

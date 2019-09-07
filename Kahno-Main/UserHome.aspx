@@ -44,18 +44,18 @@
     </div>
     <div class="floatingdiv3">
 
-                           <h3>My Order History<asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" GridLines="None" Width="100%" Style="display: block; margin:auto;" CaptionAlign="Left">
+                           <h3>My Order History<asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" GridLines="None" Width="100%" CaptionAlign="Left">
                                <Columns>
-                                   <asp:BoundField DataField="itemName" HeaderText="Item" SortExpression="itemName" />
-                                   <asp:BoundField DataField="RestaurantName" HeaderText="Restaurant" SortExpression="RestaurantName" />
+                                   <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" />
                                    <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
-                                   <asp:BoundField DataField="PricePaidPerItem" HeaderText="Price Per Item" SortExpression="PricePaidPerItem" />
+                                   <asp:BoundField DataField="Price Paid Per Item" HeaderText="Price Paid Per Item" SortExpression="Price Paid Per Item" />
+                                   <asp:BoundField DataField="Item" HeaderText="Item" SortExpression="Item" />
                                </Columns>
                                <RowStyle BorderStyle="None" />
                            </asp:GridView>
-                               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT MENUITEM.itemName, RESTAURANT.RestaurantName, ORDERDETAIL.Quantity, ORDERDETAIL.PricePaidPerItem FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE ([ORDER].userID = @UID)">
+                               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT [ORDER].OrderDate AS Date, ORDERDETAIL.Quantity, ORDERDETAIL.PricePaidPerItem AS [Price Paid Per Item], MENUITEM.itemName AS Item FROM MENUITEM INNER JOIN ORDERDETAIL ON MENUITEM.ItemID = ORDERDETAIL.ItemNumber RIGHT OUTER JOIN [ORDER] ON ORDERDETAIL.OrderNumber = [ORDER].OrderNumber WHERE ([ORDER].userID = @UserID)">
                                    <SelectParameters>
-                                       <asp:SessionParameter DefaultValue="0" Name="UID" SessionField="UserID" />
+                                       <asp:SessionParameter DefaultValue="0" Name="UserID" SessionField="UID" />
                                    </SelectParameters>
                                </asp:SqlDataSource>
                            </h3>
