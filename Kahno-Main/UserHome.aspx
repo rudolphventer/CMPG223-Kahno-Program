@@ -67,9 +67,11 @@
     </div>
     <div class="floatingdiv3">
 
-                           <h3>My Order History<asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" GridLines="None" Width="500px" Style="display: block; margin:auto;" CaptionAlign="Left">
+                           <h3>My Order History<asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="SqlDataSource1" AutoGenerateColumns="False" GridLines="None" Width="100%" Style="display: block; margin:auto;" CaptionAlign="Left">
                                <Columns>
-                                   <asp:BoundField DataField="OrderDate" HeaderText="Date" SortExpression="OrderDate" />
+                                   <asp:BoundField DataField="OrderDate" HeaderText="Date" SortExpression="OrderDate" >
+                                   <ItemStyle Width="20%" />
+                                   </asp:BoundField>
                                    <asp:BoundField DataField="Restaurant" HeaderText="Restaurant" SortExpression="Restaurant" />
                                    <asp:BoundField DataField="Item" HeaderText="Item" SortExpression="Item" />
                                    <asp:BoundField DataField="Price Paid" HeaderText="Price Paid" SortExpression="Price Paid" />

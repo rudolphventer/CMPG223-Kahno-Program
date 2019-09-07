@@ -65,11 +65,12 @@
                     <asp:Parameter Name="ItemID" />
                 </UpdateParameters>
             </asp:SqlDataSource>
+            <br />
+        <br />
+            <br />
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            
             </div>
-
     <div class="floatingdivhidden" id="newmenuitempopup">
             <h3>Add a new menu item</h3>
             Name:
@@ -96,7 +97,7 @@
             <button ID="Buttonback" class="fancyButton" type="button" onclick="closeAddForm()" causesvalidation="False">Cancel</button>
             <br />
             <br />
-
+        
     </div>
     <div id="coverscreen" class="coverscreen"></div>
 </asp:Content>
