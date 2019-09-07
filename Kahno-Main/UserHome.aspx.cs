@@ -35,6 +35,7 @@ namespace Kahno_Main
             if(KahnLib.ratingUpToDate(currentuser.userid))
             {
                 ratingdiv.Visible = false;
+                Label3.Text = "Your ratings are up to date!";
             }
         }
 

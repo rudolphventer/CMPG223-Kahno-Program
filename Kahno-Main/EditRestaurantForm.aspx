@@ -60,15 +60,20 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6"></td>
+            <td class="auto-style6">&nbsp;</td>
             <td>
                 <asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
             </td>
         </tr>
         <tr>
             <td class="auto-style6">
-                <asp:FileUpload ID="imgUpload" runat="server" />
+                &nbsp;</td>
+            <td>
+                <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif"/>
             </td>
+        </tr>
+        <tr>
+            <td class="auto-style7">&nbsp;</td>
             <td>
                 <asp:Button ID="btnResetCoordinates" OnClientClick="getLocation();return false;" runat="server" Text="Reset Co-ordinates" />
             </td>
