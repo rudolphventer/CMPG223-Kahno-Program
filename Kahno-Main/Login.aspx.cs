@@ -21,9 +21,11 @@ namespace Kahno_Main
             if (KahnLib.Login(TextBox1.Text, KahnLib.HashPass(TextBox2.Text), ref authuser))
             {
                 Session["localuser"] = authuser;
+                Session["UID"] = authuser.userid;
                 if (authuser.isowner == "y")
                 {
                     Session["RID"] = authuser.restaurantno;
+                    
                     Response.Redirect("Admin.aspx");
                 }
                     
@@ -37,7 +39,6 @@ namespace Kahno_Main
                 Label4.Visible = true;
                 
             }
-
             
         }
 

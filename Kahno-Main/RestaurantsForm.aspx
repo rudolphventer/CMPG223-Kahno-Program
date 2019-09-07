@@ -11,29 +11,30 @@
     <div class="header">     
          
 </div>
-
-
-<div class="floatingdiv" style="width: 90%">    
-    <h1>Restaurants</h1> 
+  
     
-       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="379px">
+    <div class="floatingdiv">
+        <h2>Select a restaurant</h2>
+       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%">
            <Columns>
                <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" Visible="False" />
-               <asp:BoundField DataField="RestaurantName" SortExpression="RestaurantName" >
+               <asp:BoundField DataField="RestaurantName" SortExpression="RestaurantName" Visible="false">
                <HeaderStyle Width="10%" />
                <ItemStyle Width="40%" />
                </asp:BoundField>
+               <asp:TemplateField>
+            <ItemTemplate>
+                <img src='data:image/jpg;base64,<%# Eval("byteImg") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("byteImg")) : string.Empty %>' alt="image" height="100" width="200"/>
+            </ItemTemplate>
+        </asp:TemplateField>
                <asp:TemplateField ShowHeader="False">
                    <ItemTemplate>
-                        <asp:Button class="addbutton" ID="lnkSelect" Text="Select Restaurant" runat="server" CommandArgument='<%# Eval("RestaurantID") %>' OnClick="lnkSelect_Click"/>
+                        <asp:Button class="fancybutton" ID="lnkSelect" Text="Order Now" runat="server" CommandArgument='<%# Eval("RestaurantID") %>' OnClick="lnkSelect_Click"/>
                    </ItemTemplate>
                </asp:TemplateField>
-               <asp:ImageField ReadOnly="True" HeaderText="Image">
-               </asp:ImageField>
            </Columns>
        </asp:GridView>
-       <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [RestaurantID], [RestaurantName], [byteImg] FROM [RESTAURANT]"></asp:SqlDataSource>
-    </p>
-</div>
+        </div>
+       <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT [RestaurantID], [RestaurantName], [byteImg] FROM [RESTAURANT]"></asp:SqlDataSource>
 
 </asp:Content>

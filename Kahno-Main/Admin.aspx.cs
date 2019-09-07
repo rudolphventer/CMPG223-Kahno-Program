@@ -37,12 +37,17 @@ namespace Kahno_Main
             //////////////
             //Label3.Text = "Welcome " + currentuser.fname + " Your restaurant is " + currentRestaurant.restaurantname + currentuser.restaurantno + (Int32)Session["RID"];
             
-            Label3.Text = "Welcome " + currentuser.fname + " Your restaurant is " + currentRestaurant.restaurantname + currentuser.restaurantno + (Int32)Session["RID"];
+            Label3.Text = "Welcome " + currentuser.fname + ", owner of " + currentRestaurant.restaurantname + " with restaurant ID: " + (Int32)Session["RID"];
 
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+        }
+
+        protected void GridView4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

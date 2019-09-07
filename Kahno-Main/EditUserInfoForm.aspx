@@ -97,8 +97,7 @@
                      </tr>
                      <tr>
                          <td class="auto-style4">&nbsp;</td>
-                         <td class="auto-style5">
-                         &nbsp;
+                         <td>
                              <asp:Button ID="btnCoordinate" OnClientClick="getLocation();return false;" runat="server" Text="Refresh Coordinates" OnClick="btnCoordinate_Click" />
                              </td>
                      </tr>
