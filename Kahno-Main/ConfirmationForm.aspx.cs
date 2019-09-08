@@ -11,14 +11,14 @@ namespace Kahno_Main
 {
     public partial class ConfirmationForm : System.Web.UI.Page
     {
+        KahnoUser user = new KahnoUser();
         KahnoRestaurant restaurant = new KahnoRestaurant();
-        KahnoUser userPull = new KahnoUser();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            KahnoUser userPull = new KahnoUser();
             try
             {
-                restaurant = (KahnoRestaurant)Session["currentRestaurant"];
                 userPull = (KahnoUser)Session["localuser"];
                 if (userPull.userid == 0)
                     Response.Redirect("Login.aspx");
@@ -64,14 +64,16 @@ namespace Kahno_Main
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-           
+            restaurant = (KahnoRestaurant)Session["currentRestaurant"];
+
 
             DateTime time = DateTime.Now;             
             string format = "yyyy-MM-dd HH:mm:ss";
             string finaltime = time.ToString(format);
 
-           
-            int user1 = userPull.userid;
+            user = (KahnoUser)Session["localuser"];
+
+            int user1 = Convert.ToInt32(user.userid);
 
             int restaurantSend = restaurant.restaurantID;
 
