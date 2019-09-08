@@ -12,6 +12,8 @@ namespace Kahno_Main
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["localuser"] = null;
+            byte[] test = null;
+            System.Diagnostics.Debug.WriteLine("test "+Convert.ToString(test));
         }
 
         protected void Button1_Click(object sender, EventArgs e)
