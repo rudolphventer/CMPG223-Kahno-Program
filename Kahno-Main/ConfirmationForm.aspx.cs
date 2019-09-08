@@ -13,6 +13,7 @@ namespace Kahno_Main
     {
         KahnoUser user = new KahnoUser();
         KahnoRestaurant restaurant = new KahnoRestaurant();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             KahnoUser userPull = new KahnoUser();
@@ -63,14 +64,16 @@ namespace Kahno_Main
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-           
+            restaurant = (KahnoRestaurant)Session["currentRestaurant"];
+
 
             DateTime time = DateTime.Now;             
             string format = "yyyy-MM-dd HH:mm:ss";
             string finaltime = time.ToString(format);
 
-           
-            int user1 = user.userid;
+            user = (KahnoUser)Session["localuser"];
+
+            int user1 = Convert.ToInt32(user.userid);
 
             int restaurantSend = restaurant.restaurantID;
 
