@@ -48,9 +48,13 @@ namespace Kahno_Main
 
             if (KahnLib.UpdateUserDetails(currentuser.userid, Session["tempfname"].ToString(), TextBox2.Text, TextBox3.Text, TextBox4.Text) > 0)
             {
-                Label5.Text = "Successfully Updated!";
+                if(KahnLib.updateCoordinateDetails(currentuser.userid, Convert.ToDouble(txtLongitude.Text), Convert.ToDouble(txtLatitude.Text)) > 0)
+                {
+                    Label5.Text = "Successfully Updated!";
 
-                Response.Redirect("Login.aspx");
+                    Response.Redirect("Login.aspx");
+                }
+                
             }
             else
                 Label5.Text = "Update not successful!";
