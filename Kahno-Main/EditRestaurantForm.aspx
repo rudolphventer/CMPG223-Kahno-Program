@@ -13,6 +13,12 @@
 
 
 
+        .auto-style4 {
+            height: 45px;
+        }
+
+
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -66,10 +72,11 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style6">
-                &nbsp;</td>
-            <td>
-                <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif"/>
+            <td class="auto-style4">
+                </td>
+            <td class="auto-style4">
+                <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif" Visible="False"/>
+                <br />
             </td>
         </tr>
         <tr>

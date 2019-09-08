@@ -31,6 +31,7 @@
      <a runat="server" id="myaccountbutton" style="float: right" href="EditUserInfoForm.aspx">My Account</a>
      <a runat="server" id="editrestaurant" style="float: right" href="EditRestaurantForm.aspx">Restaurant Details</a>
      <a runat="server" id="editmenuform" style="float: right" href="EditMenuForm.aspx">Edit Menu</a>
+     <a runat="server" id="recieveorders" style="float: right" href="RecieveOrders.aspx">RecieveOrders</a>
 
     </div>
             

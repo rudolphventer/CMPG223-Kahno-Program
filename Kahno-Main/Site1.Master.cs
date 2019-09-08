@@ -20,6 +20,7 @@ namespace Kahno_Main
             logoutbutton.Visible = false;
             editrestaurant.Visible = false;
             editmenuform.Visible = false;
+            recieveorders.Visible = false;
 
 
             if (Session["localuser"] != null)
@@ -35,6 +36,7 @@ namespace Kahno_Main
                     logoutbutton.Visible = true;
                     editrestaurant.Visible = true;
                     editmenuform.Visible = true;
+                    recieveorders.Visible = true;
 
                 }
                 else

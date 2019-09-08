@@ -348,8 +348,16 @@ namespace Kahno_Main
         //imagetobytes -- Harry
 
         //addrestaurant -- Rudolph
-        public static int NewRestaurant(string name, string phone, double latitude, double longitude)
+        public static int NewRestaurant(string name, string phone, double latitude, double longitude, HttpPostedFile File)
         {
+            //harry
+            //Create byte Array with file len
+            Byte[] imgByte = null;
+
+            imgByte = new Byte[File.ContentLength];
+            //force the control to load data in array
+            File.InputStream.Read(imgByte, 0, File.ContentLength);
+
             //returns true if restaurant is created successfully
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
@@ -370,7 +378,7 @@ namespace Kahno_Main
                 try
                 {
                     //creating new restaurant in db
-                    string insert_restaurant = "INSERT INTO [RESTAURANT] (phoneNumber, RestaurantName, CoordinatesID) VALUES(@phoneNumber, @name, @CoordinateID)";
+                    string insert_restaurant = "INSERT INTO [RESTAURANT] (phoneNumber, RestaurantName, CoordinatesID, byteImg) VALUES(@phoneNumber, @name, @CoordinateID, @img)";
                     string insert_coordinates = "INSERT INTO [COORDINATE] (longitude, latitude) VALUES(@longitude, @latitude)";
                     string getlastcoordinateID = "SELECT TOP 1 * FROM COORDINATE ORDER BY CoordinateID DESC";
                     string getlastrestaurantID = "SELECT TOP 1 * FROM [RESTAURANT] ORDER BY RestaurantID DESC";
@@ -402,6 +410,7 @@ namespace Kahno_Main
                     comm.Parameters.AddWithValue("@name", name);
                     comm.Parameters.AddWithValue("@phoneNumber", phone);
                     comm.Parameters.AddWithValue("@CoordinateID", coordsID);
+                    comm.Parameters.AddWithValue("@img", imgByte);
                     comm.ExecuteNonQuery();
                     con.Close();
                     //closing as true
@@ -504,14 +513,20 @@ namespace Kahno_Main
             SqlDataReader drquery = commquery.ExecuteReader();
             drquery.Read();
 
-
-            if (drquery.HasRows)
+            try
+            {
+                if (drquery.HasRows || drquery.GetValue(0) == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
             {
                 return true;
-            }
-            else
-            {
-                return false;
             }
         }
 

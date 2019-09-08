@@ -33,11 +33,7 @@
         width: 12px;
         height: 26px;
     }
-        .auto-style13 {
-            float: left;
-            height: 22px;
-        }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -102,6 +98,18 @@
                     <td class="auto-style4">
 
 <asp:Button ID="Button2" OnClientClick="getLocation();return false;" runat="server" Text="Get Coordinates" OnClick="Button1_Click" Width="163px" />
+
+
+                    </td>
+                    <td class="auto-style1">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style11">&nbsp;</td>
+                    <td class="auto-style4">
+                        Upload an image for your website<br />
+                <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif"/>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="imgUpload" ErrorMessage="Image required!"></asp:RequiredFieldValidator>
+                        <br />
 
 
                     </td>

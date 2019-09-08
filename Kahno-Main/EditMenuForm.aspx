@@ -93,6 +93,8 @@
             <br />
             <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif"/>
         <br />
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="imgUpload" ErrorMessage="Image required!"></asp:RequiredFieldValidator>
+        <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Add new item" />
             <button ID="Buttonback" class="fancyButton" type="button" onclick="closeAddForm()" causesvalidation="False">Cancel</button>
             <br />

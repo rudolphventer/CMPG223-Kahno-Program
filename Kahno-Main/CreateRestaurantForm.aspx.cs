@@ -34,7 +34,17 @@ namespace Kahno_Main
 
         protected void Register_Click(object sender, EventArgs e)
         {
-            int RID = KahnLib.NewRestaurant(TextBox1.Text, TextBox4.Text, double.Parse(TextBox7.Text), double.Parse(TextBox8.Text));
+            FileUpload img = (FileUpload)imgUpload;
+            //Byte[] imgByte = null;
+            int RID = 0;
+            if (img.HasFile && img.PostedFile != null)
+            {
+                HttpPostedFile File = imgUpload.PostedFile;
+                RID = KahnLib.NewRestaurant(TextBox1.Text, TextBox4.Text, double.Parse(TextBox7.Text), double.Parse(TextBox8.Text), File);
+
+            }
+
+            
             if (RID > 0)
             {
                 KahnLib.AssignRestaurant(RID, currentuser.userid);
