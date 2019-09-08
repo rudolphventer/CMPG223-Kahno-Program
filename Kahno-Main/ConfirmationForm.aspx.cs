@@ -11,10 +11,11 @@ namespace Kahno_Main
 {
     public partial class ConfirmationForm : System.Web.UI.Page
     {
-        KahnoUser userPull = new KahnoUser();
+        KahnoUser user = new KahnoUser();
+        KahnoRestaurant restaurant = new KahnoRestaurant();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            KahnoUser userPull = new KahnoUser();
             try
             {
                 userPull = (KahnoUser)Session["localuser"];
@@ -68,12 +69,15 @@ namespace Kahno_Main
             string format = "yyyy-MM-dd HH:mm:ss";
             string finaltime = time.ToString(format);
 
+           
+            int user1 = user.userid;
+
+            int restaurantSend = restaurant.restaurantID;
+
             //insert into db first then get orderNumber 
-            KahnLib.InsertOrder(finaltime);
+            KahnLib.InsertOrder(finaltime, user1, restaurantSend);
 
             int orderNumber = KahnLib.getOrderNumber();
-
-
 
             List<int> CurrentCart = new List<int>();
             List<int> CurrentCartQuantity = new List<int>();

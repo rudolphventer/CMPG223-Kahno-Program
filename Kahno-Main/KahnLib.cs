@@ -194,13 +194,9 @@ namespace Kahno_Main
             }
         }
 
-        public static void InsertOrder(string time)
+        public static void InsertOrder(string time, int user, int restaurant)
         {
-            KahnoUser user = new KahnoUser();
-            int user1 = user.userid;
-
-            KahnoRestaurant restaurant = new KahnoRestaurant();
-            int restaurantSend = restaurant.restaurantID;
+            
 
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
@@ -212,7 +208,7 @@ namespace Kahno_Main
             //comm.Parameters.AddWithValue("@user", userId);
             comm.Parameters.AddWithValue("@date", time);
             comm.Parameters.AddWithValue("@useriden", user);
-            comm.Parameters.AddWithValue("@restaurant", restaurantSend);
+            comm.Parameters.AddWithValue("@restaurant", restaurant);
             comm.ExecuteNonQuery();
             con.Close();
             comm.Dispose();
