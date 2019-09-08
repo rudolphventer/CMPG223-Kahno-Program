@@ -29,6 +29,25 @@ namespace Kahno_Main
             Response.Redirect("ConfirmationForm.aspx");
         }
 
+        public static string getOrder(int id, int qty)
+        {
+            string final = "";
+
+            string connectString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30";
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sql = "SELECT itemId, price, itemName FROM [MENUITEM] WHERE ItemId =" + id;
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                final = dr.GetValue(0).ToString() + " " + dr.GetValue(2).ToString() + " : R" + dr.GetDecimal(1).ToString() + " " + qty;
+            }
+
+            return final;
+        }
         protected void addToOrder(object sender, EventArgs e)
         {
             int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
@@ -49,44 +68,61 @@ namespace Kahno_Main
             {
                 final = dr.GetValue(0).ToString() + " " + dr.GetValue(2).ToString() + " : R" + dr.GetDecimal(1).ToString() + " ";
             }
-            
+
+            Console.WriteLine("Final " + final);
+
             Session["itemId"] = ItemID;
             Session["orderCount" + Session["itemId"]] = (Convert.ToInt32(Session["orderCount" + Session["itemId"]]) + 1).ToString();
 
             List<int> CurrentCart = new List<int>();
             List<int> CurrentCartQuantity = new List<int>();
 
-            try
+
+
+
+
+            if(Session["list"] != null && Session["CartQuantity"] != null)
             {
                 CurrentCart = (List<int>)Session["list"];
                 CurrentCartQuantity = (List<int>)Session["CartQuantity"];
+
+                if (!CurrentCart.Contains(ItemID))
+                {
+                    CurrentCart.Add(ItemID);
+                    CurrentCartQuantity.Add(1);
+                }
+                else
+                {
+                    tempIndex = CurrentCart.IndexOf(ItemID);
+                    qty = CurrentCartQuantity[tempIndex];
+                    qty = qty + 1;
+                    CurrentCartQuantity.Insert(tempIndex, qty);
+                }
+                Session["list"] = CurrentCart;
+                Session["CartQuantity"] = CurrentCartQuantity;
             }
-            catch
+            else
             {
+                CurrentCart.Add(ItemID);
+                CurrentCartQuantity.Add(1);
                 Session["list"] = CurrentCart;
                 Session["CartQuantity"] = CurrentCartQuantity;
             }
 
-            //calculation of quantitiy 
-            if (!CurrentCart.Contains(ItemID))
-            {
-                CurrentCart.Add(ItemID);
-                CurrentCartQuantity.Add(1);
-            }
-            else
-            {
-                tempIndex = CurrentCart.IndexOf(ItemID);
-                qty = CurrentCartQuantity[tempIndex];
-                qty = qty + 1;
-                CurrentCartQuantity.Insert(tempIndex, qty);
-            }
-
-
             //use itemId to request information from DB to get back the whole item 
             //Label1.Text = (ItemID).ToString();
-
-            string outListBox = final + CurrentCartQuantity[tempIndex]; //KahnoOrderDetails.getMenuItem(ItemID);
-            ListBox1.Items.Add(outListBox);
+            ListBox1.Items.Clear();
+            Console.WriteLine(CurrentCart + " " + CurrentCartQuantity);
+            int i = 0;
+            foreach (int element in CurrentCart)
+            {
+                //Console.WriteLine($"Element #{count}: {element}");
+                
+                ListBox1.Items.Add(getOrder(CurrentCart[i], CurrentCartQuantity[i]));
+                i++;
+            }
+            //tring outListBox = final + CurrentCartQuantity[tempIndex]; //KahnoOrderDetails.getMenuItem(ItemID);
+            //ListBox1.Items.Add(outListBox);
 
         }
 
