@@ -118,6 +118,9 @@
     <Compile Include="CreateRestaurantForm.aspx.designer.cs">
       <DependentUpon>CreateRestaurantForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataView.cs">
+      <DependentUpon>DataView.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataView.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
