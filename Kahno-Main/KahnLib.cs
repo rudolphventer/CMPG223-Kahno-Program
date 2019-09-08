@@ -167,33 +167,55 @@ namespace Kahno_Main
             return final;
         }
 
-       /* public static bool addOrderDetails(int id, int qty, double total)
+        public static int getOrderNumber()
         {
+            int orderNumber = 0;
+
+            KahnoUser userCurrent = new KahnoUser();
+            int currentUserID = userCurrent.userid;
+
             SqlConnection conn = new SqlConnection(connectString);
             conn.Open();
-            
+            string sqlGetUser = ("SELECT TOP 1 OrderNumber FROM [ORDER] ORDER BY OrderNumber DESC");
             SqlCommand commquery = new SqlCommand(sqlGetUser, conn);
+            commquery.Parameters.AddWithValue("@user", currentUserID);
             SqlDataReader drquery = commquery.ExecuteReader();
             drquery.Read();
 
             if (drquery.HasRows)
             {
-                return false;
+                orderNumber = drquery.GetInt32(0);
+                return orderNumber;
             }
             else
             {
-                try
-                {
-                   
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-
+                return 0;
             }
-        }*/
+        }
+
+        public static void InsertOrder(string time)
+        {
+            KahnoUser user = new KahnoUser();
+            int user1 = user.userid;
+
+            KahnoRestaurant restaurant = new KahnoRestaurant();
+            int restaurantSend = restaurant.restaurantID;
+
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            SqlConnection con = new SqlConnection(connectString);
+            string insert_query = "INSERT INTO [ORDER] (OrderDate, userID, restaurantID) VALUES(@date, @useriden ,@restaurant)";
+            SqlCommand comm = new SqlCommand(insert_query, conn);
+
+            //comm.Parameters.AddWithValue("@user", userId);
+            comm.Parameters.AddWithValue("@date", time);
+            comm.Parameters.AddWithValue("@useriden", user1);
+            comm.Parameters.AddWithValue("@restaurant", restaurantSend);
+            comm.ExecuteNonQuery();
+            con.Close();
+            comm.Dispose();
+        }
 
         public static int UpdateUserDetails(int id, string firstname, string lastname, string phone, string email)
         {

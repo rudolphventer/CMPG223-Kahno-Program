@@ -61,6 +61,19 @@ namespace Kahno_Main
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
+           
+
+            DateTime time = DateTime.Now;             
+            string format = "yyyy-MM-dd HH:mm:ss";
+            string finaltime = time.ToString(format);
+
+            //insert into db first then get orderNumber 
+            KahnLib.InsertOrder(finaltime);
+
+            int orderNumber = KahnLib.getOrderNumber();
+
+
+
             List<int> CurrentCart = new List<int>();
             List<int> CurrentCartQuantity = new List<int>();
 
@@ -87,10 +100,11 @@ namespace Kahno_Main
                 conn.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 SqlConnection con = new SqlConnection(connectString);
-                string insert_query = "INSERT INTO [ORDERDETAIL] (Quantity,PricePaidPerItem,ItemNumber) VALUES(@quantity,@total,@itemNo)";
-                SqlCommand comm = new SqlCommand(insert_query, conn);        
-                
+                string insert_query = "INSERT INTO [ORDERDETAIL] (Quantity,OrderNumber,PricePaidPerItem,ItemNumber) VALUES(@quantity,@OrderNo,@total,@itemNo)";
+                SqlCommand comm = new SqlCommand(insert_query, conn);
+
                 comm.Parameters.AddWithValue("@quantity", CurrentCartQuantity[i]);
+                comm.Parameters.AddWithValue("@OrderNo", orderNumber);
                 comm.Parameters.AddWithValue("@total", total);
                 comm.Parameters.AddWithValue("@itemNo", CurrentCart[i]);
                 comm.ExecuteNonQuery();
