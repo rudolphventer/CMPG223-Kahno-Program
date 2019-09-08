@@ -77,6 +77,7 @@
                              <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
                              <br />
                              <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtLatitude" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtLatitude" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                          </td>
                      </tr>
                      <tr>
@@ -86,6 +87,7 @@
                              <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
                              <br />
                              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtLongitude" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
+                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtLongitude" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                          </td>
                      </tr>
                      <tr>

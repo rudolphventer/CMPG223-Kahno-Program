@@ -11,9 +11,10 @@ namespace Kahno_Main
 {
     public partial class ConfirmationForm : System.Web.UI.Page
     {
+        KahnoUser userPull = new KahnoUser();
         protected void Page_Load(object sender, EventArgs e)
         {
-            KahnoUser userPull = new KahnoUser();
+
             try
             {
                 userPull = (KahnoUser)Session["localuser"];

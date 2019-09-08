@@ -211,7 +211,7 @@ namespace Kahno_Main
 
             //comm.Parameters.AddWithValue("@user", userId);
             comm.Parameters.AddWithValue("@date", time);
-            comm.Parameters.AddWithValue("@useriden", user1);
+            comm.Parameters.AddWithValue("@useriden", user);
             comm.Parameters.AddWithValue("@restaurant", restaurantSend);
             comm.ExecuteNonQuery();
             con.Close();

@@ -44,16 +44,17 @@ namespace Kahno_Main
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["tempfname"] = TextBox1.Text;
 
-            if (KahnLib.UpdateUserDetails(currentuser.userid, Session["tempfname"].ToString(), TextBox2.Text, TextBox3.Text, TextBox4.Text) > 0)
+            if (KahnLib.updateCoordinateDetails(currentuser.coodinateid, Convert.ToDouble(txtLongitude.Text), Convert.ToDouble(txtLatitude.Text)) > 0)
             {
-                if(KahnLib.updateCoordinateDetails(currentuser.userid, Convert.ToDouble(txtLongitude.Text), Convert.ToDouble(txtLatitude.Text)) > 0)
-                {
-                    Label5.Text = "Successfully Updated!";
+                Label5.Text = "Successfully Updated!";
 
-                    Response.Redirect("Login.aspx");
-                }
+                Response.Redirect("Login.aspx");
+            }
+
+            if (KahnLib.UpdateUserDetails(currentuser.userid, TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text) > 0)
+            {
+                
                 
             }
             else
