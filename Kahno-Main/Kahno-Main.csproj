@@ -83,6 +83,7 @@
     <Content Include="KahnoDB.mdf" />
     <Content Include="Login.aspx" />
     <Content Include="Project.txt" />
+    <Content Include="RecieveOrders.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RestaurantMenuPage.aspx" />
     <Content Include="RestaurantsForm.aspx" />
@@ -168,6 +169,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecieveOrders.aspx.cs">
+      <DependentUpon>RecieveOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecieveOrders.aspx.designer.cs">
+      <DependentUpon>RecieveOrders.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RestaurantMenuPage.aspx.cs">
       <DependentUpon>RestaurantMenuPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -32,6 +32,7 @@ namespace Kahno_Main
         
         protected void addToOrder(object sender, EventArgs e)
         {
+            Button1.Enabled = true;
             int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
             int tempIndex = 0;
             int qty = 0;
