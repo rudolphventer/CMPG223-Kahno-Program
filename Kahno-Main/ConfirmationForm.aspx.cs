@@ -28,6 +28,27 @@ namespace Kahno_Main
                 Response.Redirect("Login.aspx");
             }
 
+
+            List<int> CurrentCart = new List<int>();
+            List<int> CurrentCartQuantity = new List<int>();
+
+            if (Session["list"] != null && Session["CartQuantity"] != null)
+            {
+                CurrentCart = (List<int>)Session["list"];
+                CurrentCartQuantity = (List<int>)Session["CartQuantity"];
+
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+            int i = 0;
+            foreach (int element in CurrentCart)
+            {
+                ListBox1.Items.Add(KahnLib.getOrder(CurrentCart[i], CurrentCartQuantity[i]));
+                i++;
+            }
             //Still testing this code!!.
             /*
             for (int x = 1; x <= Convert.ToInt32(Session["counter"]); x++)
@@ -37,5 +58,9 @@ namespace Kahno_Main
             */
         }
 
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Success.aspx");
+        }
     }
 }

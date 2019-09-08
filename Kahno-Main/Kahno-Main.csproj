@@ -79,6 +79,7 @@
     <Content Include="EditMenuForm.aspx" />
     <Content Include="EditRestaurantForm.aspx" />
     <Content Include="EditUserInfoForm.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="KahnoDB.mdf" />
     <Content Include="Login.aspx" />
     <Content Include="Project.txt" />
@@ -86,6 +87,7 @@
     <Content Include="RestaurantMenuPage.aspx" />
     <Content Include="RestaurantsForm.aspx" />
     <Content Include="StyleSheet1.css" />
+    <Content Include="Success.aspx" />
     <Content Include="UserHome.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -147,6 +149,13 @@
     <Compile Include="EditUserInfoForm.aspx.designer.cs">
       <DependentUpon>EditUserInfoForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="KahnLib.cs" />
     <Compile Include="KahnoOrderDetails.cs" />
     <Compile Include="KahnoRestaurant.cs" />
@@ -186,6 +195,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Success.aspx.cs">
+      <DependentUpon>Success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Success.aspx.designer.cs">
+      <DependentUpon>Success.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserHome.aspx.cs">
       <DependentUpon>UserHome.aspx</DependentUpon>

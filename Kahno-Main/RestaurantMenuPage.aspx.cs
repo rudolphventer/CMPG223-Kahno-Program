@@ -29,57 +29,15 @@ namespace Kahno_Main
             Response.Redirect("ConfirmationForm.aspx");
         }
 
-        public static string getOrder(int id, int qty)
-        {
-            string final = "";
-
-            string connectString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30";
-            SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-
-            string sql = "SELECT itemId, price, itemName FROM [MENUITEM] WHERE ItemId =" + id;
-            SqlCommand command = new SqlCommand(sql, conn);
-            SqlDataReader dr = command.ExecuteReader();
-
-            while (dr.Read())
-            {
-                final = dr.GetValue(0).ToString() + " " + dr.GetValue(2).ToString() + " : R" + dr.GetDecimal(1).ToString() + " " + qty;
-            }
-
-            return final;
-        }
+        
         protected void addToOrder(object sender, EventArgs e)
         {
             int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
-            string final = "";
             int tempIndex = 0;
-            int qty = 1;
-
-            //code to receive data
-            string connectString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30";
-            SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-
-            string sql = "SELECT itemId, price, itemName FROM [MENUITEM] WHERE ItemId =" + ItemID;
-            SqlCommand command = new SqlCommand(sql, conn);
-            SqlDataReader dr = command.ExecuteReader();
-
-            while (dr.Read())
-            {
-                final = dr.GetValue(0).ToString() + " " + dr.GetValue(2).ToString() + " : R" + dr.GetDecimal(1).ToString() + " ";
-            }
-
-            Console.WriteLine("Final " + final);
-
-            Session["itemId"] = ItemID;
-            Session["orderCount" + Session["itemId"]] = (Convert.ToInt32(Session["orderCount" + Session["itemId"]]) + 1).ToString();
+            int qty = 0;
 
             List<int> CurrentCart = new List<int>();
             List<int> CurrentCartQuantity = new List<int>();
-
-
-
-
 
             if(Session["list"] != null && Session["CartQuantity"] != null)
             {
@@ -94,9 +52,11 @@ namespace Kahno_Main
                 else
                 {
                     tempIndex = CurrentCart.IndexOf(ItemID);
+
                     qty = CurrentCartQuantity[tempIndex];
                     qty = qty + 1;
-                    CurrentCartQuantity.Insert(tempIndex, qty);
+                    
+                    CurrentCartQuantity[tempIndex] = qty;
                 }
                 Session["list"] = CurrentCart;
                 Session["CartQuantity"] = CurrentCartQuantity;
@@ -108,21 +68,15 @@ namespace Kahno_Main
                 Session["list"] = CurrentCart;
                 Session["CartQuantity"] = CurrentCartQuantity;
             }
-
-            //use itemId to request information from DB to get back the whole item 
-            //Label1.Text = (ItemID).ToString();
+            
             ListBox1.Items.Clear();
             Console.WriteLine(CurrentCart + " " + CurrentCartQuantity);
             int i = 0;
             foreach (int element in CurrentCart)
-            {
-                //Console.WriteLine($"Element #{count}: {element}");
-                
-                ListBox1.Items.Add(getOrder(CurrentCart[i], CurrentCartQuantity[i]));
+            { 
+                ListBox1.Items.Add(KahnLib.getOrder(CurrentCart[i], CurrentCartQuantity[i]));
                 i++;
             }
-            //tring outListBox = final + CurrentCartQuantity[tempIndex]; //KahnoOrderDetails.getMenuItem(ItemID);
-            //ListBox1.Items.Add(outListBox);
 
         }
 

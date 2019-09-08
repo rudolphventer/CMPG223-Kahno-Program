@@ -39,12 +39,14 @@
 
         </Columns>
     </asp:GridView>
+        <asp:Label ID="Label1" runat="server" Text="My Order"></asp:Label>
         <br />
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Order" />
         <br />
         &nbsp;&nbsp;
+        <asp:ListBox ID="ListBox1" runat="server" Height="167px" Width="636px"></asp:ListBox>
+        <br />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Place Order" />
         <br />
         </div>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ItemID], [Description], [price], [itemName] FROM [MENUITEM] WHERE ([restaurantID] = @restaurantID)">
@@ -97,7 +99,6 @@
     <br />
     <br />
     &nbsp;
-    <asp:ListBox ID="ListBox1" runat="server" Height="167px" Width="636px"></asp:ListBox>
     <br />
 
 </asp:Content>

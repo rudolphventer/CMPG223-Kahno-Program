@@ -127,6 +127,26 @@ namespace Kahno_Main
             }
         }
 
+        public static string getOrder(int id, int qty)
+        {
+            string final = "";
+
+            string connectString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\KahnoDB.mdf;Integrated Security=True;Connect Timeout=30";
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+
+            string sql = "SELECT itemId, price, itemName FROM [MENUITEM] WHERE ItemId =" + id;
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader dr = command.ExecuteReader();
+
+            while (dr.Read())
+            {
+                final = dr.GetValue(0).ToString() + " " + dr.GetValue(2).ToString() + " : R" + dr.GetDecimal(1).ToString() + " " + qty;
+            }
+
+            return final;
+        }
+
         public static int UpdateUserDetails(int id, string firstname, string lastname, string phone, string email)
         {
             int rowsAffected = -1;
