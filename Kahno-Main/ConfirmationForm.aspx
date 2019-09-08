@@ -10,7 +10,7 @@
    <div class="card">
       <p>Please confirm your order for:</p>
        <p>
-           <asp:ListBox ID="ListBox1" runat="server" Height="140px" Width="374px"></asp:ListBox>
+           <asp:ListBox ID="ListBox1" runat="server" Height="140px" Width="564px"></asp:ListBox>
        </p>
        <p>Contact details:</p>
        <p>&nbsp; Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
