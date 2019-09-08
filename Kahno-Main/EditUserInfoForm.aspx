@@ -77,6 +77,7 @@
                              <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
                              <br />
                              <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtLatitude" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
+                             <br />
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtLatitude" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                          </td>
                      </tr>
@@ -87,6 +88,7 @@
                              <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
                              <br />
                              <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtLongitude" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
+                             <br />
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtLongitude" ErrorMessage="Required!"></asp:RequiredFieldValidator>
                          </td>
                      </tr>
@@ -113,7 +115,7 @@
                      <tr>
                          <td class="auto-style4">&nbsp;</td>
                          <td>
-                             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Delete My Account" OnClientClick="return confirmdelete()" CssClass="deletebutton"/>
+                             <asp:Button ID="Button2" runat="server" class="dangerbutton" OnClick="Button2_Click" Text="Delete My Account" OnClientClick="return confirmdelete()"/>
                          </td>
                      </tr>
                  </table>

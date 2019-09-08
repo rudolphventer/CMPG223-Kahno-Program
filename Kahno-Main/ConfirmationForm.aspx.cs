@@ -58,7 +58,6 @@ namespace Kahno_Main
                 i++;
             }
             ListBox1.Items.Add("Total: R" + grandtotal);
-            ListBox1.Items.Add("\n Thank you for ordering with Kahno!!, Enjoy your meal and dont forget to rate your service!.");
             
         }
 
@@ -121,6 +120,14 @@ namespace Kahno_Main
                 i++;
             }
             Response.Redirect("Success.aspx");
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            Session["list"] = null;
+            Session["CartQuantity"] = null;
+            Response.Redirect("UserHome.aspx");
+
         }
     }
 }

@@ -34,10 +34,11 @@
                                    </asp:BoundField>
                                    <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
                                    <asp:BoundField DataField="Price Paid Per Item" HeaderText="Price Paid Per Item" SortExpression="Price Paid Per Item" />
+                                   <asp:BoundField DataField="Order Date" HeaderText="Order Date" SortExpression="Order Date" />
                                </Columns>
                                <RowStyle BorderStyle="None" />
                            </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT MENUITEM.itemName AS Item, ORDERDETAIL.Quantity, ORDERDETAIL.PricePaidPerItem AS [Price Paid Per Item] FROM [ORDER] LEFT OUTER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE (RESTAURANT.RestaurantID = @RID)">
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT MENUITEM.itemName AS Item, ORDERDETAIL.Quantity, ORDERDETAIL.PricePaidPerItem AS [Price Paid Per Item], [ORDER].OrderDate AS [Order Date] FROM [ORDER] LEFT OUTER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber INNER JOIN MENUITEM ON ORDERDETAIL.ItemNumber = MENUITEM.ItemID INNER JOIN RESTAURANT ON [ORDER].restaurantID = RESTAURANT.RestaurantID AND MENUITEM.restaurantID = RESTAURANT.RestaurantID WHERE (RESTAURANT.RestaurantID = @RID) ORDER BY [Order Date] DESC">
                                <SelectParameters>
                                    <asp:SessionParameter DefaultValue="0" Name="RID" SessionField="RID" />
                                </SelectParameters>
@@ -54,7 +55,7 @@
         </asp:GridView>
         <asp:GridView ID="GridView5" runat="server" style="width: 100%" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False" DataSourceID="SqlDataSource5" GridLines="None" OnSelectedIndexChanged="GridView4_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="Expr1" HeaderText="Orders Today" ReadOnly="True" SortExpression="Expr1" />
+                <asp:BoundField DataField="Orders Today" HeaderText="Orders Today" ReadOnly="True" SortExpression="Orders Today" />
             </Columns>
             <EmptyDataTemplate>0</EmptyDataTemplate>
         </asp:GridView>
@@ -70,7 +71,7 @@
             </Columns>
             <EmptyDataTemplate>0</EmptyDataTemplate>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT ORDERDETAIL.PricePaidPerItem AS Expr1 FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber WHERE ([ORDER].restaurantID = @RID) AND ([ORDER].OrderDate &gt; DATEADD(day, - 7, GETDATE()))">
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT SUM(ORDERDETAIL.PricePaidPerItem) AS Expr1 FROM [ORDER] INNER JOIN ORDERDETAIL ON [ORDER].OrderNumber = ORDERDETAIL.OrderNumber WHERE ([ORDER].restaurantID = @RID) AND ([ORDER].OrderDate &gt; DATEADD(day, - 7, GETDATE()))">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="0" Name="RID" SessionField="RID" />
             </SelectParameters>
@@ -85,9 +86,9 @@
                 <asp:SessionParameter DefaultValue="0" Name="RestaurantID" SessionField="RID" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT COUNT(OrderNumber) AS Expr1 FROM [ORDER] WHERE (OrderDate = GETDATE()) GROUP BY OrderDate, restaurantID HAVING (restaurantID = @RID)">
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT COUNT(OrderNumber) AS [Orders Today] FROM [ORDER] WHERE (OrderDate &gt;= CAST(GETDATE() AS DATE)) GROUP BY restaurantID HAVING (restaurantID = @RID)">
             <SelectParameters>
-                <asp:SessionParameter DefaultValue="0" Name="RID" SessionField="@RID" />
+                <asp:SessionParameter DefaultValue="0" Name="RID" SessionField="RID" />
             </SelectParameters>
         </asp:SqlDataSource>
         </div>

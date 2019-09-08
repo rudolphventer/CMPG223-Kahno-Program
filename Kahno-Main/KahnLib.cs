@@ -582,7 +582,7 @@ namespace Kahno_Main
 
             try
             {
-                if (drquery.HasRows || drquery.GetValue(0) == null)
+                if (drquery.HasRows)
                 {
                     return true;
                 }
