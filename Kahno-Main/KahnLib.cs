@@ -142,7 +142,7 @@ namespace Kahno_Main
 
             while (dr.Read())
             {
-                final = dr.GetValue(0).ToString() + " " + dr.GetValue(2).ToString() + " : R" + dr.GetDecimal(1).ToString() + " " + qty;
+                final = dr.GetValue(0).ToString() + " " + dr.GetValue(2).ToString() + " : R" + dr.GetDecimal(1).ToString() + " x " + qty;
             }
 
             return final;
