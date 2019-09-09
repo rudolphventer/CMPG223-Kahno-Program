@@ -37,7 +37,7 @@
                     <br />
                         <asp:Label ID="Label5" runat="server" Text="Password"></asp:Label>
                         <br />
-                        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" TextMode="Password"></asp:TextBox>
                         
                         <br />
                         
@@ -45,7 +45,7 @@
                     <br />
                         <asp:Label ID="Label6" runat="server" Text="Password Repeat"></asp:Label>
                         <br />
-                        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextBox6" runat="server" TextMode="Password"></asp:TextBox>
                         <br />
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="TextBox5" ControlToValidate="TextBox6" ErrorMessage="Passwords must match!"></asp:CompareValidator>
                     <br />
