@@ -460,17 +460,14 @@ namespace Kahno_Main
                     comm.Parameters.AddWithValue("@longitude", longitude);
                     comm.Parameters.AddWithValue("@latitude", latitude);
                     comm.ExecuteNonQuery();
+                    
                     //reading ID of new coordinate
                     comm.CommandText = getlastcoordinateID;
                     SqlDataReader dataReader = comm.ExecuteReader();
                     dataReader.Read();
                     int coordsID = dataReader.GetInt32(0);
-                    comm.CommandText = getlastrestaurantID;
                     dataReader.Close();
-                    dataReader = comm.ExecuteReader();
-                    dataReader.Read();
-                    restID = dataReader.GetInt32(0);
-                    dataReader.Close();
+                    //
                     //creating new restaurant
                     comm.CommandText = insert_restaurant;
                     comm.Parameters.Clear();
@@ -479,8 +476,17 @@ namespace Kahno_Main
                     comm.Parameters.AddWithValue("@CoordinateID", coordsID);
                     comm.Parameters.AddWithValue("@img", imgByte);
                     comm.ExecuteNonQuery();
-                    con.Close();
+                    
+                    //
+                    comm.CommandText = getlastrestaurantID;
+                    dataReader.Close();
+                    dataReader = comm.ExecuteReader();
+                    dataReader.Read();
+                    restID = dataReader.GetInt32(0);
+                    dataReader.Close();
+
                     //closing as true
+                    con.Close();
                     return restID;
                 }
                 catch(SqlException m)
@@ -493,6 +499,44 @@ namespace Kahno_Main
 
         public static int UpdateRestaurantDetails(int id, string restaurantname, string phone)
         {
+            SqlConnection conn = new SqlConnection(connectString);
+            conn.Open();
+            SqlCommand command;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            string sql = "UPDATE [RESTAURANT] SET RestaurantName = '" + restaurantname +"', phoneNumber = '"+ phone +"' where RestaurantID = " + id;
+
+
+            command = new SqlCommand(sql, conn);
+            adapter.UpdateCommand = new SqlCommand(sql, conn);
+            adapter.UpdateCommand.ExecuteNonQuery();
+
+            command.Dispose();
+		    conn.Close();
+            return 1;
+        }
+        public static int UpdateRestaurantDetailsnewold(int id, string restaurantname, string phone)
+        {
+            int rowsAffected = -1;
+            SqlConnection conn = new SqlConnection(connectString);
+
+            string sql = "UPDATE [RESTAURANT] SET RestaurantName = @2, phoneNumber = @3 where RestaurantID = @1";
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@1", id);
+            command.Parameters.AddWithValue("@2", restaurantname);
+            command.Parameters.AddWithValue("@3", phone);
+
+            conn.Open();
+            rowsAffected = command.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
+
+            return rowsAffected;
+        }
+
+        public static int UpdateRestaurantDetailsold(int id, string restaurantname, string phone)
+        {
             //harry
             //Create byte Array with file len
             //Byte[] imgByte = null;
@@ -504,8 +548,9 @@ namespace Kahno_Main
             //
             int rowsAffected = -1;
             SqlConnection conn = new SqlConnection(connectString);
-
+            conn = new SqlConnection(connectString);
             string sql = "UPDATE RESTAURANT SET RestaurantName = @rname, phoneNumber = @phone WHERE (RestaurantID=@id)";
+            //string sql = "INSERT INTO table_name (column1, column2, column3, ...) VALUES(value1, value2, value3, ...)";
 
             SqlCommand command = new SqlCommand(sql, conn);
             command = new SqlCommand(sql, conn);
@@ -515,11 +560,11 @@ namespace Kahno_Main
             //command.Parameters.AddWithValue("@img", imgByte);
 
             conn.Open();
-            rowsAffected = command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             command.Dispose();
             conn.Close();
 
-            return rowsAffected;
+            return 1;
         }
 
         public static int UpdateRestaurantDetailsimg(int id, string restaurantname, string phone, HttpPostedFile File)
