@@ -19,7 +19,7 @@ namespace Kahno_Main
         {
             double longitude = 0;
             double latitude = 0;
-            if (!double.TryParse((TextBox7.Text,), out latitude))
+            if (!double.TryParse(TextBox7.Text, out latitude))
             {
                 latitude = 0;
             }
