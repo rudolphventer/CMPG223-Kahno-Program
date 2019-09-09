@@ -522,6 +522,35 @@ namespace Kahno_Main
             return rowsAffected;
         }
 
+        public static int UpdateRestaurantDetailsimg(int id, string restaurantname, string phone, HttpPostedFile File)
+        {
+            //harry
+            //Create byte Array with file len
+            Byte[] imgByte = null;
+
+            imgByte = new Byte[File.ContentLength];
+            //force the control to load data in array
+            File.InputStream.Read(imgByte, 0, File.ContentLength);
+            int rowsAffected = -1;
+            SqlConnection conn = new SqlConnection(connectString);
+
+            string sql = "UPDATE RESTAURANT SET RestaurantName = @rname, phoneNumber = @phone WHERE (RestaurantID=@id)";
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@rname", restaurantname);
+            command.Parameters.AddWithValue("@phone", phone);
+            command.Parameters.AddWithValue("@img", imgByte);
+
+            conn.Open();
+            rowsAffected = command.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
+
+            return rowsAffected;
+        }
+
         public static string getLastOrderDate(int id)
         {
             //checking if restaurant exists

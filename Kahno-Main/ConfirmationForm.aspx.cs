@@ -54,10 +54,10 @@ namespace Kahno_Main
             {
                 total = CurrentCartQuantity[i] * KahnLib.getOrderPrice(CurrentCart[i]);
                 grandtotal += total;
-                ListBox1.Items.Add(KahnLib.getOrder(CurrentCart[i], CurrentCartQuantity[i]) + " = R" + total);
+                ListBox1.Items.Add(" " + KahnLib.getOrder(CurrentCart[i], CurrentCartQuantity[i]) + " = R" + total);
                 i++;
             }
-            ListBox1.Items.Add("Total: R" + grandtotal);
+            ListBox1.Items.Add(" Total: R" + grandtotal);
             
         }
 
@@ -120,6 +120,8 @@ namespace Kahno_Main
                 i++;
             }
             Response.Redirect("Success.aspx");
+            Session["list"] = null;
+            Session["CartQuantity"] = null;
         }
 
         protected void btnReturn_Click(object sender, EventArgs e)
