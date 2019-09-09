@@ -12,20 +12,24 @@ namespace Kahno_Main
         protected void Page_Load(object sender, EventArgs e)
         {
             recent.Visible = false;
-            GridView1.SelectedIndex = 0;
-            GridViewRow row = GridView1.SelectedRow;
-            try
+            if(GridView1.Rows.Count > 0)
             {
-                if (row.Cells[8].Text != Session["toporderno"].ToString())
+                GridView1.SelectedIndex = 0;
+                GridViewRow row = GridView1.SelectedRow;
+                try
+                {
+                    if (row.Cells[8].Text != Session["toporderno"].ToString())
+                    {
+                        Session["toporderno"] = row.Cells[8].Text;
+                        recent.Visible = true;
+                    }
+                }
+                catch
                 {
                     Session["toporderno"] = row.Cells[8].Text;
-                    recent.Visible = true;
                 }
             }
-            catch
-            {
-                Session["toporderno"] = row.Cells[8].Text;
-            }
+            
         }
     }
 }
