@@ -17,7 +17,19 @@ namespace Kahno_Main
 
         protected void Register_Click(object sender, EventArgs e)
         {
-            if (KahnLib.NewUser(TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, KahnLib.HashPass(TextBox5.Text), double.Parse(TextBox7.Text), double.Parse(TextBox8.Text)))
+            double longitude = 0;
+            double latitude = 0;
+            if (!double.TryParse((TextBox7.Text,), out latitude))
+            {
+                latitude = 0;
+            }
+
+            if (!double.TryParse(TextBox8.Text, out longitude))
+            {
+                longitude = 0;
+            }
+
+            if (KahnLib.NewUser(TextBox1.Text, TextBox2.Text, TextBox3.Text, TextBox4.Text, KahnLib.HashPass(TextBox5.Text), latitude, longitude))
             {
                 Response.Redirect("Login.aspx");
             }
