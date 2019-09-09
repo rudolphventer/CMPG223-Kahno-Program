@@ -11,17 +11,18 @@
     <div class="floatingdiv3">
         <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
         <br />
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" GridLines="None" width="100%">
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" GridLines="None" width="100%" DataKeyNames="imgbyteID">
             <Columns>
                 <asp:TemplateField>
             <ItemTemplate>
-                <img src='data:image/jpg;base64,<%# Eval("byteImg") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("byteImg")) : string.Empty %>' alt="image" height="100" width="200"/>
+                <img src='data:image/jpg;base64,<%# Eval("imgByte") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("imgByte")) : string.Empty %>' alt="image" height="100" width="200"/>
             </ItemTemplate>
         </asp:TemplateField>
+                <asp:BoundField DataField="imgbyteID" HeaderText="imgbyteID" InsertVisible="False" ReadOnly="True" SortExpression="imgbyteID" Visible="False" />
             </Columns>
 
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT byteImg FROM RESTAURANT WHERE (RestaurantID = @RestaurantID)">
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT IMGBYTE.imgbyte, IMGBYTE.imgbyteID FROM RESTAURANT INNER JOIN IMGBYTE ON RESTAURANT.byteImg = IMGBYTE.imgbyteID WHERE (RESTAURANT.RestaurantID = @RestaurantID)">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="0" Name="RestaurantID" SessionField="RID" Type="Int32" />
             </SelectParameters>

@@ -104,7 +104,8 @@
         <tr>
             <td class="auto-style6">&nbsp;</td>
             <td>
-                &nbsp;</td>
+                <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif"/>
+                        </td>
         </tr>
     </table>
                 <br />

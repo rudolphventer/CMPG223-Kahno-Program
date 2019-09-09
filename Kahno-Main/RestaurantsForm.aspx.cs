@@ -12,6 +12,8 @@ namespace Kahno_Main
    
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["list"] = null;
+            Session["CartQuantity"] = null;
         }
 
         protected void lnkSelect_Click(object sender, EventArgs e)

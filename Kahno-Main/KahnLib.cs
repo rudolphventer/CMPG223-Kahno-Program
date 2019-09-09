@@ -417,13 +417,8 @@ namespace Kahno_Main
         //addrestaurant -- Rudolph
         public static int NewRestaurant(string name, string phone, double latitude, double longitude, HttpPostedFile File)
         {
-            //harry
-            //Create byte Array with file len
-            Byte[] imgByte = null;
-
-            imgByte = new Byte[File.ContentLength];
-            //force the control to load data in array
-            File.InputStream.Read(imgByte, 0, File.ContentLength);
+            //create image in db
+            int imgID = createNewImage(File);
 
             //returns true if restaurant is created successfully
             SqlConnection conn = new SqlConnection(connectString);
@@ -474,7 +469,7 @@ namespace Kahno_Main
                     comm.Parameters.AddWithValue("@name", name);
                     comm.Parameters.AddWithValue("@phoneNumber", phone);
                     comm.Parameters.AddWithValue("@CoordinateID", coordsID);
-                    comm.Parameters.AddWithValue("@img", imgByte);
+                    comm.Parameters.AddWithValue("@img", imgID);
                     comm.ExecuteNonQuery();
                     
                     //
@@ -499,23 +494,6 @@ namespace Kahno_Main
 
         public static int UpdateRestaurantDetails(int id, string restaurantname, string phone)
         {
-            SqlConnection conn = new SqlConnection(connectString);
-            conn.Open();
-            SqlCommand command;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            string sql = "UPDATE [RESTAURANT] SET RestaurantName = '" + restaurantname +"', phoneNumber = '"+ phone +"' where RestaurantID = " + id;
-
-
-            command = new SqlCommand(sql, conn);
-            adapter.UpdateCommand = new SqlCommand(sql, conn);
-            adapter.UpdateCommand.ExecuteNonQuery();
-
-            command.Dispose();
-		    conn.Close();
-            return 1;
-        }
-        public static int UpdateRestaurantDetailsnewold(int id, string restaurantname, string phone)
-        {
             int rowsAffected = -1;
             SqlConnection conn = new SqlConnection(connectString);
 
@@ -535,37 +513,65 @@ namespace Kahno_Main
             return rowsAffected;
         }
 
-        public static int UpdateRestaurantDetailsold(int id, string restaurantname, string phone)
+        public static int UpdateRestaurantDetails(int id, string restaurantname, string phone, HttpPostedFile File)
         {
-            //harry
-            //Create byte Array with file len
-            //Byte[] imgByte = null;
+            //create image in db
+            int imgID = createNewImage(File);
 
-            //imgByte = new Byte[File.ContentLength];
-            //force the control to load data in array
-            //File.InputStream.Read(imgByte, 0, File.ContentLength);
-
-            //
             int rowsAffected = -1;
             SqlConnection conn = new SqlConnection(connectString);
-            conn = new SqlConnection(connectString);
-            string sql = "UPDATE RESTAURANT SET RestaurantName = @rname, phoneNumber = @phone WHERE (RestaurantID=@id)";
-            //string sql = "INSERT INTO table_name (column1, column2, column3, ...) VALUES(value1, value2, value3, ...)";
+
+            string sql = "UPDATE [RESTAURANT] SET RestaurantName = @2, phoneNumber = @3, byteImg = @4 where RestaurantID = @1";
 
             SqlCommand command = new SqlCommand(sql, conn);
             command = new SqlCommand(sql, conn);
-            command.Parameters.AddWithValue("@id", id);
-            command.Parameters.AddWithValue("@rname", restaurantname);
-            command.Parameters.AddWithValue("@phone", phone);
-            //command.Parameters.AddWithValue("@img", imgByte);
+            command.Parameters.AddWithValue("@1", id);
+            command.Parameters.AddWithValue("@2", restaurantname);
+            command.Parameters.AddWithValue("@3", phone);
+            command.Parameters.AddWithValue("@4", imgID);
+
+            conn.Open();
+            rowsAffected = command.ExecuteNonQuery();
+            command.Dispose();
+            conn.Close();
+
+            return rowsAffected;
+        }
+
+        public static int createNewImage(HttpPostedFile File)
+        {
+            //harry
+            //Create byte Array with file len
+            Byte[] imgByte = null;
+
+            imgByte = new Byte[File.ContentLength];
+            //force the control to load data in array
+            File.InputStream.Read(imgByte, 0, File.ContentLength);
+            SqlConnection conn = new SqlConnection(connectString);
+
+            string sql = "INSERT INTO IMGBYTE (imgbyte) VALUES (@img)";
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@img", imgByte);
 
             conn.Open();
             command.ExecuteNonQuery();
             command.Dispose();
+            //reading new image's ID
+            string getlastID = "SELECT TOP 1 * FROM IMGBYTE ORDER BY imgbyteID DESC";
+            command.CommandText = getlastID;
+            SqlDataReader dataReader = command.ExecuteReader();
+            dataReader.Read();
+            int newID = dataReader.GetInt32(0);
+            dataReader.Close();
             conn.Close();
 
-            return 1;
+
+
+            return newID;
         }
+
 
         public static int UpdateRestaurantDetailsimg(int id, string restaurantname, string phone, HttpPostedFile File)
         {

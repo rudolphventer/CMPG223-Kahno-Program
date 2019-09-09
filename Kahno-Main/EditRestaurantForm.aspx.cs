@@ -41,32 +41,31 @@ namespace Kahno_Main
 
 
     protected void Button1_Click(object sender, EventArgs e)
-            {
-            if (KahnLib.UpdateRestaurantDetails(currentuser.restaurantno, TextBox1.Text, TextBox2.Text) > 0 && KahnLib.updateCoordinateDetails(currentuser.coodinateid, Convert.ToDouble(TextBox4.Text), Convert.ToDouble(TextBox3.Text)) > 0)
-                Label5.Text = "Successfully Updated!";
-            else
-                Label5.Text = "Update not successful!";
-            Label5.Visible = true;
-            /*
-            //     Session["temprname"] = TextBox1.Text;
+    { 
+            
             FileUpload img = (FileUpload)imgUpload;
-            Byte[] imgByte = null;
+            
             if (img.HasFile && img.PostedFile != null)
             {
-            //To create a PostedFile
-            HttpPostedFile File = imgUpload.PostedFile;
-            /*/// Create byte Array with file len
-            //imgByte = new Byte[File.ContentLength];
-            //force the control to load data in array
-            //File.InputStream.Read(imgByte, 0, File.ContentLength);*/
-            
+                //if has file
+                HttpPostedFile File = imgUpload.PostedFile;
 
-                
-                //KahnLib.UpdateRestaurantDetailsimg(currentRestaurant.restaurantID, TextBox1.Text, TextBox2.Text, File);
-            //}
-            //else
-            //  Label5.Text = "Update not successful!";
-            //Label5.Visible = true;
+                if (KahnLib.UpdateRestaurantDetails(currentuser.restaurantno, TextBox1.Text, TextBox2.Text, File) > 0 && KahnLib.updateCoordinateDetails(currentRestaurant.coodinateid, Convert.ToDouble(TextBox4.Text), Convert.ToDouble(TextBox3.Text)) > 0)
+                    Label5.Text = "Successfully Updated!";
+                else
+                    Label5.Text = "Update not successful!";
+                Label5.Visible = true;
             }
+            else
+            {
+                //if has no file
+                if (KahnLib.UpdateRestaurantDetails(currentuser.restaurantno, TextBox1.Text, TextBox2.Text) > 0 && KahnLib.updateCoordinateDetails(currentRestaurant.coodinateid, Convert.ToDouble(TextBox4.Text), Convert.ToDouble(TextBox3.Text)) > 0)
+                    Label5.Text = "Successfully Updated!";
+                else
+                    Label5.Text = "Update not successful!";
+                Label5.Visible = true;
+            }
+
+        }
         }
 }

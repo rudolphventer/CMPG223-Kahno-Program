@@ -82,7 +82,6 @@
     <Content Include="Error.aspx" />
     <Content Include="KahnoDB.mdf" />
     <Content Include="Login.aspx" />
-    <Content Include="Project.txt" />
     <Content Include="ReceiveOrders.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RestaurantMenuPage.aspx" />

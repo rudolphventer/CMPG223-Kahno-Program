@@ -18,13 +18,11 @@
        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="RestaurantID" DataSourceID="RestaurantList" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%">
            <Columns>
                <asp:BoundField DataField="RestaurantID" HeaderText="RestaurantID" InsertVisible="False" ReadOnly="True" SortExpression="RestaurantID" Visible="False" />
-               <asp:BoundField DataField="RestaurantName" SortExpression="RestaurantName" Visible="false">
-               <HeaderStyle Width="10%" />
-               <ItemStyle Width="40%" />
+               <asp:BoundField DataField="RestaurantName" SortExpression="RestaurantName" Visible="False" HeaderText="RestaurantName">
                </asp:BoundField>
                <asp:TemplateField>
             <ItemTemplate>
-                <img src='data:image/jpg;base64,<%# Eval("byteImg") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("byteImg")) : string.Empty %>' alt="image" height="100" width="200"/>
+                <img src='data:image/jpg;base64,<%# Eval("imgbyte") != System.DBNull.Value ? Convert.ToBase64String((byte[])Eval("imgbyte")) : string.Empty %>' alt="image" height="100" width="200"/>
             </ItemTemplate>
         </asp:TemplateField>
                <asp:TemplateField ShowHeader="False">
@@ -35,6 +33,6 @@
            </Columns>
        </asp:GridView>
         </div>
-       <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT [RestaurantID], [RestaurantName], [byteImg] FROM [RESTAURANT]"></asp:SqlDataSource>
+       <asp:SqlDataSource ID="RestaurantList" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT RESTAURANT.RestaurantID, RESTAURANT.RestaurantName, IMGBYTE.imgbyte FROM RESTAURANT INNER JOIN IMGBYTE ON RESTAURANT.byteImg = IMGBYTE.imgbyteID"></asp:SqlDataSource>
 
 </asp:Content>
