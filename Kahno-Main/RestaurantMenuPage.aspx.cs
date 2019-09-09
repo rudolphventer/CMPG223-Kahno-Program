@@ -83,7 +83,7 @@ namespace Kahno_Main
 
         protected void RemoveFromOrder(object sender, EventArgs e)
         {
-            //this is the function triggered by the "add to cart" button, ItemID is the id of the selected item, do with it what you will
+            //this is the function triggered by the "remove from cart" button, ItemID is the id of the selected item, do with it what you will
             int ItemID = Convert.ToInt32((sender as Button).CommandArgument);
             Session["itemId"] = ItemID;
             Session["orderCount" + Session["itemId"]] = (Convert.ToInt32(Session["orderCount" + Session["itemId"]]) - 1).ToString();
@@ -94,38 +94,54 @@ namespace Kahno_Main
             List<int> CurrentCart = new List<int>();
             List<int> CurrentCartQuantity = new List<int>();
 
+            //Check if session is empty - if it is it will create new and if it does have values will move to the remove side.
             if (Session["list"] != null && Session["CartQuantity"] != null)
             {
+                //set both lists to the sessions holding values for order
                 CurrentCart = (List<int>)Session["list"];
                 CurrentCartQuantity = (List<int>)Session["CartQuantity"];
 
-                if (!CurrentCart.Contains(ItemID))
-                {
-                    CurrentCart.Add(ItemID);
-                    CurrentCartQuantity.Add(1);
-                }
-                else
+                if (CurrentCart.Contains(ItemID))
                 {
                     tempIndex = CurrentCart.IndexOf(ItemID);
 
                     qty = CurrentCartQuantity[tempIndex];
-                    qty = qty + 1;
+                    if (qty > 1)
+                    {
+                        qty = qty - 1;
+                        CurrentCartQuantity[tempIndex] = qty;
+                    }
+                    else
+                    {
+                        CurrentCart.RemoveAt(tempIndex);
+                        CurrentCartQuantity.RemoveAt(tempIndex);
+                    }
 
-                    CurrentCartQuantity[tempIndex] = qty;
+                }
+                else
+                {
+                    ListBox1.Items.Add("Could not remove non exsisting item. try again.");
                 }
                 Session["list"] = CurrentCart;
                 Session["CartQuantity"] = CurrentCartQuantity;
             }
             else
             {
+                ListBox1.Items.Add("Could not remove non exsisting item. try again.");
+            }
+
+            //doubt I will need the else in the remove from order function.
+            /*else
+            {
                 CurrentCart.Add(ItemID);
                 CurrentCartQuantity.Add(1);
                 Session["list"] = CurrentCart;
                 Session["CartQuantity"] = CurrentCartQuantity;
-            }
+            }*/
 
+            //this will be the same to display the items with quantity
             ListBox1.Items.Clear();
-            Console.WriteLine(CurrentCart + " " + CurrentCartQuantity);
+            //Console.WriteLine(CurrentCart + " " + CurrentCartQuantity);
             int i = 0;
             foreach (int element in CurrentCart)
             {
