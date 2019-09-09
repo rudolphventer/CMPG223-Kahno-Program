@@ -47,16 +47,12 @@ namespace Kahno_Main
             double price;
             double.TryParse(txtPrice.Text, out price);        
             FileUpload img = (FileUpload)imgUpload;
-            //Byte[] imgByte = null;
+
             if (img.HasFile && img.PostedFile != null)
             {
-                //To create a PostedFile
                 HttpPostedFile File = imgUpload.PostedFile;
-                /*//Create byte Array with file len
-                imgByte = new Byte[File.ContentLength];
-                //force the control to load data in array
-                File.InputStream.Read(imgByte, 0, File.ContentLength);*/
-                KahnLib.addMenuItem(txtDescription.Text, price, null, txtItemName.Text, currentRestaurant.restaurantID, File);
+
+                KahnLib.addMenuItem(txtDescription.Text, price, txtItemName.Text, currentRestaurant.restaurantID, File);
                 Response.Redirect("EditMenuForm.aspx");
 
             } 

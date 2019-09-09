@@ -258,8 +258,9 @@ namespace Kahno_Main
         }
 
         //Addmenuitem -- Kyle
-        public static void addMenuItem(string description, double price, string imageURL, string itemName, int restaurantID, HttpPostedFile File)
+        public static void addMenuItem(string description, double price, string itemName, int restaurantID, HttpPostedFile File)
         {
+
             SqlConnection conn = new SqlConnection(connectString);
             //harry
             //Create byte Array with file len
@@ -277,20 +278,17 @@ namespace Kahno_Main
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
                 //I think the itemID for each menu item should generate itself as it would be a primary key. 
-                string sqlAddItem = "INSERT INTO [MENUITEM] (Description, price, itemImageUrl, itemName, restaurantID, imgByte) VALUES(@1, @2, @3, @4, @5, @imgByte)";
+                string sqlAddItem = "INSERT INTO [MENUITEM] (Description, price, itemName, restaurantID, imgByte) VALUES(@1, @2, @4, @5, @imgByte)";
 
                 command = new SqlCommand(sqlAddItem, conn);
                 
                 command.Parameters.AddWithValue("@1", description);
                 command.Parameters.AddWithValue("@2", price);
-                command.Parameters.AddWithValue("@3", "");
                 command.Parameters.AddWithValue("@4", itemName);
                 command.Parameters.AddWithValue("@5", restaurantID);
                 command.Parameters.AddWithValue("@imgByte", imgByte);
 
-                dataAdapter.InsertCommand = command;
-                //Does there need to be extra error handling over here?
-                dataAdapter.InsertCommand.ExecuteNonQuery();
+                command.ExecuteNonQuery();
 
                 command.Dispose();
                 conn.Close();
@@ -299,6 +297,7 @@ namespace Kahno_Main
             catch(SqlException err)
             {
                 string message = err.ToString();
+                System.Diagnostics.Debug.WriteLine(message);
                 conn.Close();
             }
             
