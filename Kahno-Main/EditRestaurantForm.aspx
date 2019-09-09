@@ -11,10 +11,22 @@
         background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) ), url('Assets/5.jpg');
     }
 
-
+         .auto-style2 {
+        width: 100%;
+    }
 
         .auto-style4 {
             height: 45px;
+        }
+
+
+
+        .auto-style5 {
+            width: 90px;
+        }
+        .auto-style6 {
+            height: 45px;
+            width: 90px;
         }
 
 
@@ -53,6 +65,8 @@
                 <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                 <br />
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox3" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
+                <br />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox3" ErrorMessage="Required!"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -63,35 +77,39 @@
                 <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
                 <br />
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="TextBox4" ErrorMessage="Co-ordinates only!" ValidationExpression="((\+|-)?([0-9]+)(\.[0-9]+)?)|((\+|-)?\.?[0-9]+)"></asp:RegularExpressionValidator>
+                <br />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox4" ErrorMessage="Required!"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
-            <td class="auto-style6">&nbsp;</td>
+            <td class="auto-style5">&nbsp;</td>
             <td>
                 <asp:Label ID="Label5" runat="server" Text="Label" Visible="False"></asp:Label>
             </td>
         </tr>
         <tr>
-            <td class="auto-style4">
+            <td class="auto-style6">
                 </td>
             <td class="auto-style4">
-                <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif" Visible="False"/>
+                <asp:Button ID="btnResetCoordinates" OnClientClick="getLocation();return false;" runat="server" Text="Reset Co-ordinates" />
                 <br />
             </td>
         </tr>
         <tr>
-            <td class="auto-style7">&nbsp;</td>
-            <td>
-                <asp:Button ID="btnResetCoordinates" OnClientClick="getLocation();return false;" runat="server" Text="Reset Co-ordinates" />
-            </td>
-        </tr>
-        <tr>
-            <td class="auto-style7">&nbsp;</td>
+            <td class="auto-style6">&nbsp;</td>
             <td>
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Update" />
             </td>
         </tr>
+        <tr>
+            <td class="auto-style6">&nbsp;</td>
+            <td>
+                &nbsp;</td>
+        </tr>
     </table>
+                <asp:FileUpload ID="imgUpload" runat="server" accept=".png,.jpg,.jpeg,.gif" Visible="False"/>
+                <br />
+        <br />
         </div>
     <script>
            var x = document.getElementById("demo");

@@ -23,11 +23,12 @@
         height: 100%;
     }
 
-    .deletebutton {
-        background-color: red;
-        border-color: red !important;
-        color: white
-    }
+
+.dangerbutton:hover {
+    background-color: red !important;
+    border-color: red!important;
+    color: red !important;
+}
 
     .CenterTable {
         width: 50%;
@@ -53,7 +54,7 @@
         input[type="submit"]:hover, input[type="button"]:hover, .fancyButton:hover {
             color: #ffffff !important;
             background: var(--main-color);
-            border-color: var(--main-color) !important;
+            border-color: var(--main-color);
             transition: all 0.4s ease 0s;
         }
 

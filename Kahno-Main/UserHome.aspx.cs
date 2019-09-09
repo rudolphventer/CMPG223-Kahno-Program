@@ -29,14 +29,22 @@ namespace Kahno_Main
             ////////////////////////////////////////////////////////////////
             ///
             Label1.Text = "Welcome " + currentuser.fname + " " + currentuser.lname;
-
-            Label2.Text = KahnLib.getLastOrderDate(currentuser.userid);
-
-            if(KahnLib.ratingUpToDate(currentuser.userid))
+            int lastID = KahnLib.getLastOrderID(currentuser.userid);
+            if(lastID==0)
+            {
+                Label3.Text = "You haven't placed any orders yet!";
+                ratingdiv.Visible = false;
+            }
+            else
+            if (KahnLib.ratingUpToDate(currentuser.userid))
             {
                 ratingdiv.Visible = false;
                 Label3.Text = "Your ratings are up to date!";
             }
+            Label2.Text = KahnLib.getLastOrderDate(lastID);
+
+
+
         }
 
         protected void btnOrder_Click(object sender, EventArgs e)
