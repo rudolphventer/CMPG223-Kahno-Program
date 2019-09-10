@@ -326,3 +326,5 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/Kahno-Main/KahnoDB.mdf
+/Kahno-Main/KahnoDB_log.ldf

@@ -81,6 +81,9 @@
     <Content Include="EditUserInfoForm.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="KahnoDB.mdf" />
+    <Content Include="KahnoDB_log.ldf">
+      <DependentUpon>KahnoDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Login.aspx" />
     <Content Include="ReceiveOrders.aspx" />
     <Content Include="Register.aspx" />
