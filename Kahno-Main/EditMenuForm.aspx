@@ -50,7 +50,7 @@
             </asp:GridView>
             <br />
             <button ID="Button2" class="fancyButton" type="button" onclick="openAddForm()" causesvalidation="False">Add new item</button>
-            <asp:SqlDataSource ID="MenuID" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT Description, price, itemName, restaurantID, ItemID, imgByte FROM MENUITEM WHERE (restaurantID = @RID)" DeleteCommand="DELETE FROM MENUITEM WHERE (ItemID = @ItemID);" UpdateCommand="UPDATE MENUITEM SET Description = @Description, itemImageUrl = @itemImageUrl, itemName = @itemName, price = @price WHERE (ItemID = @ItemID)">
+            <asp:SqlDataSource ID="MenuID" runat="server" ConnectionString="<%$ ConnectionStrings:KahnoDBConnectionString %>" SelectCommand="SELECT Description, price, itemName, restaurantID, ItemID, imgByte FROM MENUITEM WHERE (restaurantID = @RID)" DeleteCommand="DELETE FROM MENUITEM WHERE (ItemID = @ItemID);" UpdateCommand="UPDATE MENUITEM SET Description = @Description, itemName = @itemName, price = @price WHERE (ItemID = @ItemID)">
                 <DeleteParameters>
                     <asp:Parameter Name="ItemID" />
                 </DeleteParameters>
@@ -59,7 +59,6 @@
                 </SelectParameters>
                 <UpdateParameters>
                     <asp:Parameter Name="Description" />
-                    <asp:Parameter Name="itemImageUrl" />
                     <asp:Parameter Name="itemName" />
                     <asp:Parameter Name="price" />
                     <asp:Parameter Name="ItemID" />
